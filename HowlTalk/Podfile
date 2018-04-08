@@ -23,6 +23,7 @@ pod 'Firebase/Storage'
 
 pod 'MaterialComponents/Buttons+Extensions'
 
+pod 'ObjectMapper', '~>3.1'
 
 
 
