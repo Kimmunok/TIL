@@ -145,21 +145,24 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 }
                 
                 let imageUrl = data?.downloadURL()?.absoluteString
-                
-                Database.database().reference().child("users").child(uid!).setValue([
+                let values = [
                     "profileImageUrl" : imageUrl,
                     "email" : self.emailTextField.text!,
                     "username" : self.nameTextField.text!,
-                    "password" : self.passwordTextField.text!
-                ])
+                    "password" : self.passwordTextField.text!,
+                    "uid" : Auth.auth().currentUser?.uid
+                ]
+                
+                Database.database().reference().child("users").child(uid!).setValue(values, withCompletionBlock: { (err, ref) in
+                    if err == nil {
+                        let alert = UIAlertController(title: "가입 성공", message: "회원가입이 완료되었습니다", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: { (action) in
+                            self.cancelEvent()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                })
             })
-            
-            let alert = UIAlertController(title: "가입 성공", message: "회원가입이 완료되었습니다", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: { (action) in
-                self.dismiss(animated: true, completion: nil)
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
         }
     }
     

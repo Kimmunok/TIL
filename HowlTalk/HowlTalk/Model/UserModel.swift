@@ -15,4 +15,5 @@ class UserModel: NSObject {
     var email: String?
     var username: String?
     var password: String?
+    var uid: String?
 }
