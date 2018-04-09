@@ -20,6 +20,7 @@
 		6B1A966B206B7DAD000145B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B1A9669206B7DAD000145B1 /* LaunchScreen.storyboard */; };
 		6B60E7392079CC6C00A4AEA0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60E7382079CC6C00A4AEA0 /* ChatViewController.swift */; };
 		6B60E73C2079CDAF00A4AEA0 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60E73B2079CDAF00A4AEA0 /* ChatModel.swift */; };
+		6B8E189F207B6A8E00A6AA67 /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E189E207B6A8E00A6AA67 /* ChatRoomsViewController.swift */; };
 		AC592F915878D7852F640FCB /* Pods_HowlTalk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C5F5C9DBBF8BC99C76F47D /* Pods_HowlTalk.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		6B1A966C206B7DAD000145B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B60E7382079CC6C00A4AEA0 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		6B60E73B2079CDAF00A4AEA0 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		6B8E189E207B6A8E00A6AA67 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
 		7F17C7B82B663A321B39C1EC /* Pods-HowlTalk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HowlTalk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HowlTalk/Pods-HowlTalk.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 		6B1A965F206B7DAD000145B1 /* HowlTalk */ = {
 			isa = PBXGroup;
 			children = (
+				6B8E189D207B6A2C00A6AA67 /* TapBar */,
 				6B60E73A2079CD7900A4AEA0 /* Model */,
 				6B1A9660206B7DAD000145B1 /* AppDelegate.swift */,
 				6B1A9662206B7DAD000145B1 /* ViewController.swift */,
@@ -88,7 +91,6 @@
 				6B054E222075E6BE0070BFD8 /* RemoteConfigDefaults.plist */,
 				6B054E242076007E0070BFD8 /* LoginViewController.swift */,
 				6B054E26207625FB0070BFD8 /* SignUpViewController.swift */,
-				6B054E28207755C50070BFD8 /* PeopleViewController.swift */,
 				6B60E7382079CC6C00A4AEA0 /* ChatViewController.swift */,
 			);
 			path = HowlTalk;
@@ -101,6 +103,15 @@
 				6B60E73B2079CDAF00A4AEA0 /* ChatModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6B8E189D207B6A2C00A6AA67 /* TapBar */ = {
+			isa = PBXGroup;
+			children = (
+				6B054E28207755C50070BFD8 /* PeopleViewController.swift */,
+				6B8E189E207B6A8E00A6AA67 /* ChatRoomsViewController.swift */,
+			);
+			path = TapBar;
 			sourceTree = "<group>";
 		};
 		78BE68B217E3829B503C5138 /* Frameworks */ = {
@@ -277,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B054E252076007E0070BFD8 /* LoginViewController.swift in Sources */,
+				6B8E189F207B6A8E00A6AA67 /* ChatRoomsViewController.swift in Sources */,
 				6B1A9663206B7DAD000145B1 /* ViewController.swift in Sources */,
 				6B054E27207625FB0070BFD8 /* SignUpViewController.swift in Sources */,
 				6B60E73C2079CDAF00A4AEA0 /* ChatModel.swift in Sources */,

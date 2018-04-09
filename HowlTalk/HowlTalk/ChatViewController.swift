@@ -22,6 +22,64 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        uid = Auth.auth().currentUser?.uid
+        sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
+        
+        checkChatRoom()
+        
+        self.tabBarController?.tabBar.isHidden = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        NotificationCenter.default.removeObserver(self)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
+    @objc func keyboardWillShow(notification: Notification) {
+    
+        if let keyboardSize = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            self.bottomConstraint.constant = keyboardSize.height + 20
+        }
+        
+        UIView.animate(withDuration: 0, animations: {
+            
+            self.view.layoutIfNeeded()
+        }, completion: { (complete) in
+            
+            if self.comments.count > 0 {
+                
+                // 채팅방화면을 맨 아래 말풍선으로 내리기
+                self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+            }
+        })
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        
+        self.bottomConstraint.constant = 20
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc func dismissKeyboard() {
+        
+        self.view.endEditing(true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -49,8 +107,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 view.messageLabel.numberOfLines = 0
                 
                 if let url = URL(string: (self.userModel?.profileImageUrl)!) {
-                    
-                    URLSession.shared.dataTask(with: url) { (data, response, err) in
+                
+                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, err) in
+                        
+                        guard err == nil else {
+                            print(err.debugDescription)
+                            return
+                        }
                         
                         DispatchQueue.main.async {
                             
@@ -59,7 +122,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             view.profileImageView.clipsToBounds = true
                             
                         }
-                    }
+                    }).resume()
                 }
                 return view
             }
@@ -72,15 +135,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return UITableViewAutomaticDimension
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        uid = Auth.auth().currentUser?.uid
-        sendButton.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
-        
-        checkChatRoom()
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -112,7 +166,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 "message" : messageTextField.text!
             ]
             
-            Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value)
+            Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value) { (err, ref) in
+                
+                self.messageTextField.text = ""
+            }
         }
     }
 
@@ -146,7 +203,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             self.chatRoomUid = item.key
                             self.sendButton.isEnabled = true // 방 중복생성방지 해제
                             
-                            self.getMessageList()
+                            self.getDestinationInfo()
                         }
                     }
                 }
@@ -183,7 +240,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                 }
                 
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    
+                    if self.comments.count > 0 {
+                        
+                        // 채팅방화면을 맨 아래 말풍선으로 내리기
+                        self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                    }
+                }
             }
         })
     }
