@@ -16,4 +16,5 @@ class UserModel: NSObject {
     var username: String?
     var password: String?
     var uid: String?
+    var pushToken: String?
 }

@@ -13,6 +13,8 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     var uid: String!
     var chatrooms: [ChatModel]! = []
+    var destinationUsers: [String] = []
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -30,6 +32,8 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
             if let allObjectsOfDatasnapshot = datasnapshot.children.allObjects as? [DataSnapshot] {
                 
                 for item in allObjectsOfDatasnapshot {
+                    
+                    self.chatrooms.removeAll()
                     
                     if let chatroomDic = item.value as? [String:AnyObject] {
                         
@@ -53,11 +57,71 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RowCell", for: indexPath)
-        
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "RowCell", for: indexPath) as? CustomCell {
+            
+            var destinationUid: String?
+            
+            // 내 uid는 제외하고 상대방의 uid만 가져온다
+            for item in chatrooms[indexPath.row].users {
+                
+                if item.key != self.uid {
+                    
+                    destinationUid = item.key
+                    destinationUsers.append(destinationUid!)
+                }
+            }
+            
+            // 가져온 대화상대의 uid를 사용하여 이름을 가져온다
+            Database.database().reference().child("users").child(destinationUid!).observeSingleEvent(of: DataEventType.value, with: {(datasnapshot) in
+                
+                if let snapshotDic = datasnapshot.value as? [String:AnyObject] {
+                    
+                    let usermodel = UserModel()
+                    
+                    usermodel.setValuesForKeys(snapshotDic)
+                    cell.titleLabel.text = usermodel.username
+                    
+                    if let url = URL(string: usermodel.profileImageUrl!) {
+                        
+                        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, err) in
+                            
+                            DispatchQueue.main.async {
+                                
+                                cell.imageview.image = UIImage(data: data!)
+                                cell.imageview.layer.cornerRadius = cell.imageview.frame.width / 2
+                                cell.imageview.layer.masksToBounds = true
+                            }
+                        }).resume()
+                    }
+                }
+                
+                let lastMessageKey = self.chatrooms[indexPath.row].comments.keys.sorted(){$0>$1} // 무작위로 가져온 메시지의 키값을 오름차순으로 가져온다
+                cell.lastMessageLabel.text = self.chatrooms[indexPath.row].comments[lastMessageKey[0]]?.message
+                
+                let unixTime = self.chatrooms[indexPath.row].comments[lastMessageKey[0]]?.timestamp
+                cell.timeStampLabel.text = unixTime?.toDayTime
+            })
+            return cell
+        }
+        return UITableViewCell()
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let destinationUid = self.destinationUsers[indexPath.row]
+        
+        if let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController {
+            
+            view.destinationUid = destinationUid
+            self.navigationController?.pushViewController(view, animated: true)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -76,3 +140,25 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
     */
 
 }
+
+class CustomCell: UITableViewCell {
+    
+    @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var lastMessageLabel: UILabel!
+    @IBOutlet weak var timeStampLabel: UILabel!
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
