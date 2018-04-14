@@ -85,6 +85,13 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             URLSession.shared.dataTask(with: URL(string: array[indexPath.row].profileImageUrl!)!) { (data, response, err) in
                 
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    
+                    // HTTP 통신이 실패한 경우
+                    return
+                    
+                }
+                
                 DispatchQueue.main.async {
                     imageview.image = UIImage(data: data!)
                     imageview.layer.cornerRadius = imageview.frame.size.width / 2

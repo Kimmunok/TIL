@@ -137,6 +137,14 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 return
             }
             
+            // 유저명을 FCM 서버로 전달
+//            user?.createProfileChangeRequest().displayName = self.nameTextField.text!
+//            user?.createProfileChangeRequest().commitChanges(completion: nil)
+            
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = self.nameTextField.text!
+            changeRequest?.commitChanges(completion: nil)
+            
             Storage.storage().reference().child("userImages").child(uid!).putData(image, metadata: nil, completion: { (data, error) in
                 
                 if error != nil {

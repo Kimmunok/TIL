@@ -21,7 +21,7 @@ pod 'GoogleSignIn'
 pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Firebase/Messaging'
-
+pod 'Alamofire', '~> 4.7'
 
 pod 'MaterialComponents/Buttons+Extensions'
 
