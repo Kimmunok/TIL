@@ -28,7 +28,17 @@ class LoginViewController: UIViewController {
         self.view.addSubview(statusBar)
         statusBar.snp.makeConstraints { (m) in
             m.right.top.left.equalTo(self.view)
-            m.height.equalTo(20)
+            
+            // iPhone X 판별
+            if UIScreen.main.nativeBounds.height == 2436 {
+                
+                m.height.equalTo(40)
+            } else {
+                
+                m.height.equalTo(20)
+            }
+            
+            
         }
         color = remoteconfig["splash_background"].stringValue
         

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.7.1)
+  - BEMCheckBox (1.4.1)
   - Firebase/Auth (4.11.0):
     - Firebase/Core
     - FirebaseAuth (= 4.5.0)
@@ -79,6 +80,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.15)
   - GTMSessionFetcher/Full (1.1.15):
     - GTMSessionFetcher/Core (= 1.1.15)
+  - Kingfisher (4.7.0)
   - leveldb-library (1.20)
   - MaterialComponents/Buttons (53.0.0):
     - MaterialComponents/Ink
@@ -121,6 +123,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - BEMCheckBox
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -128,6 +131,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
   - GoogleSignIn
+  - Kingfisher (~> 4.7)
   - MaterialComponents/Buttons+Extensions
   - ObjectMapper (~> 3.1)
   - SnapKit (~> 4.0.0)
@@ -135,6 +139,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseABTesting: d07d0ee833b842d5153549e4c7e2e2cb1c23a3f9
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
@@ -149,6 +154,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   MaterialComponents: 1b487cfa216c62fb695d42a7eb150cefbaa5d553
   MDFInternationalization: e355b0cebecf53d60233bd267084e49366c82513
@@ -159,6 +165,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   TextFieldEffects: 4ee41b5216e674d55fb6ac25107bf1af7629176f
 
-PODFILE CHECKSUM: 39acd98547092cb3a6936346055874b6c4476bea
+PODFILE CHECKSUM: 7bd779297fcf833282629eabae61bcb5b4e53d53
 
 COCOAPODS: 1.4.0

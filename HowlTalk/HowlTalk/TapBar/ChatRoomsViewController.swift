@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -22,6 +23,9 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
 
         self.uid = Auth.auth().currentUser?.uid
         self.getChatroomsList()
+        
+        // 셀간 구분선 없애기
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none;
     }
     
     func getChatroomsList() {
@@ -83,15 +87,9 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                     if let url = URL(string: usermodel.profileImageUrl!) {
                         
-                        URLSession.shared.dataTask(with: url, completionHandler: { (data, response, err) in
-                            
-                            DispatchQueue.main.async {
-                                
-                                cell.imageview.image = UIImage(data: data!)
-                                cell.imageview.layer.cornerRadius = cell.imageview.frame.width / 2
-                                cell.imageview.layer.masksToBounds = true
-                            }
-                        }).resume()
+                        cell.imageview.layer.cornerRadius = cell.imageview.frame.width / 2
+                        cell.imageview.layer.masksToBounds = true
+                        cell.imageview.kf.setImage(with: url)
                     }
                 }
                 

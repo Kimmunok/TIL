@@ -17,4 +17,5 @@ class UserModel: NSObject {
     var password: String?
     var uid: String?
     var pushToken: String?
+    var comment: String?
 }

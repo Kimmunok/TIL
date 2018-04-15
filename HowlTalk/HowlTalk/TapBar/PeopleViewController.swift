@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Firebase
 import MaterialComponents
+import Kingfisher
 
 class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -35,6 +36,9 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             m.top.equalTo(view)
             m.bottom.left.right.equalTo(view)
         }
+        
+        // 셀간 구분선 없애기
+        tableview.separatorStyle = UITableViewCellSeparatorStyle.none;
         
         // DB 친구목록 불러오기
         Database.database().reference().child("users").observe(DataEventType.value, with: { (snapshot) in
@@ -63,7 +67,6 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.tableview.reloadData()
             }
         })
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,22 +86,19 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 m.height.width.equalTo(50)
             }
             
-            URLSession.shared.dataTask(with: URL(string: array[indexPath.row].profileImageUrl!)!) { (data, response, err) in
+//            if let url = URL(string: array[indexPath.row].profileImageUrl!) {
+//
+//                imageview.layer.cornerRadius = 50 / 2 // 그리기 이전에 연산을 먼저하므로 상수로 넣어준다.
+//                imageview.clipsToBounds = true
+//                imageview.kf.setImage(with: url)
+//            }
+
+            let url = URL(string: array[indexPath.row].profileImageUrl!)
                 
-                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                    
-                    // HTTP 통신이 실패한 경우
-                    return
-                    
-                }
-                
-                DispatchQueue.main.async {
-                    imageview.image = UIImage(data: data!)
-                    imageview.layer.cornerRadius = imageview.frame.size.width / 2
-                    imageview.clipsToBounds = true
-                }
-                }.resume()
-            
+            imageview.layer.cornerRadius = 50 / 2 // 그리기 이전에 연산을 먼저하므로 상수로 넣어준다.
+            imageview.clipsToBounds = true
+            imageview.kf.setImage(with: url)
+
             let label = cell.label!
 
             label.snp.makeConstraints { (m) in
@@ -107,6 +107,36 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             label.text = array[indexPath.row].username
+            
+            // 상태메시지 배치
+            let commentLabel = cell.commentLabel!
+            
+            commentLabel.snp.makeConstraints { (m) in
+                
+                m.centerX.equalTo(cell.uiview_comment_background)
+                m.centerY.equalTo(cell.uiview_comment_background)
+            }
+            
+            if let comment = array[indexPath.row].comment {
+                
+                commentLabel.text = comment
+            }
+            
+            cell.uiview_comment_background.snp.makeConstraints { (m) in
+                
+                m.right.equalTo(cell).offset(-10)
+                m.centerY.equalTo(cell)
+                
+                if let count = commentLabel.text?.count {
+                    m.width.equalTo(count * 10)
+                } else {
+                    m.width.equalTo(0)
+                }
+                
+                m.height.equalTo(30)
+            }
+            
+            cell.uiview_comment_background.backgroundColor = UIColor.gray
             
             return cell
         }
@@ -156,12 +186,16 @@ class PeopleTableViewCell: UITableViewCell {
     
     var imageview: UIImageView! = UIImageView()
     var label: UILabel! = UILabel()
+    var commentLabel: UILabel! = UILabel()
+    var uiview_comment_background: UIView = UIView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addSubview(imageview)
         self.addSubview(label)
+        self.addSubview(uiview_comment_background)
+        self.addSubview(commentLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

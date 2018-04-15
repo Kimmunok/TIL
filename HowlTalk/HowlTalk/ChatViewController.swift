@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Alamofire
+import Kingfisher
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -17,6 +18,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var comments: [ChatModel.Comment] = []
     var destinationUserModel: UserModel?
+    
+    var databaseRef: DatabaseReference?
+    var observe: UInt?
+    var peopleCount: Int?
     
     public var destinationUid: String? // 나중에 내가 채팅할 대상의 uid
     
@@ -37,6 +42,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        // 셀간 구분선 없애기
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none;
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +57,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         NotificationCenter.default.removeObserver(self)
         self.tabBarController?.tabBar.isHidden = false
+        
+        databaseRef?.removeObserver(withHandle: observe!)
     }
 
     @objc func keyboardWillShow(notification: Notification) {
@@ -102,6 +112,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     view.timeStampLabel.text = time.toDayTime
                 }
                 
+                setReadCount(label: view.readCounterLabel, position: indexPath.row)
+                
                 return view
                 
             }
@@ -114,28 +126,19 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 view.messageLabel.numberOfLines = 0
                 
                 if let url = URL(string: (self.destinationUserModel?.profileImageUrl)!) {
-                
-                URLSession.shared.dataTask(with: url, completionHandler: { (data, response, err) in
-                        
-                        guard err == nil else {
-                            print(err.debugDescription)
-                            return
-                        }
-                        
-                        DispatchQueue.main.async {
-                            
-                            view.profileImageView.image = UIImage(data: data!)
-                            view.profileImageView.layer.cornerRadius = view.profileImageView.frame.width / 2
-                            view.profileImageView.clipsToBounds = true
-                            
-                        }
-                    }).resume()
+                    
+                    view.profileImageView.layer.cornerRadius = view.profileImageView.frame.width / 2
+                    view.profileImageView.clipsToBounds = true
+                    view.profileImageView.kf.setImage(with: url)
                 }
                 
                 if let time = self.comments[indexPath.row].timestamp {
                     
                     view.timeStampLabel.text = time.toDayTime
                 }
+                
+                setReadCount(label: view.readCounterLabel, position: indexPath.row)
+                
                 return view
             }
         }
@@ -196,9 +199,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ]
         
         let userName = Auth.auth().currentUser?.displayName
-        print("userName : \(userName)")
+//        print("userName : \(String(describing: userName))")
         
-        var notificationModel = NotificationModel()
+        let notificationModel = NotificationModel()
         notificationModel.to = destinationUserModel?.pushToken
         notificationModel.notification.title = userName
         notificationModel.notification.text = messageTextField.text
@@ -265,31 +268,100 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
+    func setReadCount(label: UILabel?, position: Int?) {
+        
+        let readCount = self.comments[position!].readUsers.count
+        
+        if peopleCount == nil {
+            
+            Database.database().reference().child("chatrooms").child(chatRoomUid!).child("users").observeSingleEvent(of: DataEventType.value, with: {(datasnapshot) in
+                
+                if let dic = datasnapshot.value as? [String:Any] {
+                    
+                    self.peopleCount = dic.count
+                    
+                    let noReadCount = self.peopleCount! - readCount
+                    
+                    if noReadCount > 0 {
+                        
+                        label?.isHidden = false
+                        label?.text = String(noReadCount)
+                    } else {
+                        label?.isHidden = true
+                    }
+                }
+            })
+        } else {
+            
+            let noReadCount = peopleCount! - readCount
+            
+            if noReadCount > 0 {
+                
+                label?.isHidden = false
+                label?.text = String(noReadCount)
+            } else {
+                label?.isHidden = true
+            }
+        }
+    }
+    
     func getMessageList() {
         
-        Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments").observe(DataEventType.value, with: { (datasnapshot) in
+        databaseRef = Database.database().reference().child("chatrooms").child(self.chatRoomUid!).child("comments")
+        
+        observe = databaseRef?.observe(DataEventType.value, with: { (datasnapshot) in
             
             self.comments.removeAll()
+            
+            var readUserDic: Dictionary<String,AnyObject> = [:]
             
             if let allObjectsOfDatasnapshot = datasnapshot.children.allObjects as? [DataSnapshot] {
                 
                 for item in allObjectsOfDatasnapshot {
                     
+                    let key = item.key as String
+                    
                     if let itemValueDic = item.value as? [String:AnyObject] {
                         let comment = ChatModel.Comment(JSON: itemValueDic)
+                        let comment_motify = ChatModel.Comment(JSON: itemValueDic)
+
+                        // 메시지를 읽었음을 표시
+                        comment_motify?.readUsers[self.uid!] = true
+                        readUserDic[key] = comment_motify?.toJSON() as! NSDictionary
                         
                         self.comments.append(comment!)
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    
-                    self.tableView.reloadData()
-                    
-                    if self.comments.count > 0 {
+                let nsDic = readUserDic as NSDictionary
+                
+                // 마지막 메시지를 읽지 않았을 경우, 서버에게 메시지 읽음을 보고하는 부분
+                if (!(self.comments.last?.readUsers.keys.contains(self.uid!))!) {
+                
+                datasnapshot.ref.updateChildValues(nsDic as! [AnyHashable : Any], withCompletionBlock: { (err, ref) in
+
+                    DispatchQueue.main.async {
                         
-                        // 채팅방화면을 맨 아래 말풍선으로 내리기
-                        self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                        self.tableView.reloadData()
+                        
+                        if self.comments.count > 0 {
+                            
+                            // 채팅방화면을 맨 아래 말풍선으로 내리기
+                            self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                        }
+                    }
+                })
+                } else { // 마지막 메시지를 읽었을 경우
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.tableView.reloadData()
+                        
+                        if self.comments.count > 0 {
+                            
+                            // 채팅방화면을 맨 아래 말풍선으로 내리기
+                            self.tableView.scrollToRow(at: IndexPath(item: self.comments.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                        }
                     }
                 }
             }
@@ -327,6 +399,7 @@ class MyMessageCell: UITableViewCell {
     
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
+    @IBOutlet weak var readCounterLabel: UILabel!
     
 }
 
@@ -336,6 +409,7 @@ class DestinationMessageCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeStampLabel: UILabel!
+    @IBOutlet weak var readCounterLabel: UILabel!
     
 }
 

@@ -138,7 +138,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
             
             // 유저명을 FCM 서버로 전달
-//            user?.createProfileChangeRequest().displayName = self.nameTextField.text!
+            user?.createProfileChangeRequest().displayName = self.nameTextField.text!
 //            user?.createProfileChangeRequest().commitChanges(completion: nil)
             
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
