@@ -14,6 +14,7 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
 
     var uid: String!
     var chatrooms: [ChatModel]! = []
+    var keys: [String] = []
     var destinationUsers: [String] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -42,6 +43,8 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
                     if let chatroomDic = item.value as? [String:AnyObject] {
                         
                         let chatmodel = ChatModel(JSON: chatroomDic)
+                        
+                        self.keys.append(item.key)
                         self.chatrooms.append(chatmodel!)
                     }
                 }
@@ -93,6 +96,10 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                 }
                 
+                if self.chatrooms[indexPath.row].comments.keys.count == 0 {
+                    return
+                }
+                
                 let lastMessageKey = self.chatrooms[indexPath.row].comments.keys.sorted(){$0>$1} // 무작위로 가져온 메시지의 키값을 오름차순으로 가져온다
                 cell.lastMessageLabel.text = self.chatrooms[indexPath.row].comments[lastMessageKey[0]]?.message
                 
@@ -108,12 +115,24 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let destinationUid = self.destinationUsers[indexPath.row]
-        
-        if let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController {
+        if self.destinationUsers[indexPath.row].count > 2 {
             
-            view.destinationUid = destinationUid
-            self.navigationController?.pushViewController(view, animated: true)
+            let destinationUid = self.destinationUsers[indexPath.row]
+            
+            if let view = self.storyboard?.instantiateViewController(withIdentifier: "GroupChatRoomViewController") as? GroupChatRoomViewController {
+                
+                view.destinationRoom = self.keys[indexPath.row]
+                self.navigationController?.pushViewController(view, animated: true)
+            }
+        } else {
+        
+            let destinationUid = self.destinationUsers[indexPath.row]
+            
+            if let view = self.storyboard?.instantiateViewController(withIdentifier: "ChatViewController") as? ChatViewController {
+                
+                view.destinationUid = destinationUid
+                self.navigationController?.pushViewController(view, animated: true)
+            }
         }
     }
     

@@ -22,7 +22,10 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         // 로그아웃 바버튼아이템
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "로그아웃", style: .plain, target: self, action: #selector(logoutEvent))
-        
+
+        // 단체방 바버튼아이템
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "단체방", style: .plain, target: self, action: #selector(showSelectFriendController))
+
         tableview = UITableView()
         tableview.delegate = self
         tableview.dataSource = self
@@ -67,6 +70,11 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.tableview.reloadData()
             }
         })
+    }
+    
+    @objc func showSelectFriendController() {
+        
+        self.performSegue(withIdentifier: "SelectFriendSegue", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

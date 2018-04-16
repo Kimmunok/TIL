@@ -10,11 +10,13 @@ import UIKit
 import Firebase
 import BEMCheckBox
 
-class SelectFriendViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SelectFriendViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, BEMCheckBoxDelegate {
     
     var array: [UserModel] = []
+    var users = Dictionary<String,Bool>()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,8 @@ class SelectFriendViewController: UIViewController, UITableViewDataSource, UITab
                 self.tableView.reloadData()
             }
         })
+        
+        button.addTarget(self, action: #selector(createRoom), for: .touchUpInside)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,10 +62,33 @@ class SelectFriendViewController: UIViewController, UITableViewDataSource, UITab
             
             view.nameLabel.text = array[indexPath.row].username
             view.profileImageView.kf.setImage(with: URL(string: array[indexPath.row].profileImageUrl!))
+            view.checkbox.delegate = self
+            view.checkbox.tag = indexPath.row
             
             return view
         }
         return UITableViewCell()
+    }
+    
+    func didTap(_ checkBox: BEMCheckBox) {
+
+        if checkBox.on {
+            // 체크박스가 체크 됐을때 발생하는 이벤트
+            users[self.array[checkBox.tag].uid!] = true
+        } else {
+            // 체크박스가 체크가 해제 됐을때 발생하는 이벤트
+            users.removeValue(forKey: self.array[checkBox.tag].uid!)
+        }
+    }
+    
+    @objc func createRoom() {
+        
+        let myUid = Auth.auth().currentUser?.uid
+        users[myUid!] = true
+        let nsDic = users as NSDictionary
+
+        
+        Database.database().reference().child("chatrooms").childByAutoId().child("users").setValue(nsDic)
     }
 
     override func didReceiveMemoryWarning() {

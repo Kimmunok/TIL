@@ -244,7 +244,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         
                         let chatModel = ChatModel(JSON: chatRoomDic)
                         
-                        if chatModel?.users[self.destinationUid!] == true {
+                        if (chatModel?.users[self.destinationUid!] == true && chatModel?.users.count == 2) {
+                            
                             self.chatRoomUid = item.key
                             self.sendButton.isEnabled = true // 방 중복생성방지 해제
                             
@@ -334,6 +335,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
                 
                 let nsDic = readUserDic as NSDictionary
+                
+                if self.comments.last?.readUsers.keys == nil {
+                    return
+                }
                 
                 // 마지막 메시지를 읽지 않았을 경우, 서버에게 메시지 읽음을 보고하는 부분
                 if (!(self.comments.last?.readUsers.keys.contains(self.uid!))!) {

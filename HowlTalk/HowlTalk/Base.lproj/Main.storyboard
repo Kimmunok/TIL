@@ -152,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nO5-vf-aZs">
-                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="546"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectFriendCell" rowHeight="70" id="Olm-8V-roJ" customClass="SelectFriendCell" customModule="HowlTalk" customModuleProvider="target">
@@ -207,17 +207,25 @@
                                     <outlet property="delegate" destination="go6-HT-0PU" id="mNx-3t-EZN"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hR4-7h-8rE">
+                                <rect key="frame" x="166" y="633.66666666666663" width="82" height="30"/>
+                                <state key="normal" title="채팅방 만들기"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nO5-vf-aZs" firstAttribute="trailing" secondItem="kcO-hp-gx3" secondAttribute="trailing" id="BLX-xS-buu"/>
-                            <constraint firstItem="nO5-vf-aZs" firstAttribute="bottom" secondItem="kcO-hp-gx3" secondAttribute="bottom" id="Pbm-JS-Al8"/>
+                            <constraint firstItem="hR4-7h-8rE" firstAttribute="top" secondItem="nO5-vf-aZs" secondAttribute="bottom" constant="23.5" id="Fzv-U7-835"/>
+                            <constraint firstItem="nO5-vf-aZs" firstAttribute="bottom" secondItem="kcO-hp-gx3" secondAttribute="bottom" constant="-77" id="Pbm-JS-Al8"/>
+                            <constraint firstItem="kcO-hp-gx3" firstAttribute="bottom" secondItem="hR4-7h-8rE" secondAttribute="bottom" constant="23.5" id="ccI-Ig-xLf"/>
                             <constraint firstItem="nO5-vf-aZs" firstAttribute="top" secondItem="kcO-hp-gx3" secondAttribute="top" id="dVA-G7-OAH"/>
                             <constraint firstItem="nO5-vf-aZs" firstAttribute="leading" secondItem="kcO-hp-gx3" secondAttribute="leading" id="ni6-vH-GTE"/>
+                            <constraint firstItem="hR4-7h-8rE" firstAttribute="centerX" secondItem="dMA-20-AcG" secondAttribute="centerX" id="tqs-Zc-RF6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kcO-hp-gx3"/>
                     </view>
                     <connections>
+                        <outlet property="button" destination="hR4-7h-8rE" id="jeh-Cp-lt0"/>
                         <outlet property="tableView" destination="nO5-vf-aZs" id="ufv-Hx-xqs"/>
                     </connections>
                 </viewController>
@@ -247,6 +255,7 @@
                         <viewLayoutGuide key="safeArea" id="Lwt-RW-3u3"/>
                     </view>
                     <navigationItem key="navigationItem" title="People" id="ZsB-7S-QhO">
+                        <barButtonItem key="leftBarButtonItem" title="단체방" id="zrm-3u-veI"/>
                         <barButtonItem key="rightBarButtonItem" title="로그아웃" id="WHg-Ni-qga"/>
                     </navigationItem>
                     <connections>
@@ -440,6 +449,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HX7-HB-dmD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4089.8550724637685" y="-1021.4673913043479"/>
+        </scene>
+        <!--Group Chat Room View Controller-->
+        <scene sceneID="uZD-CK-Jc8">
+            <objects>
+                <viewController storyboardIdentifier="GroupChatRoomViewController" id="IPP-WW-cmJ" customClass="GroupChatRoomViewController" customModule="HowlTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HxG-o2-GJU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Gm-1I-t7K">
+                                <rect key="frame" x="348" y="686" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="Auo-rv-maf"/>
+                                    <constraint firstAttribute="height" constant="30" id="nuK-lX-RwX"/>
+                                </constraints>
+                                <state key="normal" title="전송"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VPp-bF-GMq">
+                                <rect key="frame" x="20" y="687" width="320" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HgI-TK-AFB"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4Gm-1I-t7K" firstAttribute="leading" secondItem="VPp-bF-GMq" secondAttribute="trailing" constant="8" id="0Qv-3I-csz"/>
+                            <constraint firstItem="R9k-6q-trD" firstAttribute="trailing" secondItem="VPp-bF-GMq" secondAttribute="trailing" constant="74" id="HfY-MP-NN9"/>
+                            <constraint firstItem="4Gm-1I-t7K" firstAttribute="centerY" secondItem="VPp-bF-GMq" secondAttribute="centerY" constant="-1" id="Hss-A8-Ag4"/>
+                            <constraint firstItem="R9k-6q-trD" firstAttribute="bottom" secondItem="4Gm-1I-t7K" secondAttribute="bottom" constant="20" id="Qbb-Ng-9JI"/>
+                            <constraint firstItem="4Gm-1I-t7K" firstAttribute="top" secondItem="R9k-6q-trD" secondAttribute="top" constant="666" id="TMY-uj-Ts4"/>
+                            <constraint firstItem="R9k-6q-trD" firstAttribute="trailing" secondItem="4Gm-1I-t7K" secondAttribute="trailing" constant="20" id="WCW-Hj-sx8"/>
+                            <constraint firstItem="R9k-6q-trD" firstAttribute="bottom" secondItem="VPp-bF-GMq" secondAttribute="bottom" constant="19" id="eFm-1Q-Elr"/>
+                            <constraint firstItem="VPp-bF-GMq" firstAttribute="leading" secondItem="R9k-6q-trD" secondAttribute="leading" constant="20" id="g7w-zG-cP6"/>
+                            <constraint firstItem="VPp-bF-GMq" firstAttribute="centerY" secondItem="HxG-o2-GJU" secondAttribute="centerY" constant="334" id="pId-t7-jnq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R9k-6q-trD"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageTextField" destination="VPp-bF-GMq" id="mux-0H-D8J"/>
+                        <outlet property="sendButton" destination="4Gm-1I-t7K" id="nsV-xb-PO2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4vx-Dx-jaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4873.913043478261" y="-1021.4673913043479"/>
         </scene>
         <!--Account-->
         <scene sceneID="KEk-vR-kRP">
