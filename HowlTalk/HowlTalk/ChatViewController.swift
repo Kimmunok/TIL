@@ -199,7 +199,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         ]
         
         let userName = Auth.auth().currentUser?.displayName
-//        print("userName : \(String(describing: userName))")
+        //        print("userName : \(String(describing: userName))")
         
         let notificationModel = NotificationModel()
         notificationModel.to = destinationUserModel?.pushToken
@@ -207,7 +207,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         notificationModel.notification.text = messageTextField.text
         notificationModel.data.title = userName
         notificationModel.data.text = messageTextField.text
-
+        
         
         let params = notificationModel.toJSON()
         
