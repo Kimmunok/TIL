@@ -15,6 +15,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     let remoteconfig = RemoteConfig.remoteConfig()
     var color: String!
+    var isSelectImage: Bool = false
+    
     @IBOutlet weak var emailTextField: YokoTextField!
     @IBOutlet weak var nameTextField: YokoTextField!
     @IBOutlet weak var passwordTextField: YokoTextField!
@@ -83,6 +85,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         }
         
         imageView.image = imageInfo
+        isSelectImage = true
         imageView.contentMode = .scaleAspectFill
         dismiss(animated: true, completion: nil)
 
@@ -131,6 +134,11 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
             }
             
             let uid = user?.uid
+            
+            if self.isSelectImage == false {
+                
+                self.imageView.image = #imageLiteral(resourceName: "if_user_male2_172626")
+            }
             
             guard let image = UIImageJPEGRepresentation(self.imageView.image!, 0.1) else {
                 print("image representation error")
