@@ -69,21 +69,13 @@ class LoginViewController: UIViewController {
         
 //        try! Auth.auth().signOut()
         
+        Auth.auth().currentUser
+        
         // 로그인 된 상태라면 메인뷰로 화면을 넘긴다
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                if let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewTabBarController") as? UITabBarController {
-
-                    self.present(view, animated: true, completion: nil)
-                }
-                
-                // 토큰 생성
-                let uid = Auth.auth().currentUser?.uid
-                
-                if let token = InstanceID.instanceID().token() {
-                    
-                    Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken" : token])
-                }
+            
+                self.moveToMainViewTabBarController()
             }
         }
     }
@@ -125,6 +117,24 @@ class LoginViewController: UIViewController {
 
                 return
             }
+            
+            self.moveToMainViewTabBarController()
+        }
+    }
+    
+    func moveToMainViewTabBarController() {
+        
+        if let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewTabBarController") as? UITabBarController {
+            
+            self.present(view, animated: true, completion: nil)
+        }
+        
+        // 토큰 생성
+        let uid = Auth.auth().currentUser?.uid
+        
+        if let token = InstanceID.instanceID().token() {
+            
+            Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken" : token])
         }
     }
     

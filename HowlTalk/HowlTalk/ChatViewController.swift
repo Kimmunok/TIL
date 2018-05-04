@@ -157,6 +157,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @objc func createRoom() {
         
+        // 메시지 내용이 비었으면 무시한다.
+        guard self.messageTextField.text != "" else {
+            return
+        }
+        
         let createRoomInfo: Dictionary<String,Any> = [ "users" : [
             uid! : true,
             destinationUid! : true
@@ -166,24 +171,24 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if chatRoomUid == nil {
             // 중복생성방지
             sendButton.isEnabled = false
-            
+
             // 채팅방 생성
             Database.database().reference().child("chatrooms").childByAutoId().setValue(createRoomInfo) { (err, ref) in
-                
+
                 if err == nil {
                     self.checkChatRoom()
                 }
             }
         } else {
-            
+
             let value: Dictionary<String,Any> = [
                 "uid" : uid!,
                 "message" : messageTextField.text!,
                 "timestamp" : ServerValue.timestamp()
             ]
-            
+
             Database.database().reference().child("chatrooms").child(chatRoomUid!).child("comments").childByAutoId().setValue(value) { (err, ref) in
-                
+
                 self.sendFCM()
                 self.messageTextField.text = ""
             }
