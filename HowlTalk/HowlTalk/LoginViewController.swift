@@ -67,9 +67,7 @@ class LoginViewController: UIViewController {
         signinButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
         self.view.addSubview(signinButton)
         
-//        try! Auth.auth().signOut()
-        
-        Auth.auth().currentUser
+        try! Auth.auth().signOut()
         
         // 로그인 된 상태라면 메인뷰로 화면을 넘긴다
         Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -79,7 +77,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
-
+    
     @IBAction func pressReturnInEmail(_ sender: Any) {
         
         self.passwordTextField.becomeFirstResponder() // 텍스트필드에 포커스

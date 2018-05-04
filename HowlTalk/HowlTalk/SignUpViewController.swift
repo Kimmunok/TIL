@@ -10,8 +10,9 @@ import UIKit
 import Firebase
 import TextFieldEffects
 import MaterialComponents
+import GoogleSignIn
 
-class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class SignUpViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GIDSignInUIDelegate {
     
     let remoteconfig = RemoteConfig.remoteConfig()
     var color: String!
@@ -26,6 +27,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         imageView.layer.cornerRadius = 5.0
         imageView.layer.masksToBounds = true
@@ -65,6 +68,14 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         cancelButton.addTarget(self, action: #selector(cancelEvent), for: .touchUpInside)
         self.view.addSubview(cancelButton)
         
+    }
+    
+    @IBAction func googleSignIn(_ sender: Any) {
+        
+        GIDSignIn.sharedInstance().signIn()
+        isSelectImage = true
+        
+        signupEvent()
     }
     
     @objc func imagePicker() {
@@ -140,6 +151,13 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 self.imageView.image = #imageLiteral(resourceName: "if_user_male2_172626")
             }
             
+            // 구글/페북 로그인 일 경우
+            if user?.providerID != nil {
+                
+//                self.imageView.image = user?.providerData[0].photoURL
+                // URL로 이미지뷰에 이미지 넣기
+            }
+            
             guard let image = UIImageJPEGRepresentation(self.imageView.image!, 0.1) else {
                 print("image representation error")
                 return
@@ -161,6 +179,14 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                 }
                 
                 let imageUrl = data?.downloadURL()?.absoluteString
+                
+                // 구글/페북의 경우 values의 값
+                
+                // password는 받지 않는다.
+                // email = user?.providerData[0].email
+                // username = user?.providerData[0].name
+                
+                // 간편 가입하기의 경우 values의 값
                 let values = [
                     "profileImageUrl" : imageUrl,
                     "email" : self.emailTextField.text!,
