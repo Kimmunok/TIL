@@ -10,8 +10,10 @@ import UIKit
 import Firebase
 import TextFieldEffects
 import MaterialComponents
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
 
     @IBOutlet weak var emailTextField: YokoTextField!
     @IBOutlet weak var passwordTextField: YokoTextField!
@@ -22,6 +24,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        GIDSignIn.sharedInstance().uiDelegate = self
 
         // 상태바 그리기
         let statusBar = UIView()
@@ -67,12 +71,27 @@ class LoginViewController: UIViewController {
         signinButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
         self.view.addSubview(signinButton)
         
+        // 로그아웃
         try! Auth.auth().signOut()
         
-        // 로그인 된 상태라면 메인뷰로 화면을 넘긴다
+        // 로그인 상태가 되기를 지켜보다가 메인뷰로 화면을 넘긴다
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
             
+//                // 구글계정으로 로그인 된 상태인 경우
+//                if user?.providerID != nil {
+//
+//                    let values = [
+//                        "profileImageUrl" : (user?.providerData[0].photoURL)!,
+//                        "email" : (user?.providerData[0].email)!,
+//                        "username" : (user?.providerData[0].displayName)!,
+//                        "uid" : Auth.auth().currentUser?.uid
+//                    ] as [String : Any]
+//
+//                    // 구글계정 이메일이 DB에 등록이 안되어 있는 경우 등록
+//                    Database.database().reference().child("users").child((user?.uid)!).setValue(values)
+//                }
+                
                 self.moveToMainViewTabBarController()
             }
         }
@@ -88,6 +107,10 @@ class LoginViewController: UIViewController {
         loginEvent()
     }
     
+    @IBAction func googleLogin(_ sender: Any) {
+        
+        GIDSignIn.sharedInstance().signIn()
+    }
     
     @objc func loginEvent() {
         

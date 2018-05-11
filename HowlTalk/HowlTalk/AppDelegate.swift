@@ -75,6 +75,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
             // User is signed in
             // ...
+            
+            // 유저명을 FCM 서버로 전달
+            //            user?.createProfileChangeRequest().displayName = self.nameTextField.text!
+            //            user?.createProfileChangeRequest().commitChanges(completion: nil)
+            
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = (user?.providerData[0].displayName)!
+            changeRequest?.commitChanges(completion: nil)
+            
+            let photoUrl = (user?.providerData[0].photoURL)!.absoluteString
+            
+            let values = [
+                "profileImageUrl" : photoUrl,
+                "email" : (user?.providerData[0].email)!,
+                "username" : (user?.providerData[0].displayName)!,
+                "uid" : Auth.auth().currentUser?.uid
+                ] as [String : Any]
+            
+            // 구글계정 이메일이 DB에 등록이 안되어 있는 경우 등록
+            Database.database().reference().child("users").child((user?.uid)!).setValue(values, withCompletionBlock: { (err, ref) in
+                if err != nil {
+                    
+                    print("err.debugDescription : \(err.debugDescription)")
+                    return
+                }
+                
+                // 토큰 생성
+                let uid = Auth.auth().currentUser?.uid
+                
+                if let token = InstanceID.instanceID().token() {
+                    
+                    Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken" : token])
+                }
+                
+                // image url을 data로 바꾼다
+                guard let image = try? Data(contentsOf: (user?.providerData[0].photoURL)!) else {
+                    print("image url to data fail")
+                    return
+                }
+                
+                Storage.storage().reference().child("userImages").child((user?.uid)!).putData(image, metadata: nil, completion: { (data, error) in
+                    
+                    if error != nil {
+                        print("error.debugDescription\(error.debugDescription)")
+                        return
+                    }
+                    
+                })
+
+            })
         }
         // ...
     }
