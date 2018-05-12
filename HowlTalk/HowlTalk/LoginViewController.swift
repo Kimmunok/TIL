@@ -11,14 +11,17 @@ import Firebase
 import TextFieldEffects
 import MaterialComponents
 import GoogleSignIn
+import FBSDKLoginKit
 
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var emailTextField: YokoTextField!
     @IBOutlet weak var passwordTextField: YokoTextField!
     @IBOutlet weak var loginButton: MDCRaisedButton!
     @IBOutlet weak var signinButton: MDCFlatButton!
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    
     let remoteconfig = RemoteConfig.remoteConfig()
     var color: String!
     
@@ -26,6 +29,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         super.viewDidLoad()
 
         GIDSignIn.sharedInstance().uiDelegate = self
+        facebookLoginButton.delegate = self
+        facebookLoginButton.readPermissions = ["email"]
 
         // 상태바 그리기
         let statusBar = UIView()
@@ -77,20 +82,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         // 로그인 상태가 되기를 지켜보다가 메인뷰로 화면을 넘긴다
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-            
-//                // 구글계정으로 로그인 된 상태인 경우
-//                if user?.providerID != nil {
-//
-//                    let values = [
-//                        "profileImageUrl" : (user?.providerData[0].photoURL)!,
-//                        "email" : (user?.providerData[0].email)!,
-//                        "username" : (user?.providerData[0].displayName)!,
-//                        "uid" : Auth.auth().currentUser?.uid
-//                    ] as [String : Any]
-//
-//                    // 구글계정 이메일이 DB에 등록이 안되어 있는 경우 등록
-//                    Database.database().reference().child("users").child((user?.uid)!).setValue(values)
-//                }
                 
                 self.moveToMainViewTabBarController()
             }
@@ -169,6 +160,78 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         self.view.endEditing(true)
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult?, error: Error!) {
+        if(result?.token == nil){
+            return
+        }
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            // ...
+            if let error = error {
+                return
+            }
+            
+            // User is signed in
+            // ...
+            
+            // 유저명을 FCM 서버로 전달
+            //            user?.createProfileChangeRequest().displayName = self.nameTextField.text!
+            //            user?.createProfileChangeRequest().commitChanges(completion: nil)
+            
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = (user?.providerData[0].displayName)!
+            changeRequest?.commitChanges(completion: nil)
+            
+            let photoUrl = (user?.providerData[0].photoURL)!.absoluteString
+            
+            let values = [
+                "profileImageUrl" : photoUrl,
+                "email" : (user?.providerData[0].email)!,
+                "username" : (user?.providerData[0].displayName)!,
+                "uid" : Auth.auth().currentUser?.uid
+                ] as [String : Any]
+            
+            // 구글계정 이메일이 DB에 등록이 안되어 있는 경우 등록
+            Database.database().reference().child("users").child((user?.uid)!).setValue(values, withCompletionBlock: { (err, ref) in
+                if err != nil {
+                    
+                    print("err.debugDescription : \(err.debugDescription)")
+                    return
+                }
+                
+                // 토큰 생성
+                let uid = Auth.auth().currentUser?.uid
+                
+                if let token = InstanceID.instanceID().token() {
+                    
+                    Database.database().reference().child("users").child(uid!).updateChildValues(["pushToken" : token])
+                }
+                
+                // image url을 data로 바꾼다
+                guard let image = try? Data(contentsOf: (user?.providerData[0].photoURL)!) else {
+                    print("image url to data fail")
+                    return
+                }
+                
+                Storage.storage().reference().child("userImages").child((user?.uid)!).putData(image, metadata: nil, completion: { (data, error) in
+                    
+                    if error != nil {
+                        print("error.debugDescription\(error.debugDescription)")
+                        return
+                    }
+                    
+                })
+                
+            })
+
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
     }
 
     override func didReceiveMemoryWarning() {

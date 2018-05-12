@@ -108,8 +108,16 @@
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkl-Hj-ZXa" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="217" y="464" width="115" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="googleLogin:" destination="bsI-eF-XqH" eventType="valueChanged" id="zBs-5J-vqJ"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wo2-qw-0fK" customClass="GIDSignInButton">
-                                <rect key="frame" x="82" y="464" width="125" height="50"/>
+                                <rect key="frame" x="82" y="464" width="115" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -142,6 +150,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="iDs-FE-Blv" id="tcS-Mv-qJP"/>
+                        <outlet property="facebookLoginButton" destination="vkl-Hj-ZXa" id="3d9-rb-ueA"/>
                         <outlet property="loginButton" destination="Ywi-8D-AJC" id="Hhe-0d-tJL"/>
                         <outlet property="passwordTextField" destination="rCe-gV-ds5" id="tia-gb-ZVD"/>
                         <outlet property="signinButton" destination="s7V-Ja-l6i" id="CzI-Mg-pH4"/>

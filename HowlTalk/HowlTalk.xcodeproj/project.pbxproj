@@ -21,6 +21,9 @@
 		6B60E7392079CC6C00A4AEA0 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60E7382079CC6C00A4AEA0 /* ChatViewController.swift */; };
 		6B60E73C2079CDAF00A4AEA0 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B60E73B2079CDAF00A4AEA0 /* ChatModel.swift */; };
 		6B8E189F207B6A8E00A6AA67 /* ChatRoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8E189E207B6A8E00A6AA67 /* ChatRoomsViewController.swift */; };
+		6B98C85620A6B01A00BFFCD7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B98C85320A6B01900BFFCD7 /* FBSDKCoreKit.framework */; };
+		6B98C85720A6B01A00BFFCD7 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B98C85420A6B01900BFFCD7 /* FBSDKLoginKit.framework */; };
+		6B98C85820A6B01A00BFFCD7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B98C85520A6B01A00BFFCD7 /* Bolts.framework */; };
 		6BC867542081EF3200FCAA2C /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC867532081EF3200FCAA2C /* NotificationModel.swift */; };
 		6BF529812083102700483F86 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF529802083102700483F86 /* AccountViewController.swift */; };
 		6BF529842083768400483F86 /* SelectFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF529832083768400483F86 /* SelectFriendViewController.swift */; };
@@ -48,6 +51,9 @@
 		6B60E73B2079CDAF00A4AEA0 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		6B7370BC207F53C40047AAC6 /* HowlTalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HowlTalk.entitlements; sourceTree = "<group>"; };
 		6B8E189E207B6A8E00A6AA67 /* ChatRoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomsViewController.swift; sourceTree = "<group>"; };
+		6B98C85320A6B01900BFFCD7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		6B98C85420A6B01900BFFCD7 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		6B98C85520A6B01A00BFFCD7 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		6BC867532081EF3200FCAA2C /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		6BF529802083102700483F86 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		6BF52982208373F300483F86 /* BEMCheckBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BEMCheckBox.h; sourceTree = "<group>"; };
@@ -62,6 +68,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC592F915878D7852F640FCB /* Pods_HowlTalk.framework in Frameworks */,
+				6B98C85620A6B01A00BFFCD7 /* FBSDKCoreKit.framework in Frameworks */,
+				6B98C85720A6B01A00BFFCD7 /* FBSDKLoginKit.framework in Frameworks */,
+				6B98C85820A6B01A00BFFCD7 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +142,9 @@
 		78BE68B217E3829B503C5138 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B98C85520A6B01A00BFFCD7 /* Bolts.framework */,
+				6B98C85320A6B01900BFFCD7 /* FBSDKCoreKit.framework */,
+				6B98C85420A6B01900BFFCD7 /* FBSDKLoginKit.framework */,
 				26C5F5C9DBBF8BC99C76F47D /* Pods_HowlTalk.framework */,
 			);
 			name = Frameworks;
@@ -255,6 +267,9 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-HowlTalk/Pods-HowlTalk-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -273,6 +288,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -470,6 +488,10 @@
 				CODE_SIGN_ENTITLEMENTS = HowlTalk/HowlTalk.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HowlTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.HowlTalk;
@@ -490,6 +512,10 @@
 				CODE_SIGN_ENTITLEMENTS = HowlTalk/HowlTalk.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = HowlTalk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.HowlTalk;
