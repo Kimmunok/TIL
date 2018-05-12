@@ -21,12 +21,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     @IBOutlet weak var loginButton: MDCRaisedButton!
     @IBOutlet weak var signinButton: MDCFlatButton!
     @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     let remoteconfig = RemoteConfig.remoteConfig()
     var color: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.activityIndicatorView.stopAnimating()
 
         GIDSignIn.sharedInstance().uiDelegate = self
         facebookLoginButton.delegate = self
@@ -105,6 +108,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     
     @objc func loginEvent() {
         
+        self.activityIndicatorView.startAnimating()
+        
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, err) in
             
             guard err == nil else {
@@ -127,8 +132,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                 
                 self.present(alert, animated: true, completion: nil)
 
+                self.activityIndicatorView.stopAnimating()
+                
                 return
             }
+            
+            self.activityIndicatorView.stopAnimating()
             
             self.moveToMainViewTabBarController()
         }
@@ -232,6 +241,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
+        FBSDKLoginManager().logOut();
     }
 
     override func didReceiveMemoryWarning() {
