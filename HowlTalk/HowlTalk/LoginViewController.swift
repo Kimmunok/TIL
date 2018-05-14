@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     @IBOutlet weak var emailTextField: YokoTextField!
     @IBOutlet weak var passwordTextField: YokoTextField!
     @IBOutlet weak var loginButton: MDCRaisedButton!
-    @IBOutlet weak var signinButton: MDCFlatButton!
+    @IBOutlet weak var signupButton: MDCFlatButton!
     @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
         statusBar.backgroundColor = UIColor(hex: color)
         loginButton.backgroundColor = UIColor(hex: color)
 //        signinButton.backgroundColor = UIColor(hex: color)
-        signinButton.customTitleColor = UIColor(hex: color)
+        signupButton.customTitleColor = UIColor(hex: color)
 
 //
 //        signinButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
@@ -75,9 +75,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
         // Create a Flat Button
         
 //        signinButton.setTitle("Tap me", for: .normal)
-        signinButton.sizeToFit()
-        signinButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
-        self.view.addSubview(signinButton)
+        signupButton.sizeToFit()
+        signupButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
+        self.view.addSubview(signupButton)
         
         // 로그아웃
         try! Auth.auth().signOut()
@@ -237,6 +237,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
             })
 
         }
+        FBSDKLoginManager().logOut()
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
