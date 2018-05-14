@@ -19,14 +19,17 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     @IBOutlet weak var emailTextField: YokoTextField!
     @IBOutlet weak var passwordTextField: YokoTextField!
     @IBOutlet weak var loginButton: MDCRaisedButton!
-    @IBOutlet weak var signinButton: MDCFlatButton!
+    @IBOutlet weak var signupButton: MDCFlatButton!
     @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     let remoteconfig = RemoteConfig.remoteConfig()
     var color: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.activityIndicatorView.stopAnimating()
 
         GIDSignIn.sharedInstance().uiDelegate = self
         facebookLoginButton.delegate = self
@@ -54,7 +57,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
         statusBar.backgroundColor = UIColor(hex: color)
         loginButton.backgroundColor = UIColor(hex: color)
 //        signinButton.backgroundColor = UIColor(hex: color)
-        signinButton.customTitleColor = UIColor(hex: color)
+        signupButton.customTitleColor = UIColor(hex: color)
 
 //
 //        signinButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
@@ -72,9 +75,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
         // Create a Flat Button
         
 //        signinButton.setTitle("Tap me", for: .normal)
-        signinButton.sizeToFit()
-        signinButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
-        self.view.addSubview(signinButton)
+        signupButton.sizeToFit()
+        signupButton.addTarget(self, action: #selector(presentSignup), for: .touchUpInside)
+        self.view.addSubview(signupButton)
         
         // 로그아웃
         try! Auth.auth().signOut()
@@ -105,6 +108,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     
     @objc func loginEvent() {
         
+        self.activityIndicatorView.startAnimating()
+        
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, err) in
             
             guard err == nil else {
@@ -127,8 +132,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                 
                 self.present(alert, animated: true, completion: nil)
 
+                self.activityIndicatorView.stopAnimating()
+                
                 return
             }
+            
+            self.activityIndicatorView.stopAnimating()
             
             self.moveToMainViewTabBarController()
         }
@@ -228,10 +237,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
             })
 
         }
+        FBSDKLoginManager().logOut()
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
+        FBSDKLoginManager().logOut();
     }
 
     override func didReceiveMemoryWarning() {

@@ -23,10 +23,12 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var signupButton: MDCRaisedButton!
     @IBOutlet weak var cancelButton: MDCFlatButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.activityIndicatorView.stopAnimating()
         
         imageView.layer.cornerRadius = 5.0
         imageView.layer.masksToBounds = true
@@ -76,6 +78,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
         imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
         
         self.present(imagePicker, animated: true, completion: nil)
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -109,6 +112,8 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
     }
     
     @objc func signupEvent() {
+        
+        self.activityIndicatorView.startAnimating()
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, err) in
             guard err == nil else {
@@ -176,8 +181,11 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate, UI
                     if err == nil {
                         let alert = UIAlertController(title: "가입 성공", message: "회원가입이 완료되었습니다", preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.default, handler: { (action) in
+                            
+                            self.activityIndicatorView.stopAnimating()
                             self.cancelEvent()
                         }))
+                        
                         self.present(alert, animated: true, completion: nil)
                     }
                 })

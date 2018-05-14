@@ -496,7 +496,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.HowlTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0250ca80-8e9c-4f1e-a4a6-4827b89961ef";
+				PROVISIONING_PROFILE = "b2f1ebb7-9bbf-453f-8c3e-bd9590164f45";
 				PROVISIONING_PROFILE_SPECIFIER = HowlTalkNotiProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = HowlTalk/BEMCheckBox.h;
 				SWIFT_VERSION = 4.0;
@@ -520,7 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.HowlTalk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0250ca80-8e9c-4f1e-a4a6-4827b89961ef";
+				PROVISIONING_PROFILE = "b2f1ebb7-9bbf-453f-8c3e-bd9590164f45";
 				PROVISIONING_PROFILE_SPECIFIER = HowlTalkNotiProfile;
 				SWIFT_OBJC_BRIDGING_HEADER = HowlTalk/BEMCheckBox.h;
 				SWIFT_VERSION = 4.0;
