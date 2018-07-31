@@ -135,8 +135,9 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 m.right.equalTo(cell).offset(-10)
                 m.centerY.equalTo(cell)
                 
+                // 상태메시지 글자 수 만큼 상태메시지 배경색의 width를 맞춰준다.
                 if let count = commentLabel.text?.count {
-                    m.width.equalTo(count * 10)
+                    m.width.equalTo(count * 15)
                 } else {
                     m.width.equalTo(0)
                 }

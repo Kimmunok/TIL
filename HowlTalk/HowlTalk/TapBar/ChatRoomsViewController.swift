@@ -27,6 +27,10 @@ class ChatRoomsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // 셀간 구분선 없애기
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none;
+        
+        // 높이 자동 조절
+        tableView.estimatedRowHeight = 70;
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func getChatroomsList() {
