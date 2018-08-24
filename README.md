@@ -1,4 +1,4 @@
-# ECommerceSNS
+# 아이폰 ECommerce+SNS 앱 목요스터디세미나
 
 # 1주차 8/16
 
