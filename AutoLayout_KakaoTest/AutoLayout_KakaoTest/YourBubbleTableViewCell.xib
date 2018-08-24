@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="yourBubbleCell" rowHeight="194" id="KGk-i7-Jjw" customClass="YourBubbleTableViewCell" customModule="AutoLayout_KakaoTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="194"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="193.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youBubble.png" translatesAutoresizingMaskIntoConstraints="NO" id="YIt-Eu-0Wy">
+                        <rect key="frame" x="50" y="25" width="180" height="158.5"/>
+                        <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="long long long long long long long long long long long long long long long long long long " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OZ-8q-GGd">
+                        <rect key="frame" x="70" y="35" width="150" height="138.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man.png" translatesAutoresizingMaskIntoConstraints="NO" id="off-L2-tMh">
+                        <rect key="frame" x="10" y="10" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="NMW-wR-wVA"/>
+                            <constraint firstAttribute="height" constant="30" id="vm2-h4-n08"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NickName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6N-5Z-8Iv">
+                        <rect key="frame" x="60" y="6" width="58" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 10시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knu-lO-yEz">
+                        <rect key="frame" x="240" y="172.5" width="36.5" height="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YIt-Eu-0Wy" firstAttribute="leading" secondItem="off-L2-tMh" secondAttribute="trailing" constant="10" id="9p4-FQ-lRe"/>
+                    <constraint firstItem="H6N-5Z-8Iv" firstAttribute="leading" secondItem="YIt-Eu-0Wy" secondAttribute="leading" constant="10" id="Cxv-8M-pob"/>
+                    <constraint firstItem="Knu-lO-yEz" firstAttribute="leading" secondItem="YIt-Eu-0Wy" secondAttribute="trailing" constant="10" id="Gpa-dI-Gpv"/>
+                    <constraint firstItem="7OZ-8q-GGd" firstAttribute="top" secondItem="YIt-Eu-0Wy" secondAttribute="top" constant="10" id="IuI-NF-xPT"/>
+                    <constraint firstItem="Knu-lO-yEz" firstAttribute="bottom" secondItem="YIt-Eu-0Wy" secondAttribute="bottom" id="Ngx-lx-KJF"/>
+                    <constraint firstItem="YIt-Eu-0Wy" firstAttribute="top" secondItem="H6N-5Z-8Iv" secondAttribute="bottom" constant="4" id="Nx4-iX-ms4"/>
+                    <constraint firstItem="off-L2-tMh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="OeG-dQ-fEI"/>
+                    <constraint firstItem="7OZ-8q-GGd" firstAttribute="leading" secondItem="YIt-Eu-0Wy" secondAttribute="leading" constant="20" id="PIh-jC-W3K"/>
+                    <constraint firstAttribute="bottom" secondItem="YIt-Eu-0Wy" secondAttribute="bottom" constant="10" id="YaO-Cz-1wE"/>
+                    <constraint firstItem="7OZ-8q-GGd" firstAttribute="bottom" secondItem="YIt-Eu-0Wy" secondAttribute="bottom" constant="-10" id="ckR-Hf-iam"/>
+                    <constraint firstItem="off-L2-tMh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="nWV-cX-bPL"/>
+                    <constraint firstItem="YIt-Eu-0Wy" firstAttribute="top" secondItem="off-L2-tMh" secondAttribute="centerY" id="nhp-Wx-pAc"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Knu-lO-yEz" secondAttribute="trailing" constant="40" id="sxa-cn-jtC"/>
+                    <constraint firstItem="7OZ-8q-GGd" firstAttribute="trailing" secondItem="YIt-Eu-0Wy" secondAttribute="trailing" constant="-10" id="vcF-h5-b8Z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.67787270079999995" green="0.80020621830000005" blue="0.68489313370000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bubbleText" destination="7OZ-8q-GGd" id="pDT-nY-xUJ"/>
+                <outlet property="profileImage" destination="off-L2-tMh" id="ynm-7A-vgJ"/>
+            </connections>
+            <point key="canvasLocation" x="37" y="58"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="man.png" width="225" height="225"/>
+        <image name="youBubble.png" width="89" height="75"/>
+    </resources>
+</document>
