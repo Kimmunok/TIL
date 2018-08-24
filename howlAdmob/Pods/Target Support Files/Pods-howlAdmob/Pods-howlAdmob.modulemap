@@ -1,0 +1,6 @@
+framework module Pods_howlAdmob {
+  umbrella header "Pods-howlAdmob-umbrella.h"
+
+  export *
+  module * { export * }
+}
