@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class ViewController: UITableViewController, GIDSignInUIDelegate {
+class ViewController: UIViewController, GIDSignInUIDelegate {
 
 
     @IBAction func signIn(_ sender: Any) {

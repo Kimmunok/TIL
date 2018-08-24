@@ -64,6 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             // User is signed in
             // ...
+            
+            let mainVC : UIViewController
+            
+            mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as UIViewController
+            
+            mainVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+            
+            if let topVC = self.window!.rootViewController {
+                topVC.present(mainVC, animated: true, completion: nil)
+            }
+            
         }
     }
     

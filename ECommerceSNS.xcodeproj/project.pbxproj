@@ -13,7 +13,8 @@
 		6B774658212E90A900A78AE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B774656212E90A900A78AE7 /* Main.storyboard */; };
 		6B77465A212E90AA00A78AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B774659212E90AA00A78AE7 /* Assets.xcassets */; };
 		6B77465D212E90AA00A78AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B77465B212E90AA00A78AE7 /* LaunchScreen.storyboard */; };
-		6B774665212E918100A78AE7 /* GoogleService-Info-2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B774664212E918100A78AE7 /* GoogleService-Info-2.plist */; };
+		6BF00E6B21301C1600E53DF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */; };
+		6BF00E6D2130246500E53DF0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF00E6C2130246500E53DF0 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +25,8 @@
 		6B774659212E90AA00A78AE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B77465C212E90AA00A78AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B77465E212E90AA00A78AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B774664212E918100A78AE7 /* GoogleService-Info-2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info-2.plist"; path = "../../../../../../Downloads/GoogleService-Info-2.plist"; sourceTree = "<group>"; };
+		6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6BF00E6C2130246500E53DF0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8240F8CD50C8D9CCF88D1FFA /* Pods_ECommerceSNS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECommerceSNS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA06154ABC700B2AB534B1 /* Pods-ECommerceSNS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceSNS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceSNS/Pods-ECommerceSNS.debug.xcconfig"; sourceTree = "<group>"; };
 		FF5463C2648901C07A33E68C /* Pods-ECommerceSNS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceSNS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceSNS/Pods-ECommerceSNS.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,9 +67,10 @@
 			children = (
 				6B774652212E90A900A78AE7 /* AppDelegate.swift */,
 				6B774654212E90A900A78AE7 /* ViewController.swift */,
+				6BF00E6C2130246500E53DF0 /* MainViewController.swift */,
 				6B774656212E90A900A78AE7 /* Main.storyboard */,
 				6B774659212E90AA00A78AE7 /* Assets.xcassets */,
-				6B774664212E918100A78AE7 /* GoogleService-Info-2.plist */,
+				6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */,
 				6B77465B212E90AA00A78AE7 /* LaunchScreen.storyboard */,
 				6B77465E212E90AA00A78AE7 /* Info.plist */,
 			);
@@ -153,8 +156,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B77465D212E90AA00A78AE7 /* LaunchScreen.storyboard in Resources */,
+				6BF00E6B21301C1600E53DF0 /* GoogleService-Info.plist in Resources */,
 				6B77465A212E90AA00A78AE7 /* Assets.xcassets in Resources */,
-				6B774665212E918100A78AE7 /* GoogleService-Info-2.plist in Resources */,
 				6B774658212E90A900A78AE7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BF00E6D2130246500E53DF0 /* MainViewController.swift in Sources */,
 				6B774655212E90A900A78AE7 /* ViewController.swift in Sources */,
 				6B774653212E90A900A78AE7 /* AppDelegate.swift in Sources */,
 			);
@@ -380,7 +384,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
 				INFOPLIST_FILE = ECommerceSNS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.ECommerceSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -396,7 +403,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
 				INFOPLIST_FILE = ECommerceSNS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.ECommerceSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
