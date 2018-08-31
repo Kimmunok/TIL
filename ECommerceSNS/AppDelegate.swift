@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        
+
         return true
     }
     
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // ...
         
         // authentication개체로부터 구글 인증된 정보(구글아이디토큰, 구글엑세스토큰)를 가져와서 Firebase사용자인증정보로 넘겨주는 부분
-        Auth.auth().signIn(with: credential) { (user, error) in
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 // 인증 정보 저장이 에러났을 때
                 return
@@ -65,16 +65,86 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             // User is signed in
             // ...
             
-            let mainVC : UIViewController
-            
-            mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as UIViewController
-            
-            mainVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-            
-            if let topVC = self.window!.rootViewController {
-                topVC.present(mainVC, animated: true, completion: nil)
+            self.getUserInfo()
+        }
+    }
+    
+    func getUserInfo() {
+        
+        // Cloud Firestore 인스턴스를 초기화합니다.
+        let db = Firestore.firestore()
+        
+        guard let user = Auth.auth().currentUser else {
+            print("User Auth Error!")
+            return
+        }
+        
+//        guard let email = user.email, let name = user.displayName, let uid = user.uid else {
+//            print("Provider Data or User ID Error!")
+//            return
+//        }
+        
+        // 계정 등록되어있는지 확인 (문서 가져오기)
+        db.collection("users").document(user.uid).getDocument { (document, error) in
+            if let document = document, document.exists {
+                
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+                
+                self.goToMain()
+            } else {
+                print("Document does not exist")
+                
+                self.setUser()
             }
-            
+        }
+    }
+    
+    func setUser() {
+        
+        // Cloud Firestore 인스턴스를 초기화합니다.
+        let db = Firestore.firestore()
+        
+        guard let user = Auth.auth().currentUser else {
+            print("User Auth Error!")
+            return
+        }
+        
+        guard let email = user.email, let name = user.displayName else {
+            print("Provider Data or User ID Error!")
+            return
+        }
+        
+        let docData = [
+            "googleEmail": email,
+            "googleName": name,
+            "uid": user.uid,
+            "userEmail": "user@email.com",
+            "userName": "user"
+        ]
+        
+        // 문서 설정 (데이터 추가)
+        db.collection("users").document(user.uid).setData(docData) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document successfully written!")
+                
+                self.goToMain()
+            }
+        }
+    }
+    
+    func goToMain() {
+        
+        let mainVC : UIViewController
+        
+        mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as UIViewController
+        
+        mainVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        
+        if let topVC = self.window!.rootViewController {
+            topVC.present(mainVC, animated: true, completion: nil)
         }
     }
     

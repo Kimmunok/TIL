@@ -13,8 +13,10 @@
 		6B774658212E90A900A78AE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B774656212E90A900A78AE7 /* Main.storyboard */; };
 		6B77465A212E90AA00A78AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B774659212E90AA00A78AE7 /* Assets.xcassets */; };
 		6B77465D212E90AA00A78AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B77465B212E90AA00A78AE7 /* LaunchScreen.storyboard */; };
+		6B7DA2CB2136B7C100233270 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7DA2C92136B7C000233270 /* SWRevealViewController.m */; };
+		6B7DA2CD2136BAD500233270 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7DA2CC2136BAD500233270 /* InfoViewController.swift */; };
+		6B7DA2D52136D62A00233270 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7DA2D42136D62A00233270 /* InfoTableViewController.swift */; };
 		6BF00E6B21301C1600E53DF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */; };
-		6BF00E6D2130246500E53DF0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF00E6C2130246500E53DF0 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,8 +27,12 @@
 		6B774659212E90AA00A78AE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B77465C212E90AA00A78AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B77465E212E90AA00A78AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B7DA2C82136B7BF00233270 /* ECommerceSNS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ECommerceSNS-Bridging-Header.h"; sourceTree = "<group>"; };
+		6B7DA2C92136B7C000233270 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		6B7DA2CA2136B7C100233270 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		6B7DA2CC2136BAD500233270 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		6B7DA2D42136D62A00233270 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		6BF00E6C2130246500E53DF0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8240F8CD50C8D9CCF88D1FFA /* Pods_ECommerceSNS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECommerceSNS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA06154ABC700B2AB534B1 /* Pods-ECommerceSNS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceSNS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceSNS/Pods-ECommerceSNS.debug.xcconfig"; sourceTree = "<group>"; };
 		FF5463C2648901C07A33E68C /* Pods-ECommerceSNS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceSNS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceSNS/Pods-ECommerceSNS.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,14 +71,18 @@
 		6B774651212E90A900A78AE7 /* ECommerceSNS */ = {
 			isa = PBXGroup;
 			children = (
+				6B7DA2D42136D62A00233270 /* InfoTableViewController.swift */,
+				6B7DA2CA2136B7C100233270 /* SWRevealViewController.h */,
+				6B7DA2C92136B7C000233270 /* SWRevealViewController.m */,
 				6B774652212E90A900A78AE7 /* AppDelegate.swift */,
 				6B774654212E90A900A78AE7 /* ViewController.swift */,
-				6BF00E6C2130246500E53DF0 /* MainViewController.swift */,
 				6B774656212E90A900A78AE7 /* Main.storyboard */,
 				6B774659212E90AA00A78AE7 /* Assets.xcassets */,
 				6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */,
 				6B77465B212E90AA00A78AE7 /* LaunchScreen.storyboard */,
 				6B77465E212E90AA00A78AE7 /* Info.plist */,
+				6B7DA2C82136B7BF00233270 /* ECommerceSNS-Bridging-Header.h */,
+				6B7DA2CC2136BAD500233270 /* InfoViewController.swift */,
 			);
 			path = ECommerceSNS;
 			sourceTree = "<group>";
@@ -129,6 +139,7 @@
 				TargetAttributes = {
 					6B77464E212E90A900A78AE7 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -172,18 +183,34 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ECommerceSNS/Pods-ECommerceSNS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,9 +261,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BF00E6D2130246500E53DF0 /* MainViewController.swift in Sources */,
 				6B774655212E90A900A78AE7 /* ViewController.swift in Sources */,
 				6B774653212E90A900A78AE7 /* AppDelegate.swift in Sources */,
+				6B7DA2D52136D62A00233270 /* InfoTableViewController.swift in Sources */,
+				6B7DA2CB2136B7C100233270 /* SWRevealViewController.m in Sources */,
+				6B7DA2CD2136BAD500233270 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,15 +410,15 @@
 			baseConfigurationReference = F4FA06154ABC700B2AB534B1 /* Pods-ECommerceSNS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
 				INFOPLIST_FILE = ECommerceSNS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.ECommerceSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ECommerceSNS/ECommerceSNS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -400,15 +429,14 @@
 			baseConfigurationReference = FF5463C2648901C07A33E68C /* Pods-ECommerceSNS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
 				INFOPLIST_FILE = ECommerceSNS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.ECommerceSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ECommerceSNS/ECommerceSNS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
