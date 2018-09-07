@@ -8,18 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		2B42F45D179DD1CEA272AC59 /* Pods_ECommerceSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8240F8CD50C8D9CCF88D1FFA /* Pods_ECommerceSNS.framework */; };
+		6B52D9DB21410331009A4121 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B52D9DA21410331009A4121 /* MainViewController.swift */; };
+		6B52D9DF21411A4D009A4121 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B52D9DE21411A4C009A4121 /* SWRevealViewController.m */; };
 		6B774653212E90A900A78AE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B774652212E90A900A78AE7 /* AppDelegate.swift */; };
 		6B774655212E90A900A78AE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B774654212E90A900A78AE7 /* ViewController.swift */; };
 		6B774658212E90A900A78AE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B774656212E90A900A78AE7 /* Main.storyboard */; };
 		6B77465A212E90AA00A78AE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B774659212E90AA00A78AE7 /* Assets.xcassets */; };
 		6B77465D212E90AA00A78AE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B77465B212E90AA00A78AE7 /* LaunchScreen.storyboard */; };
-		6B7DA2CB2136B7C100233270 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B7DA2C92136B7C000233270 /* SWRevealViewController.m */; };
 		6B7DA2CD2136BAD500233270 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7DA2CC2136BAD500233270 /* InfoViewController.swift */; };
 		6B7DA2D52136D62A00233270 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7DA2D42136D62A00233270 /* InfoTableViewController.swift */; };
 		6BF00E6B21301C1600E53DF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B52D9DA21410331009A4121 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		6B52D9DC21411A4C009A4121 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		6B52D9DD21411A4C009A4121 /* ECommerceSNS-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ECommerceSNS-Bridging-Header.h"; sourceTree = "<group>"; };
+		6B52D9DE21411A4C009A4121 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6B77464F212E90A900A78AE7 /* ECommerceSNS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECommerceSNS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B774652212E90A900A78AE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B774654212E90A900A78AE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,9 +32,6 @@
 		6B774659212E90AA00A78AE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B77465C212E90AA00A78AE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B77465E212E90AA00A78AE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6B7DA2C82136B7BF00233270 /* ECommerceSNS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ECommerceSNS-Bridging-Header.h"; sourceTree = "<group>"; };
-		6B7DA2C92136B7C000233270 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		6B7DA2CA2136B7C100233270 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6B7DA2CC2136BAD500233270 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		6B7DA2D42136D62A00233270 /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -72,17 +74,18 @@
 			isa = PBXGroup;
 			children = (
 				6B7DA2D42136D62A00233270 /* InfoTableViewController.swift */,
-				6B7DA2CA2136B7C100233270 /* SWRevealViewController.h */,
-				6B7DA2C92136B7C000233270 /* SWRevealViewController.m */,
 				6B774652212E90A900A78AE7 /* AppDelegate.swift */,
 				6B774654212E90A900A78AE7 /* ViewController.swift */,
+				6B52D9DA21410331009A4121 /* MainViewController.swift */,
 				6B774656212E90A900A78AE7 /* Main.storyboard */,
 				6B774659212E90AA00A78AE7 /* Assets.xcassets */,
 				6BF00E6A21301C1600E53DF0 /* GoogleService-Info.plist */,
 				6B77465B212E90AA00A78AE7 /* LaunchScreen.storyboard */,
 				6B77465E212E90AA00A78AE7 /* Info.plist */,
-				6B7DA2C82136B7BF00233270 /* ECommerceSNS-Bridging-Header.h */,
 				6B7DA2CC2136BAD500233270 /* InfoViewController.swift */,
+				6B52D9DD21411A4C009A4121 /* ECommerceSNS-Bridging-Header.h */,
+				6B52D9DC21411A4C009A4121 /* SWRevealViewController.h */,
+				6B52D9DE21411A4C009A4121 /* SWRevealViewController.m */,
 			);
 			path = ECommerceSNS;
 			sourceTree = "<group>";
@@ -264,8 +267,9 @@
 				6B774655212E90A900A78AE7 /* ViewController.swift in Sources */,
 				6B774653212E90A900A78AE7 /* AppDelegate.swift in Sources */,
 				6B7DA2D52136D62A00233270 /* InfoTableViewController.swift in Sources */,
-				6B7DA2CB2136B7C100233270 /* SWRevealViewController.m in Sources */,
+				6B52D9DB21410331009A4121 /* MainViewController.swift in Sources */,
 				6B7DA2CD2136BAD500233270 /* InfoViewController.swift in Sources */,
+				6B52D9DF21411A4D009A4121 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +418,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
 				INFOPLIST_FILE = ECommerceSNS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.ECommerceSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ECommerceSNS/ECommerceSNS-Bridging-Header.h";
@@ -433,7 +440,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L2N9WY9T58;
 				INFOPLIST_FILE = ECommerceSNS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = HelloWorld.Munok.ECommerceSNS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ECommerceSNS/ECommerceSNS-Bridging-Header.h";

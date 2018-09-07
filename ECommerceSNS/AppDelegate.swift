@@ -137,14 +137,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     func goToMain() {
         
-        let mainVC : UIViewController
+//        let mainVC : UITableViewController
+//
+//        mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as! UITableViewController
+//
+//        mainVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+//
+//        if let topVC = self.window!.rootViewController {
+//            topVC.present(mainVC, animated: true, completion: nil)
+//        }
         
-        mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as UIViewController
-        
-        mainVC.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        
-        if let topVC = self.window!.rootViewController {
-            topVC.present(mainVC, animated: true, completion: nil)
+        // go
+        if let view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as? UIViewController {
+            // self.window!.rootViewController?.navigationController?.pushViewController(view, animated: true)
+            self.window!.rootViewController?.present(view, animated: true, completion: nil)
         }
     }
     
