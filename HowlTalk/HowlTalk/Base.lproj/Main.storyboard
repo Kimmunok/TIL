@@ -120,7 +120,7 @@
                                 </connections>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9r3-NY-hbz">
-                                <rect key="frame" x="188" y="349" width="37" height="37"/>
+                                <rect key="frame" x="188.66666666666666" y="349.66666666666669" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkl-Hj-ZXa" customClass="FBSDKLoginButton">
@@ -336,23 +336,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meBubble" translatesAutoresizingMaskIntoConstraints="NO" id="Kp3-3K-bdw">
-                                                    <rect key="frame" x="342.33333333333331" y="5.0000000000000018" width="71.666666666666686" height="29.666666666666671"/>
+                                                    <rect key="frame" x="342" y="5.0000000000000018" width="72" height="29.666666666666671"/>
                                                     <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqR-su-U9b">
-                                                    <rect key="frame" x="352" y="15" width="41.666666666666686" height="9.6666666666666643"/>
+                                                    <rect key="frame" x="351.66666666666669" y="15" width="42" height="9.6666666666666643"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2011.11.11 11:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gT1-2e-Lpt">
-                                                    <rect key="frame" x="269.33333333333331" y="13.666666666666664" width="63" height="11"/>
+                                                    <rect key="frame" x="269" y="13.666666666666664" width="63" height="11"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
                                                     <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9V-b2-DqM">
-                                                    <rect key="frame" x="326" y="5" width="6" height="15"/>
+                                                    <rect key="frame" x="325.66666666666669" y="5" width="6" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.96078431372549022" green="0.56470588235294117" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -387,11 +387,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youBubble" translatesAutoresizingMaskIntoConstraints="NO" id="bm8-1h-irm">
-                                                    <rect key="frame" x="61.000000000000007" y="20.666666666666671" width="71.666666666666686" height="40"/>
+                                                    <rect key="frame" x="61" y="20.666666666666671" width="72" height="40"/>
                                                     <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFE-bV-mEq">
-                                                    <rect key="frame" x="81" y="30.666666666666671" width="41.666666666666657" height="20"/>
+                                                    <rect key="frame" x="81" y="30.666666666666671" width="42" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -410,13 +410,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2011.11.11 11:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRF-CA-Iux">
-                                                    <rect key="frame" x="142.66666666666666" y="39.666666666666664" width="63" height="11"/>
+                                                    <rect key="frame" x="143" y="39.666666666666664" width="63" height="11"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
                                                     <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1q-I4-X8l">
-                                                    <rect key="frame" x="142.33333333333334" y="20.666666666666668" width="6" height="15.000000000000004"/>
+                                                    <rect key="frame" x="142.66666666666666" y="20.666666666666668" width="6" height="15.000000000000004"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.96078431372549022" green="0.56470588235294117" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -518,23 +518,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meBubble" translatesAutoresizingMaskIntoConstraints="NO" id="nrR-yn-P3D">
-                                                    <rect key="frame" x="342.33333333333331" y="5.0000000000000018" width="71.666666666666686" height="29.666666666666671"/>
+                                                    <rect key="frame" x="342" y="5.0000000000000018" width="72" height="29.666666666666671"/>
                                                     <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0S5-fa-CQT">
-                                                    <rect key="frame" x="352" y="15" width="41.666666666666686" height="9.6666666666666643"/>
+                                                    <rect key="frame" x="351.66666666666669" y="15" width="42" height="9.6666666666666643"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2011.11.11 11:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqK-IP-326">
-                                                    <rect key="frame" x="269.33333333333331" y="13.666666666666664" width="63" height="11"/>
+                                                    <rect key="frame" x="269" y="13.666666666666664" width="63" height="11"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
                                                     <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvX-8b-PNF">
-                                                    <rect key="frame" x="326" y="5" width="6" height="15"/>
+                                                    <rect key="frame" x="325.66666666666669" y="5" width="6" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.96078431369999995" green="0.56470588239999997" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -569,11 +569,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youBubble" translatesAutoresizingMaskIntoConstraints="NO" id="tdJ-Hx-xTU">
-                                                    <rect key="frame" x="61.000000000000007" y="20.666666666666671" width="71.666666666666686" height="40"/>
+                                                    <rect key="frame" x="61" y="20.666666666666671" width="72" height="40"/>
                                                     <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oq5-MA-OBg">
-                                                    <rect key="frame" x="81" y="30.666666666666671" width="41.666666666666657" height="20"/>
+                                                    <rect key="frame" x="81" y="30.666666666666671" width="42" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -592,13 +592,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2011.11.11 11:11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cku-ki-xhI">
-                                                    <rect key="frame" x="142.66666666666666" y="39.666666666666664" width="63" height="11"/>
+                                                    <rect key="frame" x="143" y="39.666666666666664" width="63" height="11"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
                                                     <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3T-vo-zOU">
-                                                    <rect key="frame" x="142.33333333333334" y="20.666666666666668" width="6" height="15.000000000000004"/>
+                                                    <rect key="frame" x="142.66666666666666" y="20.666666666666668" width="6" height="15.000000000000004"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.96078431369999995" green="0.56470588239999997" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -786,9 +786,9 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="imageview" destination="p2f-E0-R8d" id="elJ-E2-zaq"/>
-                                            <outlet property="lastMessageLabel" destination="t1z-GR-B3v" id="rEk-fj-s2s"/>
-                                            <outlet property="timeStampLabel" destination="wQI-3m-bS8" id="So5-TE-uKt"/>
-                                            <outlet property="titleLabel" destination="ZMP-nK-e7U" id="R44-Sp-aAx"/>
+                                            <outlet property="lastMessageLabel" destination="t1z-GR-B3v" id="kz9-Jl-R0q"/>
+                                            <outlet property="timeStampLabel" destination="wQI-3m-bS8" id="J1l-4V-Ne6"/>
+                                            <outlet property="titleLabel" destination="ZMP-nK-e7U" id="i5b-jm-Z3m"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
