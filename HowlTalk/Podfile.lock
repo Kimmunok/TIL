@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (5.0.0.beta.1)
   - BEMCheckBox (1.4.1)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
@@ -166,13 +166,13 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - ObjectMapper (3.4.1)
+  - ObjectMapper (3.4.2)
   - Protobuf (3.6.1)
   - SnapKit (4.0.1)
   - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7)
+  - Alamofire (~> 5.0.0.beta.1)
   - BEMCheckBox
   - FBSDKLoginKit
   - Firebase/Auth
@@ -184,7 +184,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - Kingfisher (~> 4.7)
   - "MaterialComponents/Buttons+Extensions"
-  - ObjectMapper (~> 3.1)
+  - ObjectMapper (~> 3.4.1)
   - SnapKit (~> 4.0.0)
   - TextFieldEffects
 
@@ -224,7 +224,7 @@ SPEC REPOS:
     - TextFieldEffects
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FBSDKCoreKit: 1e3981faefab8c88edfaa9eecd94aab02d99a9bc
@@ -252,11 +252,11 @@ SPEC CHECKSUMS:
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  ObjectMapper: 5311bd50ca732930959e7ca1a2de43ab823a5ced
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: f9469dfee2d173f168a29482b4e2d18753a916bd
+PODFILE CHECKSUM: f3ed7ea1835dcfb9c22abe65a2e4e76a3e18df36
 
 COCOAPODS: 1.5.3

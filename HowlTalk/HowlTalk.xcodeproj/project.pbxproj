@@ -170,8 +170,8 @@
 				6B1A9659206B7DAD000145B1 /* Sources */,
 				6B1A965A206B7DAD000145B1 /* Frameworks */,
 				6B1A965B206B7DAD000145B1 /* Resources */,
-				72C27B640E7D4D7FA4DE84A0 /* [CP] Embed Pods Frameworks */,
-				0536C2221534EA02DFACE38F /* [CP] Copy Pods Resources */,
+				EB3CE775CAF9F48D0FA4205C /* [CP] Embed Pods Frameworks */,
+				AAED754495790381D2B806DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,16 +240,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0536C2221534EA02DFACE38F /* [CP] Copy Pods Resources */ = {
+		AAED754495790381D2B806DB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HowlTalk/Pods-HowlTalk-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
@@ -258,10 +262,12 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HowlTalk/Pods-HowlTalk-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		72C27B640E7D4D7FA4DE84A0 /* [CP] Embed Pods Frameworks */ = {
+		EB3CE775CAF9F48D0FA4205C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-HowlTalk/Pods-HowlTalk-frameworks.sh",
@@ -285,6 +291,8 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
