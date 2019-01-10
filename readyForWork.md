@@ -1,6 +1,7 @@
 # 입사 준비
 
-###### *"<u>iOS 관련 지식</u> 및 <u>AWS 서버</u>에 대한 이해 공부(15일 까지), <u>이젤의 Techstack</u> 확인 및 이해: https://stackshare.io/eazel/eazel"*
+> ###### *"<u>iOS 관련 지식</u> 및 <u>AWS 서버</u>에 대한 이해 공부(15일 까지), <u>이젤의 Techstack</u> 확인 및 이해: https://stackshare.io/eazel/eazel"*
+>
 
 
 
@@ -10,13 +11,13 @@
 
 
 
-## EC2
+## EC2 (Elastic Computed Cloud)
 
 ### 인스턴스 타입  
 
 1. AMI(Amazon Machine Image) 선택  
    - 임대한 컴퓨터의 운영체제 선택  
-2. 인스턴스 타입 선택  
+2. 인스턴스 타입 ==선택==
    - 임대할 컴퓨터의 사양을 선택  
 
 ### 가격 정책  
@@ -291,6 +292,13 @@
 #### Xamarin Framework
 
 - C#으로 안드로이드와 iOS용 앱, macOS용 Cocoa 기반 프로그램을 개발할 수 있도록 해 주는 프레임워크
+- [C#](https://namu.wiki/w/C%23)과 [.NET Framework](https://namu.wiki/w/.NET%20Framework)를 [리눅스](https://namu.wiki/w/%EB%A6%AC%EB%88%85%EC%8A%A4)에서도 쓸 수 있게 해주는 Mono 프로젝트에서 시작된 [프레임워크](https://namu.wiki/w/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC)이다.
+- [안드로이드](https://namu.wiki/w/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C(%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C))와 [iOS](https://namu.wiki/w/iOS)의 모든 [API](https://namu.wiki/w/API)가 준비되어 있기 때문에 네이티브 앱 개발이 가능하다.
+- new Label() 하면 Android iOS ~~WindowsPhone~~ WPF UWP macOS Linux(GTK#) Tizen 으로 모두 번역해준다. 
+  - ~~숨차다~~ 다양한 nuget 패키지들과 함께 이용하면 90% 이상의 코드를 공유할 수 있으며 10%이하의 OS 별 코드를 작성하여 여러 OS 용 네이티브 앱 개발이 가능하다.
+- 게임의 경우 기존 네이티브에서 제공되는 UI를 사용하는 경우가 거의 없고, 아예 해당 게임에 맞는 UI 를 바닥부터 개발하는것이 대부분이기에 유니티 같은 Cross-Platform 개발이 유리하지만, 게임 외의 앱들은 네이티브에서 제공하는 UI를 사용해야 하기에 오히려 작업이 늘어나는 경우도 있다.
+  - 버튼 하나 하나 마다 이렇게 C# style, Android style, iOS style 을 왔다갔다 하면서 작업해야한다.
+- 플랫폼 의존도가 적고 커스텀 UI의 중요도가 적은 곳에 적합하며(이름부터가 폼 형식에 적합하다는 의미를 갖고 있다) 반대로 플랫폼 고유 API 지향적이며 디자인 된 UI를 중시하는 경우(사이트에 그림으로 예시하는 것들은 것은 미디어 플레이어, 게임, 지도 앱)에는 Xamarin Native(Android, iOS)를 권장하고 있다.
 
 #### 모노 프로젝트
 
@@ -367,19 +375,251 @@
 
 ## Sass
 
+- **Sass** (Syntactically Awesome Style Sheets : 문법적으로 짱 멋진 스타일시트) 는 **CSS pre-processor** 로서, 복잡한 작업을 쉽게 할 수 있게 해주고, 코드의 재활용성을 높여줄 뿐 만 아니라, 코드의 가독성을 높여주어 유지보수를 쉽게해줍니다.
+
+#### CSS pre-processor
+
+- CSS 를 확장하는 스크립팅 언어로서, 컴파일러를 통하여 브라우저에서 사용 할 수 있는 일반 CSS 문법 형태로 변환합니다
+
+### 컴파일하는 방법
+
+1. 오리지널 [**Ruby Sass**](http://sass-lang.com/install) 사용하기
+   - `gem install sass` 로 설치하고,
+     `sass style.scss style.css` 로 컴파일한다.
+2. GUI 앱 사용하기
+   - [Koala](http://koala-app.com/), [Hammer](http://hammerformac.com/), [Compass](http://compass.kkbox.com/) 등
+3. libsass 사용하기
+   - 이는 C언어로 작성된 매우 빠른 Sass compiler 입니다.
+     많은 환경에서 사용될 수 있습니다.
+
 ## Rails
+
+### 개요
+
+- Ruby on Rails는 [Ruby](https://namu.wiki/w/Ruby)를 사용하는 [웹 프레임워크](https://namu.wiki/w/%EC%9B%B9%20%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC)로 덴마크의 David Heinemeier Hansson이 [오픈 소스](https://namu.wiki/w/%EC%98%A4%ED%94%88%20%EC%86%8C%EC%8A%A4)로 만들었다. 
+- 줄여서 Rails나 RoR이라고도 부른다. 
+- 풀 스택 웹 프레임워크이고, non full-stack 웹 프레임워크로는 Sinatra 등이 있다.
+- [Python](https://namu.wiki/w/Python)의 [Django](https://namu.wiki/w/Django)나 [PHP](https://namu.wiki/w/PHP)의 [Laravel](https://namu.wiki/w/Laravel)과 비슷한 존재인데, Rails 이후 등장한 거의 모든 풀스택 웹 프레임워크는 Rails의 디자인에 영향을 받았다고 해도 과언이 아닐 정도이다.
+- MVC 모델 패턴을 채택하고 있다. 
+- 일단 사용하는 언어가 [Ruby](https://namu.wiki/w/Ruby)인지라 고급지고 간결한 코드를 작성 할 수 있다는 장점을 어필, 애자일 프로세스에 초점을 맞추는 많은 스타트업 기업들이 채택하고 주가도 오르려는 찰나 [Node.js](https://namu.wiki/w/Node.js)라는 신흥 강호가 [갑툭튀](https://namu.wiki/w/%EA%B0%91%ED%88%AD%ED%8A%80)해 점유율이 바짝 쫓기는 상황. 
+- 규모 확장 및 축소에 적합하지 않다는, 즉 Scalable하지 않다는 치명적인 단점이 더해져 기존에 레일즈를 채택한 기업들도 다른 프레임워크로 옮긴 사례가 종종 있다.
+- 또한 "[Python](https://namu.wiki/w/Python) + [Django](https://namu.wiki/w/Django)"처럼 개발 속도는 빠르지만 실행 속도가 느리다는 단점이 있다.
+
+### 장점
+
+- Ruby로 개발한다. ~~더 이상 설명이 필요한가?~~
+- 언어의 특성이 애자일에 초점이 맞춰져 있기 때문에 생산성이 높다.
+- [데이터베이스](https://namu.wiki/w/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4) 작업 시 매우 편리하다.
+- 세부적인 설정을 줄일 수 있다.
+
+### 단점
+
+- 개발자가 부족하다. 물론 언어의 단점은 아니지만 일본을 제외하면 다른 국가에서도 개발자가 많지 않다.
+- 성능 이슈가 있다. (후술)
+
+### 기타
+
+- Ruby를 모르는 사람도 강좌 몇 개를 보면 쓸만한 블로그 하나를 만들 수 있을 정도로 쉽고 빠르게 제작할 수 있다.
+- 위에서 서술한 Scalable의 정의는 사용자의 수에 맞춰 애플리케이션의 크기가 동적으로 변하는 규모의 가변성이라고 정의할 수 있다. 서버에서 돌리는 애플리케이션이 사용자가 주는 부하에 맞춰 서버의 자원을 낭비하지 않고 동작하는 정도가 Scalable이다.
+- 빠르게 서비스를 개발해야 하는 스타트업 회사에서 많이 사용한다. 하지만 한국에서는 Ruby라는 언어 자체가 굉장히 마이너하기 때문에 상대적으로 [PHP](https://namu.wiki/w/PHP) 개발자를 선호하는 경향이 있다. 그 PHP조차도 고급 프로그래머를 구하기 힘들어서 인력난에 허덕이는 중. 또한 정부에서 지정한 프레임워크는 [Java](https://namu.wiki/w/Java)의 [Spring](https://namu.wiki/w/Spring(%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC))이기 때문에 더욱 밀려나는 편이다.
+- 성능 문제가 있다고 하는데, 차이는 그렇게 크지 않다고 한다. 깃허브, 그루폰, ~~트위터~~[[1\]](https://namu.wiki/w/Ruby%20on%20Rails#fn-1), 카카오 같은 대형 회사들도 Ruby on Rails를 사용한다. 사실 하드웨어 자원을 빡세게 활용하는 애플리케이션(게임 등)이 아닌 이상, 성능은 언어의 속도보다는 데이터베이스를 얼마나 빠르게 가져오느냐 등 외부적 요소에 영향을 더 크게 받는다.
+- [Python](https://namu.wiki/w/Python)의 [Flask](https://namu.wiki/w/Flask)에 해당하는게 [Ruby](https://namu.wiki/w/Ruby)의 [Sinatra](https://namu.wiki/w/Sinatra)이다.
 
 ## TypeScript
 
+### 개요
+
+- `TypeScript`는 Microsoft에서 개발하여 2012년에 발표한 오픈 소스 프로그래밍 언어입니다. 대규모 JavaScript application 개발을 목적으로 만들어졌습니다.
+- TypeScript를 활용하여 개발하여도 기존의 소프트웨어 컴포넌트와 자바스크립트 라이브러리의 동작 방식과는 충돌하지 않는다. 
+- 또한, 동적인 모듈 로딩을 지원하여 네이밍 충돌 문제를 줄일 수 있게 해주며, 추가된 타입 체계를 바탕으로 생산성을 높여주는 여러가지 툴과 사례(정적 타이핑, 심볼 기반 네비게이션, 구문 완성, 코드 리펙토링 등)를 활용할 수 있다.
+
+### 특징
+
+- **TypeScript는 JavaScript ES5(ECMAScript 5) 문법의 상위 집합(Super set)입니다.** TypeScript는 JavaScript의 모든 기능을 포함하고 그 외 추가적인 기능들을 가지고 있습니다.
+- TypeScript는 컴파일 언어이지만 컴파일 결과가 machine code가 아닌 JavaScript 코드가 나옵니다. ( 이런 프로그래밍을 [메타프로그래밍](https://moon9342.github.io/what-is-metaprogramming.html) 이라고 하죠. ) 그렇기 때문에 compile 대신에 transpile 이라고도 합니다.
+- 이때 코드에서 변수를 정의한 순서나 이름을 바꾸지 않는다. 따라서, 자바스크립트 결과물을 브라우저에서 디버깅하여 TypeScript 코드를 수정하기에도 용이하다.
+- 또한, 부가적으로 소스 맵도 제공하므로 TypeScript 소스를 직접 디버깅하는것도 가능하다. 
+- TypeScript를 지원하는 도구들은 일반적으로 코드 저장시 자바스크립트 결과물을 생산하며, 기존의 자바스크립트 개발 사이클 대로 프로젝트를 진행할 수 있다.
+- 메타프로그래밍
+  - 특정 형태의 코드를 작성한 후 컴파일하면 그 코드가 의미하는 다른언어의 코드( `Java`나 `C++` )가 생성되는 프로그래밍을 지칭합니다.
+  - 장점
+    - 컴파일 타임에 최적화가 이루어지고 결과적으로 실행 시 수행속도가 빨라질 수 있습니다.
+    - 일반화 프로그래밍( `Generic Programming` )이 가능합니다. 프로그래머는 처리할 구조와 데이터에 집중하고 컴파일러에 의해 특정 언어로 변환이 되는 구조이기 때문입니다.
+    - 결과로 도출되는 언어가 갖지 못하는 여러가지 개념들을 template에 정의해서 작성하고 이를 결과언어로 적절하게 표현하여 기능상의 확장을 손쉽게 가져올 수 있습니다.
+  - 단점
+    - 일반적으로 Template Metaprogramming은 또 다른 형식으로 프로그래밍 하기 때문에 코드 자체가 더 난해합니다. 즉, `Readability`(해독성)에 문제가 있습니다.
+    - compiler에 의해서 새로운 코드가 생성되는 구조이기 때문에 compiler에 대한 의존도가 상당히 높습니다. 따라서 이식성의 문제가 발생할 여지를 가지고 있습니다.
+- TypeScript는 compile 시점에 type checking이 일어나는 **정적 타입 언어**입니다.
+
+### 설치
+
+- `npm install -g typescript` 커맨드를 통해서 설치할 수 있다.
+- Visual Studio 2013 update 2가 설치되어 있다면 기본으로 설치되어 있다.
+
 ## RxJS
+
+### 개요
+
+- JavaScript 용 반응형 확장 라이브러리
+- RxJS는 Observables를 사용하여 비동기식 또는 콜백 기반 코드를보다 쉽게 작성하도록하는 리 액티브 프로그래밍 용 라이브러리입니다. 
+- RxJS는 관찰 가능한 시퀀스를 사용하여 비동기 및 이벤트 기반 프로그램을 작성하기위한 라이브러리입니다.
+- Observable, 위성 유형 (Observer, Schedulers, Subjects) 및 Array#extras (Map, Filter, Reduce, Every 등)에 영향을받는 연산자를 사용하여 비동기 이벤트를 콜렉션으로 처리 할 수 있습니다.
+- ReactiveX는 Observer 패턴과 Iterator 패턴을 결합하고 컬렉션을 사용한 함수형 프로그래밍을 통해 이벤트 시퀀스를 관리하는 이상적인 방법의 필요성을 충족시킵니다.
+
+### 핵심 개념
+
+- 비동기 이벤트 관리를 해결하는 RxJS의 핵심 개념은 다음과 같습니다.
+
+1. Observable
+   - ReactiveX에서 옵저버는 Observable을 구독한다. 
+   - Obseravable이 배출하는 하나 또는 연속된 항목에 옵저버는 반응한다. 
+   - 이러한 패턴은 동시성 연산을 가능하게 한다. 
+   - 그 이유는 Observable이 객체를 배출할 때까지 기다릴 필요 없이 어떤 객체가 배출되면 그 시점을 감시하는 관찰자를 옵저버 안에 두고 그 관찰자를 통해 배출 알림을 받으면 되기 때문이다.
+2. Operators
+   - ReactiveX를 지원하는 언어 별 구현체들은 다양한 연산자들을 제공하는데, 이 중에는 공통적으로 제공되는 연산자도 있지만 반대로 특정 구현체에서만 제공하는 연산자들도 존재한다. 
+   - 또한, 언어별 구현체들은 이미 언어에서 제공하는 메서드의 이름과 유사한 형태로 연산자의 네이밍 컨벤션을 유지하고 있다.
+3. Single
+   - RxJava(그리고 RxGroovy나 RxScala 같은 reactivex의 구현체들)는 [Observable](http://reactivex.io/documentation/ko/observable.html)과 유사한 “Single”을 제공한다.
+   - Single은 Obvservable의 한 형태이지만, Observable처럼 존재하지 않는 곳에서부터 무한대까지의 임이의 연속된 값들을 배출하는 것과는 달리, 항상 한 가지 값 또는 오류 알림 둘 중 하나만 배출한다.
+4. Subject
+   - 주제(subject)는 옵저버나 Observable처럼 행동하는 ReactiveX의 일부 구현체에서 사용 가능한 일종의 교각 혹은 프록시라고 볼 수 있는데, 그 이유는 주제는 옵저버이기 때문에 하나 이상의 Observable을 구독할 수 있으며 동시에 Observable이기도 하기 때문에 항목들을 하나 하나 거치면서 재배출하고 관찰하며 새로운 항목들을 배출할 수도 있다.
+   - 하나의 주제는 하나의 Observable을 구독하면서, (Observable이 "차가운" Observable인 경우 즉, 옵저버가 구독을 시작하기 전까지 항목들의 배출을 지연시키는 Observable일 경우)Observable이 항목들을 배출시키도록 동작시킨다. 
+   - 그 결과로 인해 원래는 "차가운" Observable이었던 주제를 "뜨거운" Observable로 만들기도 한다.
+5. Schedulers
+   - Observable 연산자 체인에 멀티스레딩을 적용하고 싶다면, 특정 스케줄러를 사용해서 연산자(또는 특정 Observable)를 실행하면 된다.
+   - ReactiveX의 일부 Observable 연산자는 사용할 스케줄러를 파라미터로 전달 받기도 하는데, 이 연산자들은 자신이 처리할 연산의 일부 또는 전체를 전달된 스케줄러 내에서 실행한다.
 
 ## Docker for AWS
 
+### 개요
+
+- Docker는 애플리케이션을 신속하게 구축, 테스트 및 배포할 수 있는 소프트웨어 플랫폼입니다. 
+- Docker는 소프트웨어를 [컨테이너](https://aws.amazon.com/ko/containers/)라는 표준화된 유닛으로 패키징하며, 이 컨테이너에는 라이브러리, 시스템 도구, 코드, 런타임 등 소프트웨어를 실행하는 데 필요한 모든 것이 포함되어 있습니다. 
+- Docker를 사용하면 환경에 구애받지 않고 애플리케이션을 신속하게 배포 및 확장할 수 있으며 코드가 문제없이 실행될 것임을 확신할 수 있습니다.
+- AWS에서 Docker를 실행하면 개발자와 관리자가 어떠한 규모에서든 매우 안정적이며 저렴한 방식으로 애플리케이션을 구축, 제공 및 실행할 수 있습니다. 
+- AWS에서는 두 가지 Docker 라이선싱 모델, 즉 오픈 소스 Docker Community Edition(CE)과 구독 기반의 Docker Enterprise Edition(EE) 둘 다 지원합니다.
+
+### 작동 방식
+
+- Docker는 코드를 실행하는 표준 방식을 제공합니다. 
+- Docker는 컨테이너를 위한 운영 체제입니다. 
+- [가상 머신](https://aws.amazon.com/ko/ec2/)이 서버 하드웨어를 가상화하는 방식과 비슷하게(직접 관리해야 하는 필요성 제거) 컨테이너는 서버 운영 체제를 가상화합니다. 
+- Docker는 각 서버에 설치되며 컨테이너를 구축, 시작 또는 중단하는 데 사용할 수 있는 간단한 명령을 제공합니다.
+- [AWS Fargate](https://aws.amazon.com/ko/fargate/), [Amazon ECS](https://aws.amazon.com/ko/ecs/), [Amazon EKS](https://aws.amazon.com/ko/eks/) 및[AWS Batch](https://aws.amazon.com/ko/batch/)와 같은 AWS 서비스를 사용하면 Docker 컨테이너를 대규모로 실행하고 관리할 수 있습니다.
+- <img src="Images/monolith_2-VM-vs-Containers.78f841efba175556d82f64d1779eb8b725de398d.png">
+
+### Docker를 사용해야 하는 이유
+
+- Docker를 사용하면 코드를 더 빨리 전달하고, 애플리케이션 운영을 표준화하고, 코드를 원활하게 이동하고, 리소스 사용률을 높여 비용을 절감할 수 있습니다. 
+- Docker를 사용하면 어디서나 안정적으로 실행할 수 있는 단일 객체를 확보하게 됩니다. 
+- Docker의 간단한 구문을 사용해 완벽하게 제어할 수 있습니다. 
+- 폭넓게 도입되었다는 것은 Docker를 사용할 수 있는 도구 및 상용 애플리케이션의 에코시스템이 강력하다는 의미입니다.
+
 ## GraphQL Ruby
+
+### 개요
+
+- **GraphQL** 은 페이스북에서 만든 어플리케이션 레이어 쿼리 언어입니다. 
+
+- 기존의 웹 혹은 모바일 어플리케이션의 API 를 구현 할 때는, 통상적으로 **REST API** 가 사용됩니다. 
+
+- 기존의 REST API 를 사용하여 API 를 구현을 한다면, 우리가 클라이언트사이드에서 어떠한 기능이 필요 할 때마다 그때 그때 새로운 API를 만들어주었어야했습니다.
+
+- 예를들어 여러분의 어플리케이션에 Account 라는 모델이 있고, `/accounts` 라는 endpoint 가 있다고 가정해봅시다.
+
+  - 만약에 특정 id 를 가진 계정의 정보를 가져오려면 다음과 같이 하겠죠.
+
+    - `GET /accounts/1`
+
+    - ```
+      {
+        "account": {
+          "id": "1",
+          "username": "velopert",
+          "email": "public.velopert@gmail.com",
+          "friends": [
+            "2",
+            "3"
+          ],
+          "first_name": "Minjun",
+          "last_name": "Kim"
+        }
+      }
+      ```
+
+  - 위 데이터를 보시면 친구의 id들을 `friends` 라는 field 에 담습니다.
+
+  - ```
+    "friends": [
+          "2",
+          "3"
+        ]
+    ```
+
+  - 이 목록에 따라서, 친구 계정들의 목록을 가져오려면, 이런 API를 만들어야겠죠.
+    - `GET /accounts/1/?include_friend_details=username,first_name`
+    - `GET /accounts_with_friend_details/1`
+  - **이런식으로 진행하다가보면, 나중에 어플리케이션의 규모가 커지면 수많은.. 정말 수많은 endpoint가 생성되게 됩니다.**
+  - 만약에, 다음과 같이 클라이언트측에서 쿼리를 만들어서 서버로 보내면 우리가 원하는대로 결과를 반환해주면 좋지 않을까요?
+
+### 쿼리
+
+- ```
+  query {
+      account(id: "1") {
+          username
+          email
+          firstName
+          lastName
+          friends {
+              firstName
+              username
+          }
+      }
+  }
+  ```
+
+### 결과
+
+- ```
+  {
+    "data": {
+      "account": {
+        "username": "velopert",
+        "email": "public.velopert@gmail.com",
+        "firstName": "Minjun",
+        "lastName": "Kim",
+        "friends": [
+          {
+            "firstName": "Jayna",
+            "username": "jn4kim"
+          },
+          {
+            "firstName": "Abet",
+            "username": "abet"
+          }
+        ]
+      }
+    }
+  }
+  ```
+
+- 쿼리를 통하여 딱 필요한 데이터만 fetching 을 하기 때문에 overfetch 혹은 underfetch 를 할 걱정을 할 필요가 없습니다.
+- 이 GraphQL 기술은, 특정 언어에 제한된것이 아니여서, Node.js, Ruby, PHP, Python, Golang, 등 [여러](https://github.com/chentsulin/awesome-graphql) 환경에서 사용 할 수 있습니다.
+- 심지어, HTTP 프로토콜에 제한되어있지도 않아서, WebSocket 이나 MQTT 프로토콜 위에서 사용 할 수도 있답니다. 
+- 데이터베이스도 어떤 데이터베이스를 사용하던 상관없습니다.
+- 따라서, 이미 구현된 시스템에 도입을 해도 기존에 있던 시스템이 무너지지 않기 때문에 부담 없이 적용을 할 수 있습니다.
+- GraphQL을 사용하면 큰 노력을 들이지 않고도, 다양한 형태의 데이터를 fetching 을 할 수 있는 시스템을 구현 할 수 있습니다.
 
 # Utilities
 
 ## Google Drive
+
+### 저장소로서의 Google Drive
+
+
+
+### 협업으로서의 Google Drive
 
 ## SendGrid
 
@@ -416,3 +656,9 @@
 ## Sketch
 
 ## Figma
+
+
+
+------
+
+# Reveal
