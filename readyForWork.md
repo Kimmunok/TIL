@@ -4,53 +4,53 @@
 
 
 
-> 목차
->
-> - [iOS 관련 지식](#iOS-관련-지식)
->
-> - [AWS 서버](#AWS-서버)
->
->   - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud))
->   - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service))
->
-> - [Techstack](#Techstack)
->
->   - [Application and Data](#Application-and-Data)
->
->     - [React](#React)
->     - [Ruby](#Ruby)
->     - [C#](#C#)
->     - [nginx](#nginx)
->     - [Ubuntu](#Ubuntu)
->     - [Sass](#Sass)
->     - [Rails](#Rails)
->     - [TypeScript](#TypeScript)
->     - [RxJS](#RxJS)
->     - [Docker for AWS](#Docker-for-AWS)
->     - [GraphQL Ruby](#GraphQL-Ruby)
->
->   - [Utilities](#Utilities)
->
->     - [SendGrid](#SendGrid)
->     - [Let’s Encrypt](#Let's-Encrypt)
->     - [OpenCV](#OpenCV)
->
->   - [DevOps](#DevOps)
->
->     - [BitBucket](#BitBucket)
->     - [Kubernetes](#Kubernetes)
->     - [Vagrant](#Vagrant)
->
->   - [Business Tools](#Business-Tools)
->
->     - [Slack](#Slack)
->     - [Trello](#Trello)
->     - [Confluence](#Confluence)
->     - [JIRA](#JIRA)
->     - [MailChimp](#MailChimp)
->     - [Figma](#Figma)
->
->     
+목차
+
+- [iOS 관련 지식](#iOS-관련-지식)
+
+- [AWS 서버](#AWS-서버)
+
+  - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud))
+  - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service))
+
+- [이젤의 Techstack](#이젤의-Techstack)
+
+  - [Application and Data](#Application-and-Data)
+
+    - [React](#React)
+    - [Ruby](#Ruby)
+    - [C#](#C#)
+    - [nginx](#nginx)
+    - [Ubuntu](#Ubuntu)
+    - [Sass](#Sass)
+    - [Rails](#Rails)
+    - [TypeScript](#TypeScript)
+    - [RxJS](#RxJS)
+    - [Docker for AWS](#Docker-for-AWS)
+    - [GraphQL Ruby](#GraphQL-Ruby)
+
+  - [Utilities](#Utilities)
+
+    - [SendGrid](#SendGrid)
+    - [Let’s Encrypt](#Let's-Encrypt)
+    - [OpenCV](#OpenCV)
+
+  - [DevOps](#DevOps)
+
+    - [BitBucket](#BitBucket)
+    - [Kubernetes](#Kubernetes)
+    - [Vagrant](#Vagrant)
+
+  - [Business Tools](#Business-Tools)
+
+    - [Slack](#Slack)
+    - [Trello](#Trello)
+    - [Confluence](#Confluence)
+    - [JIRA](#JIRA)
+    - [MailChimp](#MailChimp)
+    - [Figma](#Figma)
+
+    
 
 
 
@@ -184,7 +184,7 @@
 
 ------
 
-# Techstack
+# 이젤의 Techstack
 
 
 
@@ -311,7 +311,7 @@ webpack 이라는 도구를 사용하여 마치 Node.js 에서 require 하는것
 
 #### Example 1
 
-```javascript
+```html
 <!DOCTYPE html> 
 <html lang="en"> 
     <head> 
@@ -355,7 +355,7 @@ webpack 이라는 도구를 사용하여 마치 Node.js 에서 require 하는것
 
 3. 다음의 코드를 이용해 하나의 `Component`를 만든다.
 
-   ~~~react
+   ~~~html
    var CommentBox = React.createClass({})
    ~~~
 
@@ -485,7 +485,12 @@ var CommentForm = React.createClass({
 </html>
 ```
 
+- 결과
 
+  <img src="Images/TBremGC.png">
+
+  - 위의 코드를 보면 `...this.props`를 사용하고 있는데, 이는 상위 component에서 받은 props들을 그대로 하위 component로 넘기겠다는 의미이다. 
+  - 전부 전달 하는 것 외에도 몇개를 현재 component에서 사용하고 나머지를 넘기는 것도 가능하다.
 
 ## Ruby
 
