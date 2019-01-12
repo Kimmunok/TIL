@@ -1,21 +1,56 @@
 > 
 >
-> ###### *"<u>iOS 관련 지식</u> 및 <u>AWS 서버</u>에 대한 이해 공부(15일 까지), <u>이젤의 Techstack</u> 확인 및 이해: https://stackshare.io/eazel/eazel"*
+> ### *"<u>iOS 관련 지식</u> 및 <u>AWS 서버</u>에 대한 이해 공부(15일 까지), <u>이젤의 Techstack</u> 확인 및 이해: https://stackshare.io/eazel/eazel"*
 >
 > 
 >
 > 목차
 >
 > - [iOS 관련 지식](#iOS-관련-지식)
+>
 > - [AWS 서버](#AWS-서버)
+>
+>   - [EC2 (Elastic Computed Cloud)](##EC2-(Elastic-Computed-Cloud))
+>   - [S3 (Simple Storage Service)](##S3-(Simple-Storage-Service))
+>
 > - [Techstack](#Techstack)
->   - [Application and Data](#Application and Data)
 >
-> 
+>   - [Application and Data](#Application-and-Data)
 >
-> 
+>     - [React](##React)
+>     - [Ruby](##Ruby)
+>     - [C#](##C#)
+>     - [nginx](##nginx)
+>     - [Ubuntu](##Ubuntu)
+>     - [Sass](##Sass)
+>     - [Rails](##Rails)
+>     - [TypeScript](##TypeScript)
+>     - [RxJS](##RxJS)
+>     - [Docker for AWS](##Docker-for-AWS)
+>     - [GraphQL Ruby](##GraphQL-Ruby)
 >
-> 
+>   - [Utilities](#Utilities)
+>
+>     - [SendGrid](##SendGrid)
+>     - [Let’s Encrypt](##Let's-Encrypt)
+>     - [OpenCV](##OpenCV)
+>
+>   - [DevOps](#DevOps)
+>
+>     - [BitBucket](##BitBucket)
+>     - [Kubernetes](##Kubernetes)
+>     - [Vagrant](##Vagrant)
+>
+>   - [Business Tools](#Business Tools)
+>
+>     - [Slack](##Slack)
+>     - [Trello](##Trello)
+>     - [Confluence](##Confluence)
+>     - [JIRA](##JIRA)
+>     - [MailChimp](##MailChimp)
+>     - [Figma](##Figma)
+>
+>     
 
 
 
@@ -276,7 +311,7 @@ webpack 이라는 도구를 사용하여 마치 Node.js 에서 require 하는것
 
 #### Example 1
 
-```react
+```javascript
 <!DOCTYPE html> 
 <html lang="en"> 
     <head> 
@@ -331,7 +366,7 @@ webpack 이라는 도구를 사용하여 마치 Node.js 에서 require 하는것
 - 이번 예제는, 여러개의 component를 이용해 DOM을 구성하고 상위 component에서 데이터를 받아 `this.props.*`를 통해 접근하여 표시할 수 있는 예제이다. 
 - 아래 코드와 같이 React JS에서 **Data Flow**는 상위 component에서 하위 component로 진행된다.
 
-```react
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -625,8 +660,6 @@ var CommentForm = React.createClass({
 
 - [리눅스](https://namu.wiki/w/%EB%A6%AC%EB%88%85%EC%8A%A4) 커널을 기반으로 한 리눅스 배포판 가운데 하나. 영국의 소프트웨어 회사 [캐노니컬](http://www.canonical.com/)과 [우분투 재단](http://community.ubuntu.com/)이 개발, 배포, 유지보수를 맡고 있다.
 
-## AmazonS3
-
 ## Sass
 
 - **Sass** (Syntactically Awesome Style Sheets : 문법적으로 짱 멋진 스타일시트) 는 **CSS pre-processor** 로서, 복잡한 작업을 쉽게 할 수 있게 해주고, 코드의 재활용성을 높여줄 뿐 만 아니라, 코드의 가독성을 높여주어 유지보수를 쉽게해줍니다.
@@ -867,12 +900,6 @@ var CommentForm = React.createClass({
 
 # Utilities
 
-## Google Drive
-
-### 저장소로서의 Google Drive
-
-### 협업으로서의 Google Drive
-
 ## SendGrid
 
 ### 개요
@@ -1043,8 +1070,6 @@ var CommentForm = React.createClass({
 - 구글드라이브의 파일 url 
 - 처음이더라도 url만 입력하시면 (슬랙의 통합서비스에 한하여) 연동할 것인지 물어보는 질문이 뜹니다.
 
-## G Suite
-
 ## Trello
 
 ### 기능
@@ -1057,8 +1082,6 @@ var CommentForm = React.createClass({
 ## Confluence
 
 ## JIRA
-
-## Skype
 
 ## MailChimp
 
@@ -1080,10 +1103,6 @@ var CommentForm = React.createClass({
 
 - 모든 노력을 최적화하십시오
   - 모든 캠페인에서 조금 더 똑똑해질 수 있습니다.
-
-## HubSpot
-
-## Sketch
 
 ## Figma
 
