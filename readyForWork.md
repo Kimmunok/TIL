@@ -1,54 +1,54 @@
 > 
 >
 > ### *"<u>iOS 관련 지식</u> 및 <u>AWS 서버</u>에 대한 이해 공부(15일 까지), <u>이젤의 Techstack</u> 확인 및 이해: https://stackshare.io/eazel/eazel"*
->
-> 
->
+
+
+
 > 목차
 >
 > - [iOS 관련 지식](#iOS-관련-지식)
 >
 > - [AWS 서버](#AWS-서버)
 >
->   - [EC2 (Elastic Computed Cloud)](##EC2-(Elastic-Computed-Cloud))
->   - [S3 (Simple Storage Service)](##S3-(Simple-Storage-Service))
+>   - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud))
+>   - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service))
 >
 > - [Techstack](#Techstack)
 >
 >   - [Application and Data](#Application-and-Data)
 >
->     - [React](##React)
->     - [Ruby](##Ruby)
->     - [C#](##C#)
->     - [nginx](##nginx)
->     - [Ubuntu](##Ubuntu)
->     - [Sass](##Sass)
->     - [Rails](##Rails)
->     - [TypeScript](##TypeScript)
->     - [RxJS](##RxJS)
->     - [Docker for AWS](##Docker-for-AWS)
->     - [GraphQL Ruby](##GraphQL-Ruby)
+>     - [React](#React)
+>     - [Ruby](#Ruby)
+>     - [C#](#C#)
+>     - [nginx](#nginx)
+>     - [Ubuntu](#Ubuntu)
+>     - [Sass](#Sass)
+>     - [Rails](#Rails)
+>     - [TypeScript](#TypeScript)
+>     - [RxJS](#RxJS)
+>     - [Docker for AWS](#Docker-for-AWS)
+>     - [GraphQL Ruby](#GraphQL-Ruby)
 >
 >   - [Utilities](#Utilities)
 >
->     - [SendGrid](##SendGrid)
->     - [Let’s Encrypt](##Let's-Encrypt)
->     - [OpenCV](##OpenCV)
+>     - [SendGrid](#SendGrid)
+>     - [Let’s Encrypt](#Let's-Encrypt)
+>     - [OpenCV](#OpenCV)
 >
 >   - [DevOps](#DevOps)
 >
->     - [BitBucket](##BitBucket)
->     - [Kubernetes](##Kubernetes)
->     - [Vagrant](##Vagrant)
+>     - [BitBucket](#BitBucket)
+>     - [Kubernetes](#Kubernetes)
+>     - [Vagrant](#Vagrant)
 >
->   - [Business Tools](#Business Tools)
+>   - [Business Tools](#Business-Tools)
 >
->     - [Slack](##Slack)
->     - [Trello](##Trello)
->     - [Confluence](##Confluence)
->     - [JIRA](##JIRA)
->     - [MailChimp](##MailChimp)
->     - [Figma](##Figma)
+>     - [Slack](#Slack)
+>     - [Trello](#Trello)
+>     - [Confluence](#Confluence)
+>     - [JIRA](#JIRA)
+>     - [MailChimp](#MailChimp)
+>     - [Figma](#Figma)
 >
 >     
 
