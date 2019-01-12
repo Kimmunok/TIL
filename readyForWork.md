@@ -1,15 +1,31 @@
-# 입사 준비
-
+> 
+>
 > ###### *"<u>iOS 관련 지식</u> 및 <u>AWS 서버</u>에 대한 이해 공부(15일 까지), <u>이젤의 Techstack</u> 확인 및 이해: https://stackshare.io/eazel/eazel"*
 >
+> 
+>
+> 목차
+>
+> - [iOS 관련 지식](#iOS-관련-지식)
+> - [AWS 서버](#AWS-서버)
+> - [Techstack](#Techstack)
+>   - [Application and Data](#Application and Data)
+>
+> 
+>
+> 
+>
+> 
 
 
 
-------
+# iOS 관련 지식
+
+## Reveal
+
+
 
 # AWS 서버  
-
-
 
 ## EC2 (Elastic Computed Cloud)
 
@@ -141,10 +157,33 @@
 
 ## React
 
-- React는 페이스북에서 개발한 유저인터페이스 라이브러리로서 개발자로 하여금 재사용 가능한 UI를 생성 할 수 있게 해줍니다. 이 라이브러리는 현재 페이스북, 인스타그램, 야후, 넷플릭스를 포함한 많은 큰 서비스에서 사용되고 있습니다.
+### 개요
 
+- React는 페이스북에서 개발한 유저인터페이스 라이브러리로서 개발자로 하여금 재사용 가능한 UI를 생성 할 수 있게 해줍니다. 
+- 이벤트 요청 시 서버에서 코드를 받아 다시 렌더링해야 되는 문제를 해결하기 위해 만들어졌습니다.
+- UI 컴포넌트를 만드는 일만 하며 캡슐화를 잘 시켜줘서 재사용 성이 높습니다.
+- 이 라이브러리는 현재 페이스북, 인스타그램, 야후, 넷플릭스를 포함한 많은 큰 서비스에서 사용되고 있습니다.
 - 이 라이브러리는 Virtual DOM 이라는 개념을 사용하여 상태의 변함에 따라 선택적으로 유저인터페이스를 렌더링합니다.
 - 따라서, 최소한의 DOM 처리로 컴포넌트들을 업데이트 할 수 있게 해줍니다.
+
+### Flux 아키텍처
+
+- MVC는 확장이 어렵고 거대한 시스템에 어울리지 않는다고 페이스북은 결론을 내렸습니다.
+
+- 모델(Model)과 뷰(View)의 수가 커지고 데이터의 흐름이 양방향으로 이루어질 수록 복잡도는 더욱 증가하고 디버깅 및 코드를 이해하기 어려워지므로 MVC는 작은 앱에 어울린다는 것이죠.
+
+- 하지만 "좀더 예측 가능하도록 코드 구조화"에 대한 목표로 "데이터 흐름이 단방향인 시스템 아키텍처" Flux를 제안합니다.
+
+  <img src="Images/flux.png">
+
+- Store
+  - APP의 모든 데이터를 저장하며 MVC의 Model 역할입니다.
+- Dispatcher
+  - 모든 데이터를 관리하는 Controller 역할이며 Action이 시작될 때 어떻게 Store가 업데이트되어야 하는지 결정합니다.
+- View
+  - Store가 변경된 경우같이 변경됩니다.
+- 단방향
+  - 데이터는 단방향으로 흐르고 데이터 계층이 자기가 영향을 미치는 View 업데이트 완료 후 다음 작업을 진행합니다.
 
 ### Virtual DOM 은 어떻게 작동하는가?
 
@@ -165,10 +204,14 @@
 
 - 실제 DOM에 접근하여 조작하는 대신에, 이를 추상화 시킨 Javascript 객체를 구성하여 사용
 - 이는 마치 실제 DOM의 가벼운 사본과 비슷함.
+- Virtual DOM에는 `ReactElement`, `ReactElement Factory`, `ReactNode`, `ReactComponent` 그리고 `ReactComponent Class`가 있다.
 - React에서 데이터가 변하여 브라우저 상의 실제 DOM을 업데이트 하는 3 단계
   1. 데이터가 업데이트되면, 전체 UI를 Virtual DOM에 리렌더링 한다.
   2. 이전 Virtual DOM에 있던 내용과 현재의 내용을 비교한다.
+     - 이것은 가상 DOM(Virtual DOM)에 DOM Tree와 같은 전체 구조체를 가지고 있고 변경이 생기면 구조체를 비교(Diff)하여 최소한의 요소만 DOM에 적용합니다.
   3. 바뀐 부분만 실제 DOM에 적용.
+     - 데이터가 변할 때 바뀐 부분만을 업데이트하여 "새로 고침" 하지 않아도 변경된 내용 확인이 가능합니다. 
+     - 그래서 React를 적용하면 성능 향상을 볼 수 있으며 React의 큰 특징입니다.
   4. 결국, 컴포넌트가 업데이트 될 때, 레이아웃 계산이 한 번 만 이루어 진다.
 - 오해
   - Virtual DOM을 사용한다고 해서, 사용하지 않았을 때에 비해 무조건 빠른 것은 아니다.
@@ -178,13 +221,36 @@
 
 ### 특징
 
-- Virtual DOM을 사용
-- JSX
-  - Javascript의 확장 문법
-  - DOM 엘리먼트들을 만들 때 Javascript 형식으로 작성해야 하는 것을, XML과 비슷한 형태로 작성할 수 있게 해준다.
-  - 권장사항이고 필수는 아니지만 사용하지 않으면 좀 불편하다.
-- Components
-  - React는 모두 Component에 대한 것이므로 React 개발을 할 때에는 모든 것을 Component로서 생각해야 한다.
+#### Virtual DOM을 사용
+
+#### JSX
+
+- 자바스크립트는 강력한 언어라는 전제로 템플릿을 사용하지 않습니다.
+- 템플릿을 사용하지 않아 뷰 로직과 뷰 문법을 통합하여 확장 및 유지 보수가 쉬워졌습니다.
+- 템플릿이라고 오해할 수 있는 JSX를 원하면 사용할 수 있습니다.
+- JSX(JavaScript XML)는 페이스북에서 스펙을 정의한 XML과 비슷한 자바스크립트 확장 문법입니다.
+- 자바스크립트에서 HTML과 자바스크립트 변수 및 속성 값을을 사용 할수 있게 해주며 `*.jsx`파일은 `Webpack`, `Browserify`로 자바스크립트로 컴파일 후 `*.js` 변환되어 사용하며 테스트 코드는 `Bable`로 별도의 컴파일 없이 사용할 수 있습니다. 
+- 그리고 이 툴 들이 ECMAScript6,7 지원을 하기 때문에 JSX를 사용시에 ECMAScript6,7도 같이 사용을 많이 합니다.
+
+#### Components
+
+- React는 모두 Component에 대한 것이므로 React 개발을 할 때에는 모든 것을 Component로서 생각해야 한다.
+
+#### 데이터가 양방향으로 흐르지 않는다.
+
+- 양방향
+  - 상위 컴포넌트에서 하위 컴포넌트로 혹은 하위 컴포넌트에서 상위 컴포넌트로
+- 단방향
+  - 상위 컴포넌트에서 하위 컴포넌트로
+- 양방향 데이터 바인딩을 하게 되면 개발 비용은 일시적으로 적다고 느낄 수 있지만, 장기적으로 데이터 흐름을 이해하기 어려워 개발 비용이 증가합니다.
+- 그래서 React는 위에서 아래로만 데이터가 흐르고, 아래에서 위로 올라갈 수는 없습니다.
+
+#### 클라이언트에서만 실행되는 것은 아니다. (Server Side Rendering)
+
+- 클라이언트에서만 렌더링을 하게 되면 `HTML + Javascript + Data + View` 순으로 진행하는 시간 소요로 초기 구동 속도가 느리다. 
+- React가 빠르다는 건 초기 구동 이후다.
+- 또한, 자바스크립트를 실행하지 못하는 검색 엔진 봇들은 처음 렌더링 된 빈 HTML만 수집하기 때문에 콘텐츠가 없다고 판단하므로 검색 엔진 최적화(SEO)에 취약하다.
+- 이런 단점을 해결하기 위해 서버 측에서 렌더링을 지원한다.
 
 ### 장점
 
@@ -199,6 +265,192 @@
 - 앱의 View 레이어만 다루므로 이 외의 부분은 다른 기술을 사용해야 한다.
   - 예를 들어 Ajax, Router 등의 기능은 직접 구현하거나 다른 모듈을 설치하여 사용.
 - React 버전 v15부터 IE8 이하 버전을 지원하지 않는다.
+
+### 번들링(bundling)
+
+webpack 이라는 도구를 사용하여 마치 Node.js 에서 require 하는것과 같이 모듈을 불러올 수 있게 하는 것 입니다. webpack 은 이렇게 import(혹은 require) 한 모듈들을 불러와서 한 파일로 합칩니다.
+
+### 간단한 예제
+
+- 출처: <http://yumere.tistory.com/78> [Yumere]
+
+#### Example 1
+
+```react
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8"> 
+        <title>Document</title> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    </head> 
+    <body> 
+        <div id="content"></div> 
+        <script type="text/babel"> 
+        var CommentBox = React.createClass({
+            render: function() { 
+                return ( 
+                    <div className="commentBox"> 
+                        Hello, world! I am a CommentBox. 
+                    </div> 
+                ); 
+            } 
+        }); 
+        ReactDOM.render( 
+        	<CommentBox />, 
+            document.getElementById('content') 
+        ); 
+        </script> 
+    </body> 
+</html>
+```
+
+
+
+1. `<head></head>` 태그 내에 위의 JS 파일들은 전부 include 해야 한다. 
+
+   - 여기서는 jsx 파일을 컴파일 하지 않기 때문에 `babel`은 무조건 include 해야 한다.
+
+2. React js로 만든 DOM을 생성할 div를 하나 만든다. 
+
+   - 물론 div가 아닌 body에다가 rendering 할 수도 있다.
+
+3. 다음의 코드를 이용해 하나의 `Component`를 만든다.
+
+   ~~~react
+   var CommentBox = React.createClass({})
+   ~~~
+
+   - 이 때, Component 이름은 무조건 대문자로 시작하는 Camel case로 하여야 한다.
+
+#### Example 2
+
+- 이번 예제는, 여러개의 component를 이용해 DOM을 구성하고 상위 component에서 데이터를 받아 `this.props.*`를 통해 접근하여 표시할 수 있는 예제이다. 
+- 아래 코드와 같이 React JS에서 **Data Flow**는 상위 component에서 하위 component로 진행된다.
+
+```react
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Document</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+  <style>
+  #content{
+    border: 1px solid red;
+    padding: 5px;
+    margin: 5px;
+
+    max-width: 500px;
+  }
+
+  .commentBox{
+    border: 1px solid black;
+    padding 1px;
+    margin: 5px;
+  }
+
+  .commentList{
+    border: 1px solid blue;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .commentForm{
+    boder: 1px  solid red;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .comment{
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+  }
+  </style>
+
+  <div id="content"></div>
+
+  <script type="text/babel">
+  var data = [
+    {author: "Pete Hunt", text: "This is one comment"},
+    {author: "Jordan Walke", text: "This is *another* comment"}
+  ];
+
+  var CommentBox = React.createClass({
+    render: function() {
+      return (
+        <div className="commentBox">
+          <h1>Comments</h1>
+          <CommentList {...this.props} />
+          <CommentForm />
+        </div>
+      );
+    }
+  });
+
+  var CommentList = React.createClass({
+    render: function() {
+      var comments = this.props.data.map(function(comment, index){
+        return <Comment author={comment.author} key={index}>{comment.text}</Comment>
+      }.bind(this));
+
+      return (
+        <div className="commentList">
+          {comments}
+        </div>
+      );
+    }
+  });
+
+var CommentForm = React.createClass({
+  render: function() {
+    return (
+      <div className="commentForm">
+        <form className="commentForm">
+          <input type="text" placeholder="Your name" ref="author"/>
+          <input type="text" placeholder="Say something..." ref="text"/>
+          <input type="submit" value="Post" />
+        </form>
+      </div>
+    );
+  }
+});
+
+  var Comment = React.createClass({
+    render: function() {
+      return (
+        <div className="comment">
+          <h2 className="commentAuthor">
+            {this.props.author}
+          </h2>
+          {this.props.children}
+        </div>
+      );
+    }
+  });
+
+  ReactDOM.render(
+    <CommentBox data={data}/>,
+    document.getElementById('content')
+  );
+  </script>
+
+</body>
+</html>
+```
+
+
 
 ## Ruby
 
@@ -369,7 +621,9 @@
 
 ## Ubuntu
 
+### 개요
 
+- [리눅스](https://namu.wiki/w/%EB%A6%AC%EB%88%85%EC%8A%A4) 커널을 기반으로 한 리눅스 배포판 가운데 하나. 영국의 소프트웨어 회사 [캐노니컬](http://www.canonical.com/)과 [우분투 재단](http://community.ubuntu.com/)이 개발, 배포, 유지보수를 맡고 있다.
 
 ## AmazonS3
 
@@ -617,31 +871,188 @@
 
 ### 저장소로서의 Google Drive
 
-
-
 ### 협업으로서의 Google Drive
 
 ## SendGrid
 
+### 개요
+
+- SendGrid는 사용자 지정 통합을 쉽게 만드는 유연한 API와 함께 신뢰할 만한 [트랜잭션 전자 메일 배달](https://sendgrid.com/use-cases/transactional-email), 확장성 및 실시간 분석을 제공하는 [클라우드 기반 전자 메일 서비스](https://sendgrid.com/solutions)입니다.
+
+### 사용 사례
+
+- 고객에게 영수증 또는 구매 확인을 자동으로 전송
+- 고객에게 매달 전단지 및 홍보 메일을 보내는 메일 그룹 관리
+- 차단된 메일과 같은 작업에 대한 실시간 메트릭 및 고객 참여 수집
+- 고객 질문 전달
+- 수신 메일 처리
+
+### 제공하는 언어
+
+- C#
+- Go
+- Java
+- Node.js
+- PHP
+- Python
+- Ruby
+
 ## Let’s Encrypt
 
+### 개요
+
+- **Let's Encrypt**는 보안 웹사이트를 위한 인증서의 수동 생성, [유효성 확인](https://ko.wikipedia.org/wiki/%EC%9D%B8%EC%88%98_%EA%B2%80%EC%82%AC), [디지털 서명](https://ko.wikipedia.org/wiki/%EB%94%94%EC%A7%80%ED%84%B8_%EC%84%9C%EB%AA%85), 설치, 갱신 등 종전의 복잡한 과정을 없애주는 자동화된 프로세스를 통해 [전송 계층 보안](https://ko.wikipedia.org/wiki/%EC%A0%84%EC%86%A1_%EA%B3%84%EC%B8%B5_%EB%B3%B4%EC%95%88)(TLS) 암호화를 위해 무료 [X.509](https://ko.wikipedia.org/wiki/X.509) [인증서](https://ko.wikipedia.org/wiki/%EA%B3%B5%EC%9D%B8%EC%9D%B8%EC%A6%9D%EC%84%9C)를 제공하는 [인증 기관](https://ko.wikipedia.org/wiki/%EC%9D%B8%EC%A6%9D_%EA%B8%B0%EA%B4%80)이다.
+- 이 프로젝트는 어디에서든 접근 가능한 [월드 와이드 웹](https://ko.wikipedia.org/wiki/%EC%9B%94%EB%93%9C_%EC%99%80%EC%9D%B4%EB%93%9C_%EC%9B%B9) 서버들에 대한 암호화된 연결을 생성하는 것이 목적이다.
+- 지불, 웹 서버 구성, 유효성 확인 이메일 관리, 인증서 갱신 작업을 제거해주는데 이는 TLS 암호화를 구성하고 유지보수하는 복잡도를 상당히 낮추어준다는 것을 뜻한다.
+- [리눅스](https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4) 웹 서버에서 [HTTPS](https://ko.wikipedia.org/wiki/HTTPS) 암호화를 구성하고 인증서를 인수하고 설치하는데에는 단지 두 개의 명령어만 실행하면 된다.
+- 몇 가지 TLS 인증서 종류 중에서 완전 자동화가 가능한 DV (Domain Validated, 도메인 확인) 인증서를 무료로 발급한다. 
+- [모질라 재단](https://namu.wiki/w/%EB%AA%A8%EC%A7%88%EB%9D%BC%20%EC%9E%AC%EB%8B%A8), [페이스북](https://namu.wiki/w/%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%B6%81), [구글](https://namu.wiki/w/%EA%B5%AC%EA%B8%80) 등 많은 업체가 스폰서로 등록되어 있다. 
+- 루트 도메인 (네이키드 도메인), 특정 서브 도메인 뿐만 아니라, 하나의 인증서로 모든 서브 도메인에 사용 가능한 *.example.com 형태의 와일드카드 서브 도메인 인증서도 무료로 발급하므로 그 활용이 폭넓다.
+
 ## OpenCV
+
+### 개요
+
+- **OpenCV**(Open Source Computer Vision)은 주로 실시간 [컴퓨터 비전](https://ko.wikipedia.org/wiki/%EC%BB%B4%ED%93%A8%ED%84%B0_%EB%B9%84%EC%A0%84)을 목적으로 한 프로그래밍 [라이브러리](https://ko.wikipedia.org/wiki/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC)이다. 
+- 원래는 [인텔](https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%85%94)이 개발하였으나 현재는 손을 뗀 상태다.
+- **실시간** 이미지 프로세싱에 중점을 둔 라이브러리이다. 
+- [인텔](https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%85%94)[CPU](https://ko.wikipedia.org/wiki/%EC%A4%91%EC%95%99_%EC%B2%98%EB%A6%AC_%EC%9E%A5%EC%B9%98)에서 사용되는 경우 속도의 향상을 볼 수 있는 [IPP](https://ko.wikipedia.org/wiki/IPP)(Intel Performance Primitives)를 지원한다. 
+- 이 라이브러리는 [윈도](https://ko.wikipedia.org/wiki/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%86%8C%ED%94%84%ED%8A%B8_%EC%9C%88%EB%8F%84), [리눅스](https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4) 등에서 사용 가능한 [크로스 플랫폼](https://ko.wikipedia.org/wiki/%ED%81%AC%EB%A1%9C%EC%8A%A4_%ED%94%8C%EB%9E%AB%ED%8F%BC)이며 [오픈소스](https://ko.wikipedia.org/wiki/%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4) [BSD 허가서](https://ko.wikipedia.org/wiki/BSD_%ED%97%88%EA%B0%80%EC%84%9C) 하에서 무료로 사용할 수 있다. 
+- OpenCV는 [TensorFlow](https://ko.wikipedia.org/wiki/TensorFlow) , [Torch](https://ko.wikipedia.org/wiki/Torch) / [PyTorch](https://ko.wikipedia.org/w/index.php?title=PyTorch&action=edit&redlink=1) 및 [Caffe](https://ko.wikipedia.org/w/index.php?title=Caffe&action=edit&redlink=1)의 [딥러닝](https://ko.wikipedia.org/wiki/%EB%94%A5%EB%9F%AC%EB%8B%9D) [프레임워크](https://ko.wikipedia.org/wiki/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC)를 지원한다.
+- 영상 관련 라이브러리로서 사실상 표준의 지위를 가지고 있다. 
+- 조금이라도 영상처리가 들어간다면 필수적으로 사용하게 되는 라이브러리.
+- 기능이 방대하기 때문에 OpenCV에 있는 것만 다 쓸 줄 알아도 영상처리/머신러닝의 고수 반열에 속하게 된다.
+
+### 응용 기술의 예
+
+- [인간과 컴퓨터 상호 작용](https://ko.wikipedia.org/wiki/%EC%9D%B8%EA%B0%84%EA%B3%BC_%EC%BB%B4%ED%93%A8%ED%84%B0_%EC%83%81%ED%98%B8_%EC%9E%91%EC%9A%A9) (HCI)
+  - 인간-컴퓨터 상호작용의 기본 목적은 컴퓨터를 좀 더 인간에게 쉽고 쓸모 있게 함으로써 인간과 컴퓨터 간의 상호작용을 개선하는 것이다. 좀 더 광범위하게는 아래와 같은 관심분야가 있다.
+    - 인터페이스를 설계하는 방법론이나 절차의 개발 (예를 들어, 주어진 사용자 군이나 주어진 조건에 부합하여 최적화된 인터페이스를 설계하는 것)
+    - 인터페이스를 구현하는 방법론 (예를 들어, 소프트웨어 툴킷이나 라이브러리, 보다 나은 알고리즘의 개발)
+    - 인터페이스를 비교 평가하는 방법
+    - 새로운 인터페이스나 상호 작용 기술의 개발
+    - 상호작용을 설명하고 예측하는 모델이나 이론의 개발
+- [물체 인식](https://ko.wikipedia.org/w/index.php?title=%EB%AC%BC%EC%B2%B4_%EC%9D%B8%EC%8B%9D&action=edit&redlink=1)
+- [안면 인식](https://ko.wikipedia.org/wiki/%EC%95%88%EB%A9%B4_%EC%9D%B8%EC%8B%9D)
+- [모바일 로보틱스](https://ko.wikipedia.org/w/index.php?title=%EB%AA%A8%EB%B0%94%EC%9D%BC_%EB%A1%9C%EB%B3%B4%ED%8B%B1%EC%8A%A4&action=edit&redlink=1)
+- [제스처 인식](https://ko.wikipedia.org/w/index.php?title=%EC%A0%9C%EC%8A%A4%EC%B2%98_%EC%9D%B8%EC%8B%9D&action=edit&redlink=1)
+
+### 프로그래밍 언어
+
+- 3.3 버전인 현재 [C++](https://namu.wiki/w/C%2B%2B)11을 공식으로 채택하고 있으며 [Python](https://namu.wiki/w/Python)도 공식적으로 지원한다. 
+- 그 밖에 [C#](https://namu.wiki/w/C%23)은 다양한 랩핑 라이브러리가 있지만 OpenCVSharp이 많이 쓰인다. 
+- iOS와 Android도 지원하므로 사실상 [Java](https://namu.wiki/w/Java)와 [Objective-C](https://namu.wiki/w/Objective-C)도 지원하는 셈이다. 
+- [MATLAB](https://namu.wiki/w/MATLAB) 등의 프로그램들과 연계도 가능하다.
+
+### 주요 알고리즘
+
+- 이진화(binarization)
+- 노이즈 제거
+- 외곽선 검출(edge detection)
+- [패턴인식](https://namu.wiki/w/%ED%8C%A8%ED%84%B4%EC%9D%B8%EC%8B%9D)
+  - [그림](https://namu.wiki/w/%EA%B7%B8%EB%A6%BC), [음원](https://namu.wiki/w/%EC%9D%8C%EC%9B%90), [글](https://namu.wiki/w/%EA%B8%80) 등의 각종 선형 및 비선형 [데이터](https://namu.wiki/w/%EB%8D%B0%EC%9D%B4%ED%84%B0) 안에서 특정한 [패턴](https://namu.wiki/w/%ED%8C%A8%ED%84%B4)을 찾아내는 것을 의미한다. 
+  - 즉, 쉽게 풀어서 말하자면 [컴퓨터](https://namu.wiki/w/%EC%BB%B4%ED%93%A8%ED%84%B0)가 [사람](https://namu.wiki/w/%EC%82%AC%EB%9E%8C)과 유사하게 데이터를 [판단](https://namu.wiki/w/%ED%8C%90%EB%8B%A8)하여 어떤 데이터인지 구분해주는 기술이라고 생각하면 된다. 
+  - 흔히 사용하는 [음성인식](https://namu.wiki/w/%EC%9D%8C%EC%84%B1%EC%9D%B8%EC%8B%9D) 검색이나 [QR코드](https://namu.wiki/w/QR%EC%BD%94%EB%93%9C) [카메라](https://namu.wiki/w/%EC%B9%B4%EB%A9%94%EB%9D%BC) 인식 등도 패턴인식 연구 결과의 산물이다.
+- [기계학습](https://namu.wiki/w/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5)(machine learning)
+- ROI(Region Of Interest) 설정
+- 이미지 변환(image warping)
+- 하드웨어 가속
 
 # DevOps
 
 ## BitBucket
 
+### 개요
+
+- Git을 사용하는 사람들에게 가장 익숙할 GUI 툴인 Sourcetree를 만든 Atlassian에서 제공하는 서비스. 
+- Unity Technologies의 일부 오픈소스는 Bitbucket의 저장소를 사용한다.
+
+### 장점
+
+- Atlassian에서 서비스해서 그런지 JIRA, Hipchat과 연동이 편하다.
+- Private Repo를 무료로 제공한다.
+
+### 단점
+
+- Github과 마찬가지로 용량 제한이 짜다.
+- 저장소에 참여 가능한 인원을 기준으로 가격 정책을 적용했다. 가장 거지같은 가격 정책이다.
+
 ## Kubernetes
 
+### 개요
+
+- 쿠버네티스를 이해하려면 먼저 컨테이너를 이해해야 합니다. 
+- 컨테이너
+  - 어디에서나 실행할 수 있는 소형의 독립 운영 체제입니다. 
+  - 이는 공용 리포지토리(repository) 또는 개인 리포지토리에서 호스팅 되는 일련의 명령에 따라 몇 초 만에 생성이 가능합니다.
+  - 애플리케이션을 실행할 수 있으며 애플리케이션의 시스템 수준 요구 사항에 맞게 특별히 설계되어, 실행 시 사용할 JVM(Java Virtual Machine) 버전을 정의합니다. 
+  - 간단히 말해, 컨테이너를 사용하면 로컬 개발 환경이 프로덕션 환경과 정확히 동일하게 유지됩니다.
+  - 컨테이너는 작고 가볍습니다. 
+  - 즉, 애플리케이션을 로딩하기 위해서는 VM환경보다 더 많은 컨테이너가 필요합니다.
+- 쿠버네티스는 노드에서 여러 컨테이너를 관리하고 예약할 수 있습니다.
+- 이는 선언형 프로그래밍 형식으로, 쿠버네티스 컨트롤 플레인(Kubernetes Control Plane, 이전 : 쿠버네티스 마스터 "Kubernetes Master")을 통해 특정 구성을 지정하면 쿠버네티스가 그 상태를 자동으로 유지합니다.
+- 자세한 내용은 쿠버네티스 웹 사이트에서 [“What is Kubernetes”](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/)를 참고 바랍니다.
+- 쿠버네티스는 AWS, GKE, Microsoft Azure와 같은 여러 클라우드 플랫폼에서 실행 가능하지만 하드 드라이브 또는 노트북 VM에서도 실행할 수 있습니다.
+- 쿠버네티스는 컨테이너화된 워크로드와 서비스를 관리하기 위한 이식성이 있고, 확장가능한 오픈소스 플랫폼이다. 
+- 쿠버네티스는 선언적 구성과 자동화를 모두 용이하게 해준다. 
+- 쿠버네티스는 크고, 빠르게 성장하는 생태계를 가지고 있다. 
+- 쿠버네티스 서비스, 기술 지원 및 도구는 어디서나 쉽게 이용할 수 있다.
+- 구글이 2014년에 쿠버네티스 프로젝트를 오픈소스화했다. 
+- 쿠버네티스는 [구글의 15여년에 걸친 대규모 운영 워크로드 운영 경험](https://research.google.com/pubs/pub43438.html)을 기반으로 만들어졌으며 커뮤니티의 최고의 아이디어와 적용 사례가 결합되었다.
+
+### 기능
+
+- 컨테이너 플랫폼
+- 마이크로서비스 플랫폼
+- 이식성 있는 클라우드 플랫폼 그리고 더 많은 기능.
+- 쿠버네티스는 **컨테이너 중심의** 관리 환경을 제공한다. 
+- 이 환경은 사용자 워크로드를 위해서 컴퓨팅, 네트워킹 및 스토리지 인프라스트럭처를 오케스트레이션한다. 
+- 이는 Platform as a Service(PaaS)의 매우 단순명료함에 Infrastructure as a Service (IaaS)의 유연함을 더해 주며, 인프라스트럭처 제공자 간 이식이 가능하게 해준다.
+
 ## Vagrant
+
+### 개요
+
+- 가상 머신에 운영체제를 설치하고 웹 서버, DBMS, PHP 를 설치하는 것은 개발 환경 구성 대상이 PC 에서 가상 머신으로 옮겨졌을 뿐이지 기존 작업과 난이도 측면에서 차이가 없으며 오히려 가상 머신을 설치하고 관리해야 하는 부담이 더 늘었습니다.
+- Vagrant 는 이런 문제를 해결하기 위한 솔루션으로 설정 스크립트를 기반으로 특정 환경의 가상 머신을 만들어서 신속하게 개발 환경을 구축하고 공유할 수 있게 만들어진 솔루션입니다.
 
 # Business Tools
 
 ## Slack
 
+### 사용팁
+
+#### search
+
+- 검색도구
+  - From
+    - 팀 멤버 이름
+  - Has
+    - star or link(star나 link 텍스트를 그대로 입력하시면 됩니다)
+  - During
+    - 검색을 원하는 기간
+
+#### 예전 메시지를 인용하여 새로운 메시지 전하기
+
+1. 오늘 올린 메세지를 이용할 경우는 왼쪽에 시간이 표기되고, 이전날의 메세지의 경우에는 이름 옆에 시간이 표기됩니다.
+2. 그 시간을 누르면 새로운 창이 뜨면서 블로그 형식으로 뜹니다. 그 때 url를 복사만 해주시면 돼요.
+3. 복사 후에 원하는 메세지를 적으신 후에 url를 붙여넣으면 완성!
+
+#### 다양한 서비스들과의 통합
+
+- 구글드라이브의 파일 url 
+- 처음이더라도 url만 입력하시면 (슬랙의 통합서비스에 한하여) 연동할 것인지 물어보는 질문이 뜹니다.
+
 ## G Suite
 
 ## Trello
+
+### 기능
+
+- 보드 안에 리스트, 리스트 안에 카드가 들어간다. 
+- 카드 안에 체크리스트를 만들 수 있고, 다른 사용자를 카드에 참여시킬 수 있다. 
+- 곧, 카드가 할일의 기본적인 단위가 된다. 
+- Basecamp 등 다른 프로젝트 관리 소프트웨어 비해 단순한 디자인을 가지고 있다는 평가를 받고 있다.
 
 ## Confluence
 
@@ -651,14 +1062,35 @@
 
 ## MailChimp
 
+### 개요
+
+- 메일침프는 뉴스레터 종합 관리 솔루션이다.  
+- 사용자 관리를 위한 뉴스레터든, 상품을 팔기 위한 이메일 마케팅이든 상관없다. 
+- 메일침프는 뉴스레터 관련해서 생각할 수 있는 거의 모든 기능을 가지고 있다.
+
+### 기능
+
+- 고유 한 캠페인 만들기
+  - 이메일, 소셜 광고 등을 통해 말로 표현하십시오.
+- 좋아하는 도구를 연결하십시오.
+  - 이미 사용하고있는 도구로 새로운 기능의 잠금을 해제하십시오.
+
+- 바쁜 업무 자동화
+  - 자동화로 삶을 편하게 만드십시오.
+
+- 모든 노력을 최적화하십시오
+  - 모든 캠페인에서 조금 더 똑똑해질 수 있습니다.
+
 ## HubSpot
 
 ## Sketch
 
 ## Figma
 
+### 기능
 
-
-------
-
-# Reveal
+- 실시간-협업 기능(real-time collaboration)
+- 벡터 연결(vector networks)
+- 버전 관리(version history)
+  - Figma를 통해서 여러 명의 디자이너들이 동시에 하나의 디자인 파일을 작업할 수 있게 되었습니다. 
+- 더욱 중요한 것은 Figma가 정말 빠른 도구이며, 20개가 넘는 아트보드들을 하나의 문서 안에서 손쉽게 작업할 수 있다는 점입니다.
