@@ -1,5 +1,3 @@
-> 
->
 > ### *"<u>iOS 관련 지식</u> 및 <u>AWS 서버</u>에 대한 이해 공부(15일 까지), <u>이젤의 Techstack</u> 확인 및 이해: https://stackshare.io/eazel/eazel"*
 
 
@@ -11,7 +9,9 @@
 - [AWS 서버](#AWS-서버)
 
   - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud))
+  - [EBS (Elastic Block Store)](#EBS-(Elastic-Block-Store))
   - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service))
+  - [AutoScaling](#AutoScaling)
 
 - [이젤의 Techstack](#이젤의-Techstack)
 
@@ -165,20 +165,175 @@
 - 접속 시도  
   - Public DNS를 브라우저 주소표시줄에 붙여넣기  
 
-### AutoScaling 소개  
+### 터미널 활용
 
-- 컴퓨터(인스턴스)를 자동으로 생성해서 바로 서비스를 시작하게 하고 더 이상 인스턴스가 필요없어지면 자동으로 삭제해서 과금이 발생하지 않도록 한다.  
+#### EC2 인스턴스 정보를 가져오는 방법​	
+
+~~~
+$ aws ec2 describe-instances --instance-ids i-0e7abc17 i-4d7bbd54 --filters "Name=availability-zone, Values=ap-northeast-1c"
+~~~
+
+- filters
+  - 가져온 EC2 인스턴스 정보 중에서 조건대로 걸러내는 옵션
+  - Name
+    - 걸러낼 항목
+    - availability-zone
+    - instance-state-name
+    - 등 EC2 인스턴스 정보에서 모든 항목을 설정할 수 있습니다.
+  - Values
+    - 걸러낼 항목의 값을 배열로 설정
+- instance-ids
+  - 가져올 EC2 인스턴스의 ID를 배열로 설정
+
+#### EC2 인스턴스를 시작하는 방법
+
+~~~
+$ aws ec2 start-instances --instance-ids i-0e7abc17 --no-dry-run
+$ aws ec2 start-instances --instance-ids i-0e7abc17 --dry-run
+$ aws ec2 reboot-instances --instance-ids i-0e7abc17
+$ aws ec2 terminate-instances --instance-ids i-0e7abc17
+~~~
+
+- DryRun
+  - 테스트 실행 옵션
+  - DryRun 옵션을 사용하면 API 호출 결과가 반영되지는 않지만, API 호출 에러는 그대로 표시되므로 디버깅할 때 유용
+
+#### EC2 인스턴스를 정지하는 방법
+
+~~~
+$ aws ec2 stop-instances --instance-ids i-0e7abc17 --no-force
+$ aws ec2 stop-instances --instance-ids i-0e7abc17 --force
+$ aws ec2 stop-instances --instance-ids i-0e7abc17 --no-dry-run
+$ aws ec2 stop-instances --instance-ids i-0e7abc17 --dry-run
+~~~
+
+- Force
+  - 시스템 종료로 정지시키지 않고 강제로 종료시키는 옵션
+
+#### EC2 인스턴스를 생성하는 방법
+
+~~~
+$ aws ec2 run-instances --image-id ami-25dd9324 --count 1 --monitoring Enabled=false --iam-instance-profile Name=ExampleEC2Role --instance-type t1.micro --key-name awskeypair --no-dry-run
+~~~
+
+- image-id
+  - EC2 인스턴스를 생성할 AMI 이미지 ID를 설정
+- count
+  - 생성할 EC2 인스턴스 갯수 설정
+- monitoring
+  - 세부 모니터링 옵션
+- iam-instance-profile
+  - EC2 인스턴스에서 사용할 IAM 역할 이름을 설정
+- instance-type
+  - 인스턴스 유형을 설정
+- key-name
+  - EC2 인스턴스 접속에 사용할 키 쌍 이름을 설정
+
+## EBS (Elastic Block Store)
+
+### 개요
+
+- EC2 인스턴스에 장착하여 사용할 수 있는 가상 저장 장치
+- 프리 티어에서 사용가능
+  - EBS Storage 30GB, EBS 200만 I/O 무료 사용
+- EBS는 EC2에 설치 된 OS에서 그냥 일반적인 하드디스크나 SSD처럼 인식
+- Block
+  - 블록 장치(Block Device)라고 하여 Unix/Linux 계열 OS에서 일정한 크기(Block) 단위로 읽고 쓰는 저장장치를 부르는 말입니다.
+
+### 기본 개념
+
+- 볼륨(Volume)
+  - EBS의 가장 기본적인 형태로서 OS에서 바로 사용 가능한 형태
+- 이미지(Image)
+  - AMI(Amazon Machine Image)를 줄여서 부르는 말. 
+  - OS가 설치된 형태이며 이 AMI로 EC2 인스턴스를 생성합니다.
+- 스냅샷(Snapshot)
+  - EBS 볼륨의 특정 시점을 그대로 복사해 저장한 파일
+  - 이 스냅샷을 사용하여 EBS 볼륨과 AMI를 생성할 수 있습니다.
+- IOPS(Input/Output Operation Per Second)
+  - 저장 장치의 성능 측정 단위
 
 ## S3 (Simple Storage Service)
 
-### 콘솔을 통한 기본 조작  
+### 개요
 
-- Bucket  
-  - 저장 장치  
-- 기본 진행 방식  
-  1. 사용자가 파일을 서버에 전송  
-  2. 미들웨어(PHP, Ruby, Python, Java)가 S3의 API를 통해 S3로 전송  
-  3. 전송된 결과를 사용자에게 보여줌  
+- S3는 인터넷 스토리지 서비스로서 용량에 관계없이 파일을 저장할 수 있고 웹(HTTP 프로토콜)에서 파일에 접근할 수 있다.
+- 비용이 EC2와 EBS로 구축하는 것보다 훨씬 저렴하다.
+- 동적 웹 페이지(ASP, JSP, PHP, Ruby on Rails 등)와 정적 웹페이지가 섞여 있다면 동적 웹페이지만 EC2에서 서비스하고 정적 웹 페이지는 S3를 이용하면 성능도 높일 수 있고 비용도 절감할 수 있다.
+- 요즘 흔히 보는 웹하드 서비스와 비슷하지만 다른 점이 있다
+  - 파일 업/다운로드를 모두 HTTP 프로토콜이 처리한다.
+
+### 기본 개념
+
+- 객체(Object)
+  - S3에 데이터가 저장되는 최소단위
+  - 파일과 메타데이터로 구성됨
+  - 기본적으로 키가 객체의 이름, 값이 객체의 데이터
+  - 객체 하나의 크기는 1byte~5TB
+  - 메타데이터는 HTTP Content-type 형식(MIME)이다.
+    - 파일의 확장자에 따라 자동으로 설정되며 임의로 설정할 수도 있다.
+
+- 버킷(Bucket) 
+  - S3에서 생성할 수 있는 최상위 디렉터리
+  - 버킷은 리전 별로 생성해야 한다.
+  - 버킷 안에 객체가 저장된다.
+  - 디렉터리 생성 가능
+  - 저장 가능한 객체의 수 무한, 가능 용량 무한, 접속 제어 및 권한 관리 가능
+  - `http://버킷명.s3.amazonaws.com/객체파일명` 으로 접근 가능  
+  - 요금
+    - HTTP 요청 개수로 책정
+
+### 터미널 활용
+
+#### S3에 파일을 올리는 방법
+
+~~~
+$ aws s3api put-object --bucket 버킷명 --key 객체파일명 --acl public-read --body ./hello.jpg --content-type "image/jpeg" --metadata "someKey=Hello Meatdata" --server-side-encryption AES256 --storage-class STANDARD
+~~~
+
+- bucket
+  - 버킷명
+- key
+  - 객체 이름
+- acl
+  - 접근 권한
+  - private
+  - public-read
+  - public-read-write
+  - authenticated-read
+  - bucket-owner-read
+  - bucket-owner-full-control
+- body
+  - 객체의 데이터
+  - 문자열 형식, 버퍼 형식 사용가능
+- content-type
+  - MIME 타입
+  - 파일에서 확장자가 없을 때는 반드시 MIME 타입을 설정
+- metadata
+- server-side-encryption
+  - 서버에 저장될 때의 암호화 방식.
+  - AES256 사용가능
+  - 이 옵션을 삭제하면 암호화를 하지 않고 저장
+- storage-class
+  - 스토리지 옵션
+  - STANDARD
+  - REDUCE_REDUNDANCY
+
+#### S3 버킷에서 파일을 받는 방법
+
+~~~
+$ aws s3api get-object --bucket 버킷명 --key 객체파일명
+~~~
+
+
+
+## AutoScaling
+
+- 컴퓨터(인스턴스)를 자동으로 생성해서 바로 서비스를 시작하게 하고 더 이상 인스턴스가 필요없어지면 자동으로 삭제해서 과금이 발생하지 않도록 한다.  
+
+## 고정 IP를 제공하는 Elastic IP
+
+
 
 
 
@@ -490,7 +645,271 @@ var CommentForm = React.createClass({
   <img src="Images/TBremGC.png">
 
   - 위의 코드를 보면 `...this.props`를 사용하고 있는데, 이는 상위 component에서 받은 props들을 그대로 하위 component로 넘기겠다는 의미이다. 
+
   - 전부 전달 하는 것 외에도 몇개를 현재 component에서 사용하고 나머지를 넘기는 것도 가능하다.
+
+    ```html
+    ... 
+    var {checked, ...other} = this.props; 
+    return( 
+    <div {...other} className={test}></div> 
+    ); 
+    ...
+    ```
+
+#### Example 3
+
+- `this.state`를 이용해 데이터를 변경하고 변경된 component만 `re-rendering`하는 방법을 알 수 있는 예제이다.
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  
+    <title>Document</title>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <style>
+    #content{
+      border: 1px solid red;
+      padding: 5px;
+      margin: 5px;
+  
+      max-width: 500px;
+    }
+  
+    .commentBox{
+      border: 1px solid black;
+      padding 1px;
+      margin: 5px;
+    }
+  
+    .commentList{
+      border: 1px solid blue;
+      padding: 5px;
+      margin: 5px;
+    }
+  
+    .commentForm{
+      boder: 1px  solid red;
+      padding: 5px;
+      margin: 5px;
+    }
+  
+    .comment{
+      border: 1px solid black;
+      padding: 5px;
+      margin: 5px;
+    }
+    </style>
+  
+    <div id="content"></div>
+  
+    <script type="text/babel">
+    var data = [
+      {author: "Pete Hunt", text: "This is one comment"},
+      {author: "Jordan Walke", text: "This is *another* comment"}
+    ];
+  
+    var CommentBox = React.createClass({
+      getInitialState: function(){
+        return {data: this.props.data};
+      },
+  
+      dataChange: function(author, text){
+        var tmpData = this.state.data;
+        tmpData.push({
+          author: author,
+          text: text
+        });
+  
+        this.setState({data:tmpData});
+  
+  
+      },
+  
+      render: function() {
+  
+        return (
+          <div className="commentBox">
+            <h1>Comments</h1>
+            <CommentList data={this.state.data} />
+            <CommentForm formHandler={this.dataChange} />
+          </div>
+        );
+      }
+    });
+  
+    var CommentList = React.createClass({
+      render: function() {
+        var comments = this.props.data.map(function(comment, index){
+          return <Comment author={comment.author} key={index}>{comment.text}</Comment>
+        }.bind(this));
+  
+        return (
+          <div className="commentList">
+            {comments}
+          </div>
+        );
+      }
+    });
+  
+  var CommentForm = React.createClass({
+    formOnChange: function(e){
+      e.preventDefault();
+      var author = this.refs.author.value;
+      var text = this.refs.text.value;
+  
+      if(author!="" && text!=""){
+        this.props.formHandler(author, text);
+        this.refs.author.value = '';
+        this.refs.text.value = '';
+      }
+  
+      else{
+        alert("Fill author and text");
+      }
+  
+    },
+    render: function() {
+      return (
+        <div className="commentForm">
+          <form className="commentForm" onSubmit={this.formOnChange}>
+            <input type="text" placeholder="Your name" ref="author"/>
+            <input type="text" placeholder="Say something..." ref="text"/>
+            <input type="submit" value="Post" />
+          </form>
+        </div>
+      );
+    }
+  });
+  
+    var Comment = React.createClass({
+  
+      render: function() {
+        return (
+          <div className="comment">
+            <h2 className="commentAuthor">
+              {this.props.author}
+            </h2>
+            {this.props.children}
+          </div>
+        );
+      }
+    });
+  
+    ReactDOM.render(
+      <CommentBox data={data}/>,
+      document.getElementById('content')
+    );
+    </script>
+  
+  </body>
+  </html>
+  ```
+
+- 결과
+
+  <img src="Images/MQIiNiF.png">
+
+  - 위의 코드를 실행해 보면, form 태그에 입력하는 그대로 브라우저에 표시되는 것을 볼 수 있다. 이처럼 `this.state`를 이용하면 데이터를 변경하고 실시간으로 이를 표시할 수 있다.
+
+  - 위 코드를 자세히 보면, `CommentBox` component 내부에 `CommentList`, `CommentForm` component가 존재한다. 
+
+  - 그리고 이 예제에서 하려고 하는 일은 `CommentForm` component에서 데이터를 수정하면 그 변화가 `CommentList`에 나타날 수 있게 하는 것이다.
+
+  - 그러기 위해선 `CommentList`와 `CommentForm`의 데이터를 컨트롤 할 수 있는 `CommentBox`에 **state**를 두어야 한다. 먼저 `getInitialState` **Lifecycle Method**를 이용해 초기 state를 초기화 한다.
+
+    ```html
+    var CommentBox = React.createClass({ 
+    	getInitialState: function(){ 
+    		return {data: this.props.data}; 
+    	},
+    ```
+
+  - 이 후 data state를 변경할 `dataChange`함수를 만든다. 
+
+  - author와 text를 받아오면 기존 state에 데이터를 추가하고 `this.setState()` 함수를 호출하는 것을 볼 수 있다. 
+
+  - React JS에서 this.state를 직접적으로 변경하면 데이터는 변경 되나 rendering이 되지 않아 데이터 변화를 표시할 수 없다. 
+
+  - 하지만 `this.setState()` 함수를 이용하면 state 값을 변경하고 변경된 component를 **re-rendering**한다.
+
+    ```html
+    dataChange: function(author, text){ 
+    	var tmpData = this.state.data; 
+    	tmpData.push({ 
+    		author: author, 
+    		text: text 
+    	}); 
+    	
+    	this.setState({data:tmpData}); 
+    },
+    ```
+
+  - 하지만 이 `dataChange` 함수는 현재 component인 `CommentBox`에서 사용할 함수가 아닌 `CommentForm` component에서 사용할 함수이다. 그러므로 이 함수를 `CommentForm` component에 **props**로 넘겨준다.
+
+    ```html
+    var CommentBox = React.createClass({ 
+    ... 
+    ... 
+    	render: function() { 
+    		return ( 
+    			<div className="commentBox"> 
+                    <h1>Comments</h1> 
+                    <CommentList data={this.state.data} /> 
+                    <CommentForm formHandler={this.dataChange} /> 
+    			</div> 
+    		); 
+    	} 
+    });
+    ```
+
+  - 이제 `CommentForm`에서는 form submit 이벤트가 발생하면 input 태그의 값을 가져와 `this.props.formHandler` 함수를 사용할 함수를 만든다.
+
+    ```html
+    var CommentForm = React.createClass({ 
+    	formOnChange: function(e){ 
+    		e.preventDefault(); 
+    		var author = this.refs.author.value; 
+    		var text = this.refs.text.value; 
+    		if(author!="" && text!=""){ 
+    			this.props.formHandler(author, text); 
+    			this.refs.author.value = ''; 
+    			this.refs.text.value = ''; 
+    		} else{ 
+    			alert("Fill author and text"); 
+    		} 
+    	}, 
+    	... 
+    	<form className="commentForm" onSubmit={this.formOnChange}> 
+        	<input type="text" placeholder="Your name" ref="author"/> 
+        	<input type="text" placeholder="Say something..." ref="text"/> 
+    	</form> 
+    	... 
+    }); 
+    ```
+
+  - 일반 HTML에서 처럼 `onSubmit` 이벤트를 사용할 수 있으므로 만든 함수를 binding한다.
+
+  - form이 submit이 되면, input 태그에 붙어있는 `ref` 값을 이용해 DOM을 선택하고 값을 가져온다. 
+
+  - 이 후 `CommentBox`에서 만든 함수 `dataChange`를 호출하기 위해 `this.props.formHandler` 함수를 호출한다.
+
+  - 함수가 호출되면 `this.setState` 함수에 의해 state에 변화가 일어나고 React에서는 그 변화를 감지하여 변화된 DOM만 **re-rendering**한다.
+
+#### 요약
+
+- React JS 라이브러리를 이용해 Web 개발을 해 보니 정말 편리하다는 느낌을 받았다. 
+- 위에 서술했던대로 Front를 전부 JS로 작성하니 코드를 난잡하지 않게 할 수 있었고, 상위 component에서 하위 component 방향으로 **prop**와 **state**를 이용한 data-flow 방식도 정말 재밌었다. 
+- 특히 state를 변경함으로써 해당 state 값을 사용하는 component만 **re-rendering** 하는 방식이 마음에 든다. 
+- 또한 이 글에 나오진 않지만 **Mount**라는 개념과 `componentDidMount`, `ComponentWillMount` 등과 같은 **Lifecycle Method**도 흥미롭다.
 
 ## Ruby
 
