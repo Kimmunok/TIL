@@ -48,7 +48,7 @@
 
 # AWS 서버 [⬆︎](#목차)
 
-## EC2 (Elastic Computed Cloud) [⬆︎](#목차)
+## [EC2 (Elastic Computed Cloud)](#목차)
 
 ### 인스턴스 타입  
 
