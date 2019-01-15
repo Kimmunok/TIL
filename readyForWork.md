@@ -6,7 +6,7 @@
 
 - [iOS 관련 지식](#iOS-관련-지식-⬆︎)
 - [AWS 서버](#AWS-서버-⬆︎)
-  - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud)-⬆︎)
+  - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud))
   - [EBS (Elastic Block Store)](#EBS-(Elastic-Block-Store)-⬆︎)
   - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service)-⬆︎)
   - [AutoScaling](#AutoScaling-⬆︎)
