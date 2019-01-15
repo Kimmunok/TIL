@@ -2,7 +2,7 @@
 
 
 
-목차
+##### 목차
 
 - [iOS 관련 지식](#iOS-관련-지식)
 
@@ -54,13 +54,13 @@
 
 
 
-# iOS 관련 지식
+# iOS 관련 지식 [⬆︎](#목차)
 
 
 
-# AWS 서버  
+# AWS 서버 [⬆︎](#목차)
 
-## EC2 (Elastic Computed Cloud)
+## EC2 (Elastic Computed Cloud) [⬆︎](#목차)
 
 ### 인스턴스 타입  
 
@@ -227,7 +227,99 @@ $ aws ec2 run-instances --image-id ami-25dd9324 --count 1 --monitoring Enabled=f
 - key-name
   - EC2 인스턴스 접속에 사용할 키 쌍 이름을 설정
 
-## EBS (Elastic Block Store)
+### Ruby 예제
+
+#### 인스턴스 생성
+
+- 다음 예제에서는 태그 `Group` 및 값 `MyGroovyGroup`으로 Amazon EC2 인스턴스 `MyGroovyInstance`를 생성합니다. 인스턴스는 ID `ACCOUNT_ID`의 계정에 대한 머신 이미지 `MACHINE_IMAGE`가 있는 가용 영역 `us-west-2a`, ID `SECURITY_GROUP_ID`의 보안 그룹, ID `SUBNET_ID`의 서브넷에서 생성됩니다. 그러면 인스턴스의 ID 및 퍼블릭 IP 주소가 표시됩니다.
+
+  - 빈 스크립트 값에서 Amazon EC2 인스턴스가 시작될 때 실행된다는 지침을 추가할 수 있습니다.
+
+  ~~~ruby
+  require 'aws-sdk'
+  require 'base64'
+  
+  # User code that's executed when the instance starts
+  script = ''
+  
+  encoded_script = Base64.encode64(script)
+  
+  ec2 = Aws::EC2::Resource.new(region: 'us-west-2')
+  
+  instance = ec2.create_instances({
+    image_id: 'IMAGE_ID',
+    min_count: 1,
+    max_count: 1,
+    key_name: 'MyGroovyKeyPair',
+    security_group_ids: ['SECURITY_GROUP_ID'],
+    user_data: encoded_script,
+    instance_type: 't2.micro',
+    placement: {
+      availability_zone: 'us-west-2a'
+    },
+    subnet_id: 'SUBNET_ID',
+    iam_instance_profile: {
+      arn: 'arn:aws:iam::' + 'ACCOUNT_ID' + ':instance-profile/aws-opsworks-ec2-role'
+    }
+  })
+  
+  # Wait for the instance to be created, running, and passed status checks
+  ec2.client.wait_until(:instance_status_ok, {instance_ids: [instance[0].id]})
+  
+  # Name the instance 'MyGroovyInstance' and give it the Group tag 'MyGroovyGroup'
+  instance.create_tags({ tags: [{ key: 'Name', value: 'MyGroovyInstance' }, { key: 'Group', value: 'MyGroovyGroup' }]})
+  
+  puts instance.id
+  puts instance.public_ip_address
+  ~~~
+
+#### 인스턴스 시작하기
+
+- 다음 예제에서는 `us-west-2` 리전에서 인스턴스 `i-123abc`를 시작합니다.
+
+  ```ruby
+  require 'aws-sdk'
+  
+  ec2 = Aws::EC2::Resource.new(region: 'us-west-2')
+        
+  i = ec2.instance('i-123abc')
+      
+  if i.exists?
+    case i.state.code
+    when 0  # pending
+      puts "#{id} is pending, so it will be running in a bit"
+    when 16  # started
+      puts "#{id} is already started"
+    when 48  # terminated
+      puts "#{id} is terminated, so you cannot start it"
+    else
+      i.start
+    end
+  end
+  ```
+
+#### 특정 태그 값이 있는 모든 인스턴스에 대한 정보 획득
+
+- 다음 예제에서는 us-west-2 리전에 태그 Group 및 태그 값 MyGroovyGroup이 있는 Amazon EC2 인스턴스의 ID 및 상태(보류 중, 실행 중, 종료 중, 종료됨, 중지 중 또는 중지됨)를 나열합니다.
+
+  - 태그 이름과 값은 대/소문자를 구분합니다.
+
+  ~~~ruby
+  require 'aws-sdk'
+  
+  ec2 = Aws::EC2::Resource.new(region: 'us-west-2')
+  
+  # Get all instances with tag key 'Group'
+  # and tag value 'MyGroovyGroup':
+  ec2.instances({filters: [{name: 'tag:Group', values: ['MyGroovyGroup']}]}).each do |i|
+    puts 'ID:    ' + i.id
+    puts 'State: ' + i.state.name
+  end
+  ~~~
+
+
+
+## EBS (Elastic Block Store) [⬆︎](#목차)
 
 ### 개요
 
@@ -251,7 +343,7 @@ $ aws ec2 run-instances --image-id ami-25dd9324 --count 1 --monitoring Enabled=f
 - IOPS(Input/Output Operation Per Second)
   - 저장 장치의 성능 측정 단위
 
-## S3 (Simple Storage Service)
+## S3 (Simple Storage Service) [⬆︎](#목차)
 
 ### 개요
 
@@ -323,16 +415,137 @@ $ aws s3api put-object --bucket 버킷명 --key 객체파일명 --acl public-rea
 $ aws s3api get-object --bucket 버킷명 --key 객체파일명
 ~~~
 
+### Ruby 예제
 
+#### SDK 구성
 
-## AutoScaling
+- 이 예제의 경우 Amazon S3용 AWS SDK for Ruby에서 제공하는 클래스와 메서드를 사용하고 JSON 형식 데이터로 작업할 수 있도록 require 문을 추가하십시오. 
+
+- 그리고 나서 버킷을 생성하려는 AWS 리전에서 Aws::S3::Client 객체를 생성하고 지정된 AWS 프로필을 생성합니다. 
+
+- 이 코드는 us-east-1 리전에 Aws::S3::Client 객체를 생성합니다. 
+
+- 이 예제에 사용된 두 개의 버킷에 대해 추가 변수도 선언됩니다.
+
+  ~~~ruby
+  require 'aws-sdk'
+  require 'json'
+  
+  profile_name = 'david'
+  region = "us-east-1"
+  bucket = 'doc-sample-bucket'
+  my_bucket = 'david-cloud'
+  
+  # S3
+  
+  # Configure SDK
+  s3 = Aws::S3::Client.new(profile: profile_name, region: region)
+  ~~~
+
+#### 버킷 목록 가져오기
+
+- list_buckets 메서드를 호출합니다. 
+
+- 이렇게 하면 버킷 목록을 나타내는 Aws::S3::Types::ListBucketsOutput 클래스의 인스턴스가 반환됩니다. 
+
+- 그런 다음 ListBucketsOutput 클래스의 buckets 속성을 사용하여 각 버킷의 이름에 대한 name 같은 버킷의 속성에 액세스합니다.
+
+  ~~~ruby
+  resp = s3.list_buckets
+  resp.buckets.each do |bucket|
+    puts bucket.name
+  end
+  ~~~
+
+#### 버킷 만들기
+
+- create_bucket 메서드를 호출해 버킷의 이름을 지정하십시오.
+
+  - 버킷 이름은 AWS 계정만이 아니라 Amazon S3에서 고유해야 합니다.
+
+  ~~~ruby
+  s3.create_bucket(bucket: bucket)
+  ~~~
+
+#### 버킷에 객체(파일) 업로드
+
+- put_object 메서드를 호출해 버킷의 이름과 생성할 파일의 이름 같은 설정을 지정하십시오. 
+
+- 파일의 내용에 대해 Ruby File 클래스의 인스턴스 또는 이 예제에서 파일의 데이터를 나타내는 문자열을 지정할 수 있습니다.
+
+- 파일이 성공적으로 업로드되었는지 확인하려면 list_objects_v2 메서드를 호출하십시오. 
+
+- 이렇게 하면 버킷의 객체를 나타내는 Aws::S3::Types::ListObjectsV2Output 클래스의 인스턴스가 반환됩니다. 
+
+- 그런 다음 ListObjectsV2Output 클래스의 contents 메서드를 사용하여 각 버킷의 이름에 대한 key 같은 객체의 속성에 액세스합니다.
+
+  ~~~ruby
+  s3.put_object(bucket: bucket, key: "file1", body: "My first s3 object")
+  
+  # Check the file exists
+  resp = s3.list_objects_v2(bucket: bucket)
+  resp.contents.each do |obj|
+    puts obj.key
+  end
+  ~~~
+
+#### 버킷 간 파일 복사
+
+- copy_object 메서드를 호출해 객체를 수신할 대상 버킷의 이름(bucket), 복사할 원본 버킷 및 객체의 이름(copy_source), 대상 버킷에 복사되는 새 객체의 이름(key)을 지정하십시오.
+
+- 이 예제에서 복사할 객체를 포함하는 버킷의 이름은 #{my_bucket}으로, david-cloud라는 이름의 버킷입니다. 복사 작업 후에 david-cloud 버킷의 test_file 이름이 doc-sample-bucket 버킷의 file2로 바뀌고, david-cloud 버킷의 test_file1 이름이 doc-sample-bucket 버킷의 file3으로 바뀝니다.
+
+  ~~~ruby
+  s3.copy_object(bucket: bucket,
+                 copy_source: "#{my_bucket}/test_file",
+                 key: 'file2')
+  s3.copy_object(bucket: bucket,
+                 copy_source: "#{my_bucket}/test_file1",
+                 key: 'file3')
+  ~~~
+
+#### 버킷에서 파일 삭제
+
+- delete_objects 메서드를 호출하십시오. 
+
+- delete 인수의 경우 Aws::S3::Types::Delete 유형의 인스턴스를 사용해 삭제할 객체를 표현하십시오. 
+
+- 이 예제에서 objects는 삭제할 두 개의 파일을 나타냅니다.
+
+- 파일이 성공적으로 삭제되었는지 확인하려면 전과 같이 list_objects_v2 메서드를 호출하십시오. 
+
+- 이번에는 클래스의 contents 메서드를 사용할 때 삭제된 파일 이름(여기서 key로 표현됨)이 표시되어서는 안 됩니다.
+
+  ~~~ruby
+  s3.delete_objects(
+    bucket: 'doc-sample-bucket',
+    delete: {
+      objects: [
+        {
+          key: 'file2'
+        },
+        {
+          key: 'file3'
+        }
+      ]
+    }
+  )
+  
+  # Verify objects now have been deleted
+  resp = s3.list_objects_v2(bucket: bucket)
+  resp.contents.each do |obj|
+    puts obj.key
+  end
+  ~~~
+
+## AutoScaling [⬆︎](#목차)
 
 - 트래픽이 늘어나면 자동으로 EC2 인스턴스를 생성해 서비스를 확장하는 기능
 - 컴퓨터(인스턴스)를 자동으로 생성해서 바로 서비스를 시작하게 하고 더 이상 인스턴스가 필요없어지면 자동으로 삭제해서 과금이 발생하지 않도록 한다. 
 - 보통 Auto Scaling은 ELB(Elastic Load Balancing)와 함께 사용
   - Auto Scaling은 생성한 EC2 인스턴스를 ELB 로드 밸런서에 연결하고, ELB 로드 밸런서는 새로 생성된 EC2 인스턴스에 트래픽을 분산합니다.
 
-## Elastic IP
+## Elastic IP [⬆︎](#목차)
 
 ### 개요
 
@@ -348,13 +561,13 @@ $ aws s3api get-object --bucket 버킷명 --key 객체파일명
 
 ------
 
-# 이젤의 Techstack
+# 이젤의 Techstack [⬆︎](#목차)
 
 
 
-# Application and Data
+# Application and Data [⬆︎](#목차)
 
-## React
+## React [⬆︎](#목차)
 
 ### 개요
 
@@ -924,7 +1137,7 @@ var CommentForm = React.createClass({
 - 특히 state를 변경함으로써 해당 state 값을 사용하는 component만 **re-rendering** 하는 방식이 마음에 든다. 
 - 또한 이 글에 나오진 않지만 **Mount**라는 개념과 `componentDidMount`, `ComponentWillMount` 등과 같은 **Lifecycle Method**도 흥미롭다.
 
-## Ruby
+## Ruby [⬆︎](#목차)
 
 - 루비는 인터프리터 형식으로 실행되는 고기능 스크립트 언어이자 뛰어난 객체 지향적 언어이다.
 
@@ -1000,7 +1213,7 @@ var CommentForm = React.createClass({
 - 파이썬이 정형화된 들여쓰기를 요구하는 반면 루비는 정형화 된 서식을 요구하지는 않는다.
 - 세계적으로 파이썬이 인기가 더 많다.
 
-## C#
+## C# [⬆︎](#목차)
 
 ### 개요
 
@@ -1053,7 +1266,7 @@ var CommentForm = React.createClass({
   - 기업에서 주로 쓰고 있으나, ~~비싼~~ 윈도우 서버(인터넷 정보 서비스)를 비롯한 각종 라이선스 비용 문제 등으로 개인 웹호스팅 쪽은 크게 활성화되지 못했다. 
   - 2014년의 .NET 오픈소스화 이후, macOS와 리눅스에서도 돌아가는 오픈소스 구현체인 ASP.NET Core가 등장했지만...그리 흥하지는 못하고 있다.
 
-## nginx
+## nginx [⬆︎](#목차)
 
 - Nginx(엔진 x라 읽는다)는 웹 서버 소프트웨어로, 가벼움과 높은 성능을 목표로 한다. 웹 서버, 리버스 프록시 및 메일 프록시 기능을 가진다.
 - 2017년 10월 기준으로 실질적으로 작동하는 웹 사이트(active site)들에서 쓰이는 웹 서버 소프트웨어 순위
@@ -1091,13 +1304,13 @@ var CommentForm = React.createClass({
 - STARTTLS 지원
 - SSL 지원
 
-## Ubuntu
+## Ubuntu [⬆︎](#목차)
 
 ### 개요
 
 - [리눅스](https://namu.wiki/w/%EB%A6%AC%EB%88%85%EC%8A%A4) 커널을 기반으로 한 리눅스 배포판 가운데 하나. 영국의 소프트웨어 회사 [캐노니컬](http://www.canonical.com/)과 [우분투 재단](http://community.ubuntu.com/)이 개발, 배포, 유지보수를 맡고 있다.
 
-## Sass
+## Sass [⬆︎](#목차)
 
 - **Sass** (Syntactically Awesome Style Sheets : 문법적으로 짱 멋진 스타일시트) 는 **CSS pre-processor** 로서, 복잡한 작업을 쉽게 할 수 있게 해주고, 코드의 재활용성을 높여줄 뿐 만 아니라, 코드의 가독성을 높여주어 유지보수를 쉽게해줍니다.
 
@@ -1116,7 +1329,7 @@ var CommentForm = React.createClass({
    - 이는 C언어로 작성된 매우 빠른 Sass compiler 입니다.
      많은 환경에서 사용될 수 있습니다.
 
-## Rails
+## Rails [⬆︎](#목차)
 
 ### 개요
 
@@ -1149,7 +1362,7 @@ var CommentForm = React.createClass({
 - 성능 문제가 있다고 하는데, 차이는 그렇게 크지 않다고 한다. 깃허브, 그루폰, ~~트위터~~[[1\]](https://namu.wiki/w/Ruby%20on%20Rails#fn-1), 카카오 같은 대형 회사들도 Ruby on Rails를 사용한다. 사실 하드웨어 자원을 빡세게 활용하는 애플리케이션(게임 등)이 아닌 이상, 성능은 언어의 속도보다는 데이터베이스를 얼마나 빠르게 가져오느냐 등 외부적 요소에 영향을 더 크게 받는다.
 - [Python](https://namu.wiki/w/Python)의 [Flask](https://namu.wiki/w/Flask)에 해당하는게 [Ruby](https://namu.wiki/w/Ruby)의 [Sinatra](https://namu.wiki/w/Sinatra)이다.
 
-## TypeScript
+## TypeScript [⬆︎](#목차)
 
 ### 개요
 
@@ -1180,7 +1393,7 @@ var CommentForm = React.createClass({
 - `npm install -g typescript` 커맨드를 통해서 설치할 수 있다.
 - Visual Studio 2013 update 2가 설치되어 있다면 기본으로 설치되어 있다.
 
-## RxJS
+## RxJS [⬆︎](#목차)
 
 ### 개요
 
@@ -1213,7 +1426,7 @@ var CommentForm = React.createClass({
    - Observable 연산자 체인에 멀티스레딩을 적용하고 싶다면, 특정 스케줄러를 사용해서 연산자(또는 특정 Observable)를 실행하면 된다.
    - ReactiveX의 일부 Observable 연산자는 사용할 스케줄러를 파라미터로 전달 받기도 하는데, 이 연산자들은 자신이 처리할 연산의 일부 또는 전체를 전달된 스케줄러 내에서 실행한다.
 
-## Docker for AWS
+## Docker for AWS [⬆︎](#목차)
 
 ### 개요
 
@@ -1239,7 +1452,7 @@ var CommentForm = React.createClass({
 - Docker의 간단한 구문을 사용해 완벽하게 제어할 수 있습니다. 
 - 폭넓게 도입되었다는 것은 Docker를 사용할 수 있는 도구 및 상용 애플리케이션의 에코시스템이 강력하다는 의미입니다.
 
-## GraphQL Ruby
+## GraphQL Ruby [⬆︎](#목차)
 
 ### 개요
 
@@ -1335,9 +1548,9 @@ var CommentForm = React.createClass({
 - 따라서, 이미 구현된 시스템에 도입을 해도 기존에 있던 시스템이 무너지지 않기 때문에 부담 없이 적용을 할 수 있습니다.
 - GraphQL을 사용하면 큰 노력을 들이지 않고도, 다양한 형태의 데이터를 fetching 을 할 수 있는 시스템을 구현 할 수 있습니다.
 
-# Utilities
+# Utilities [⬆︎](#목차)
 
-## SendGrid
+## SendGrid [⬆︎](#목차)
 
 ### 개요
 
@@ -1361,7 +1574,7 @@ var CommentForm = React.createClass({
 - Python
 - Ruby
 
-## Let’s Encrypt
+## Let’s Encrypt [⬆︎](#목차)
 
 ### 개요
 
@@ -1373,7 +1586,7 @@ var CommentForm = React.createClass({
 - [모질라 재단](https://namu.wiki/w/%EB%AA%A8%EC%A7%88%EB%9D%BC%20%EC%9E%AC%EB%8B%A8), [페이스북](https://namu.wiki/w/%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%B6%81), [구글](https://namu.wiki/w/%EA%B5%AC%EA%B8%80) 등 많은 업체가 스폰서로 등록되어 있다. 
 - 루트 도메인 (네이키드 도메인), 특정 서브 도메인 뿐만 아니라, 하나의 인증서로 모든 서브 도메인에 사용 가능한 *.example.com 형태의 와일드카드 서브 도메인 인증서도 무료로 발급하므로 그 활용이 폭넓다.
 
-## OpenCV
+## OpenCV [⬆︎](#목차)
 
 ### 개요
 
@@ -1422,9 +1635,9 @@ var CommentForm = React.createClass({
 - 이미지 변환(image warping)
 - 하드웨어 가속
 
-# DevOps
+# DevOps [⬆︎](#목차)
 
-## BitBucket
+## BitBucket [⬆︎](#목차)
 
 ### 개요
 
@@ -1489,7 +1702,7 @@ var CommentForm = React.createClass({
 - bitbucket 설정에 몇명이 승인하면 머지되도록 설정이 가능합니다.
 - 코드 리뷰가 단방향으로 진행되는 경우가 있는데 이는 지양해야 합니다. (코드리뷰를 하는 사람의 적극적인 자세가 필요.)
 
-## Kubernetes
+## Kubernetes [⬆︎](#목차)
 
 ### 개요
 
@@ -1530,7 +1743,7 @@ var CommentForm = React.createClass({
 
     <img src="Images/k8s-pod.png">
 
-## Vagrant
+## Vagrant [⬆︎](#목차)
 
 ### 개요
 
@@ -1552,9 +1765,9 @@ var CommentForm = React.createClass({
 - `vagrant provision`
   - vagrant에서 관리하는 가상머신의 설정을 변경하고 적용합니다.
 
-# Business Tools
+# Business Tools [⬆︎](#목차)
 
-## Slack
+## Slack [⬆︎](#목차)
 
 ### 사용팁
 
@@ -1579,7 +1792,7 @@ var CommentForm = React.createClass({
 - 구글드라이브의 파일 url 
 - 처음이더라도 url만 입력하시면 (슬랙의 통합서비스에 한하여) 연동할 것인지 물어보는 질문이 뜹니다.
 
-## Trello
+## Trello [⬆︎](#목차)
 
 ### 기능
 
@@ -1600,7 +1813,7 @@ var CommentForm = React.createClass({
 - 곧, 카드가 할일의 기본적인 단위가 된다. 
 - Basecamp 등 다른 프로젝트 관리 소프트웨어 비해 단순한 디자인을 가지고 있다는 평가를 받고 있다.
 
-## Confluence
+## Confluence [⬆︎](#목차)
 
 ### 개요
 
@@ -1649,7 +1862,7 @@ var CommentForm = React.createClass({
 
 #### 블로그 3: 신입사원을 위한 문서
 
-## JIRA
+## JIRA [⬆︎](#목차)
 
 ### 개요
 
@@ -1704,7 +1917,7 @@ var CommentForm = React.createClass({
 
 - JQL 문법에 대한 자세한 내용은 JIRA 문서 Advanced Searching 에서 찾아보자.
 
-## MailChimp
+## MailChimp [⬆︎](#목차)
 
 ### 개요
 
@@ -1725,7 +1938,7 @@ var CommentForm = React.createClass({
 - 모든 노력을 최적화하십시오
   - 모든 캠페인에서 조금 더 똑똑해질 수 있습니다.
 
-## Figma
+## Figma [⬆︎](#목차)
 
 ### 기능
 
