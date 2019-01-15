@@ -4,18 +4,18 @@
 
 ##### 목차
 
-- [iOS 관련 지식](#iOS-관련-지식-⬆︎)
-- [AWS 서버](#AWS-서버-⬆︎)
+- [iOS 관련 지식](#iOS-관련-지식)
+- [AWS 서버](#AWS-서버)
   - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud))
-  - [EBS (Elastic Block Store)](#EBS-(Elastic-Block-Store)-⬆︎)
-  - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service)-⬆︎)
-  - [AutoScaling](#AutoScaling-⬆︎)
-  - [Elastic IP](#Elastic-IP-⬆︎)
-- [이젤의 Techstack](#이젤의-Techstack-⬆︎)
-  - [Application and Data](#Application-and-Data-⬆︎)
-    - [React](#React-⬆︎)
-    - [Ruby](#Ruby-⬆︎)
-    - [C#](#C#-⬆︎)
+  - [EBS (Elastic Block Store)](#EBS-(Elastic-Block-Store))
+  - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service))
+  - [AutoScaling](#AutoScaling)
+  - [Elastic IP](#Elastic-IP)
+- [이젤의 Techstack](#이젤의-Techstack)
+  - [Application and Data](#Application-and-Data)
+    - [React](#React)
+    - [Ruby](#Ruby)
+    - [C#](#C#)
     - [nginx](#nginx)
     - [Ubuntu](#Ubuntu)
     - [Sass](#Sass)
@@ -42,13 +42,13 @@
 
 
 
-# iOS 관련 지식 [⬆︎](#목차)
+# iOS 관련 지식
 
 
 
-# AWS 서버 [⬆︎](#목차)
+# AWS 서버 
 
-## [EC2 (Elastic Computed Cloud)](#목차)
+## EC2 (Elastic Computed Cloud)
 
 ### 인스턴스 타입  
 
@@ -307,7 +307,7 @@ $ aws ec2 run-instances --image-id ami-25dd9324 --count 1 --monitoring Enabled=f
 
 
 
-## EBS (Elastic Block Store) [⬆︎](#목차)
+## EBS (Elastic Block Store) 
 
 ### 개요
 
@@ -331,7 +331,7 @@ $ aws ec2 run-instances --image-id ami-25dd9324 --count 1 --monitoring Enabled=f
 - IOPS(Input/Output Operation Per Second)
   - 저장 장치의 성능 측정 단위
 
-## S3 (Simple Storage Service) [⬆︎](#목차)
+## S3 (Simple Storage Service) 
 
 ### 개요
 
@@ -526,14 +526,14 @@ $ aws s3api get-object --bucket 버킷명 --key 객체파일명
   end
   ~~~
 
-## AutoScaling [⬆︎](#목차)
+## AutoScaling 
 
 - 트래픽이 늘어나면 자동으로 EC2 인스턴스를 생성해 서비스를 확장하는 기능
 - 컴퓨터(인스턴스)를 자동으로 생성해서 바로 서비스를 시작하게 하고 더 이상 인스턴스가 필요없어지면 자동으로 삭제해서 과금이 발생하지 않도록 한다. 
 - 보통 Auto Scaling은 ELB(Elastic Load Balancing)와 함께 사용
   - Auto Scaling은 생성한 EC2 인스턴스를 ELB 로드 밸런서에 연결하고, ELB 로드 밸런서는 새로 생성된 EC2 인스턴스에 트래픽을 분산합니다.
 
-## Elastic IP [⬆︎](#목차)
+## Elastic IP 
 
 ### 개요
 
@@ -549,13 +549,13 @@ $ aws s3api get-object --bucket 버킷명 --key 객체파일명
 
 ------
 
-# 이젤의 Techstack [⬆︎](#목차)
+# 이젤의 Techstack 
 
 
 
-# Application and Data [⬆︎](#목차)
+# Application and Data 
 
-## React [⬆︎](#목차)
+## React 
 
 ### 개요
 
@@ -1125,7 +1125,7 @@ var CommentForm = React.createClass({
 - 특히 state를 변경함으로써 해당 state 값을 사용하는 component만 **re-rendering** 하는 방식이 마음에 든다. 
 - 또한 이 글에 나오진 않지만 **Mount**라는 개념과 `componentDidMount`, `ComponentWillMount` 등과 같은 **Lifecycle Method**도 흥미롭다.
 
-## Ruby [⬆︎](#목차)
+## Ruby 
 
 - 루비는 인터프리터 형식으로 실행되는 고기능 스크립트 언어이자 뛰어난 객체 지향적 언어이다.
 
@@ -1201,7 +1201,7 @@ var CommentForm = React.createClass({
 - 파이썬이 정형화된 들여쓰기를 요구하는 반면 루비는 정형화 된 서식을 요구하지는 않는다.
 - 세계적으로 파이썬이 인기가 더 많다.
 
-## C# [⬆︎](#목차)
+## C# 
 
 ### 개요
 
@@ -1254,7 +1254,7 @@ var CommentForm = React.createClass({
   - 기업에서 주로 쓰고 있으나, ~~비싼~~ 윈도우 서버(인터넷 정보 서비스)를 비롯한 각종 라이선스 비용 문제 등으로 개인 웹호스팅 쪽은 크게 활성화되지 못했다. 
   - 2014년의 .NET 오픈소스화 이후, macOS와 리눅스에서도 돌아가는 오픈소스 구현체인 ASP.NET Core가 등장했지만...그리 흥하지는 못하고 있다.
 
-## nginx [⬆︎](#목차)
+## nginx 
 
 - Nginx(엔진 x라 읽는다)는 웹 서버 소프트웨어로, 가벼움과 높은 성능을 목표로 한다. 웹 서버, 리버스 프록시 및 메일 프록시 기능을 가진다.
 - 2017년 10월 기준으로 실질적으로 작동하는 웹 사이트(active site)들에서 쓰이는 웹 서버 소프트웨어 순위
@@ -1292,13 +1292,13 @@ var CommentForm = React.createClass({
 - STARTTLS 지원
 - SSL 지원
 
-## Ubuntu [⬆︎](#목차)
+## Ubuntu 
 
 ### 개요
 
 - [리눅스](https://namu.wiki/w/%EB%A6%AC%EB%88%85%EC%8A%A4) 커널을 기반으로 한 리눅스 배포판 가운데 하나. 영국의 소프트웨어 회사 [캐노니컬](http://www.canonical.com/)과 [우분투 재단](http://community.ubuntu.com/)이 개발, 배포, 유지보수를 맡고 있다.
 
-## Sass [⬆︎](#목차)
+## Sass 
 
 - **Sass** (Syntactically Awesome Style Sheets : 문법적으로 짱 멋진 스타일시트) 는 **CSS pre-processor** 로서, 복잡한 작업을 쉽게 할 수 있게 해주고, 코드의 재활용성을 높여줄 뿐 만 아니라, 코드의 가독성을 높여주어 유지보수를 쉽게해줍니다.
 
@@ -1317,7 +1317,7 @@ var CommentForm = React.createClass({
    - 이는 C언어로 작성된 매우 빠른 Sass compiler 입니다.
      많은 환경에서 사용될 수 있습니다.
 
-## Rails [⬆︎](#목차)
+## Rails 
 
 ### 개요
 
@@ -1350,7 +1350,7 @@ var CommentForm = React.createClass({
 - 성능 문제가 있다고 하는데, 차이는 그렇게 크지 않다고 한다. 깃허브, 그루폰, ~~트위터~~[[1\]](https://namu.wiki/w/Ruby%20on%20Rails#fn-1), 카카오 같은 대형 회사들도 Ruby on Rails를 사용한다. 사실 하드웨어 자원을 빡세게 활용하는 애플리케이션(게임 등)이 아닌 이상, 성능은 언어의 속도보다는 데이터베이스를 얼마나 빠르게 가져오느냐 등 외부적 요소에 영향을 더 크게 받는다.
 - [Python](https://namu.wiki/w/Python)의 [Flask](https://namu.wiki/w/Flask)에 해당하는게 [Ruby](https://namu.wiki/w/Ruby)의 [Sinatra](https://namu.wiki/w/Sinatra)이다.
 
-## TypeScript [⬆︎](#목차)
+## TypeScript 
 
 ### 개요
 
@@ -1381,7 +1381,7 @@ var CommentForm = React.createClass({
 - `npm install -g typescript` 커맨드를 통해서 설치할 수 있다.
 - Visual Studio 2013 update 2가 설치되어 있다면 기본으로 설치되어 있다.
 
-## RxJS [⬆︎](#목차)
+## RxJS 
 
 ### 개요
 
@@ -1414,7 +1414,7 @@ var CommentForm = React.createClass({
    - Observable 연산자 체인에 멀티스레딩을 적용하고 싶다면, 특정 스케줄러를 사용해서 연산자(또는 특정 Observable)를 실행하면 된다.
    - ReactiveX의 일부 Observable 연산자는 사용할 스케줄러를 파라미터로 전달 받기도 하는데, 이 연산자들은 자신이 처리할 연산의 일부 또는 전체를 전달된 스케줄러 내에서 실행한다.
 
-## Docker for AWS [⬆︎](#목차)
+## Docker for AWS 
 
 ### 개요
 
@@ -1440,7 +1440,7 @@ var CommentForm = React.createClass({
 - Docker의 간단한 구문을 사용해 완벽하게 제어할 수 있습니다. 
 - 폭넓게 도입되었다는 것은 Docker를 사용할 수 있는 도구 및 상용 애플리케이션의 에코시스템이 강력하다는 의미입니다.
 
-## GraphQL Ruby [⬆︎](#목차)
+## GraphQL Ruby 
 
 ### 개요
 
@@ -1536,9 +1536,9 @@ var CommentForm = React.createClass({
 - 따라서, 이미 구현된 시스템에 도입을 해도 기존에 있던 시스템이 무너지지 않기 때문에 부담 없이 적용을 할 수 있습니다.
 - GraphQL을 사용하면 큰 노력을 들이지 않고도, 다양한 형태의 데이터를 fetching 을 할 수 있는 시스템을 구현 할 수 있습니다.
 
-# Utilities [⬆︎](#목차)
+# Utilities 
 
-## SendGrid [⬆︎](#목차)
+## SendGrid 
 
 ### 개요
 
@@ -1562,7 +1562,7 @@ var CommentForm = React.createClass({
 - Python
 - Ruby
 
-## Let’s Encrypt [⬆︎](#목차)
+## Let’s Encrypt 
 
 ### 개요
 
@@ -1574,7 +1574,7 @@ var CommentForm = React.createClass({
 - [모질라 재단](https://namu.wiki/w/%EB%AA%A8%EC%A7%88%EB%9D%BC%20%EC%9E%AC%EB%8B%A8), [페이스북](https://namu.wiki/w/%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%B6%81), [구글](https://namu.wiki/w/%EA%B5%AC%EA%B8%80) 등 많은 업체가 스폰서로 등록되어 있다. 
 - 루트 도메인 (네이키드 도메인), 특정 서브 도메인 뿐만 아니라, 하나의 인증서로 모든 서브 도메인에 사용 가능한 *.example.com 형태의 와일드카드 서브 도메인 인증서도 무료로 발급하므로 그 활용이 폭넓다.
 
-## OpenCV [⬆︎](#목차)
+## OpenCV 
 
 ### 개요
 
@@ -1623,9 +1623,9 @@ var CommentForm = React.createClass({
 - 이미지 변환(image warping)
 - 하드웨어 가속
 
-# DevOps [⬆︎](#목차)
+# DevOps 
 
-## BitBucket [⬆︎](#목차)
+## BitBucket 
 
 ### 개요
 
@@ -1690,7 +1690,7 @@ var CommentForm = React.createClass({
 - bitbucket 설정에 몇명이 승인하면 머지되도록 설정이 가능합니다.
 - 코드 리뷰가 단방향으로 진행되는 경우가 있는데 이는 지양해야 합니다. (코드리뷰를 하는 사람의 적극적인 자세가 필요.)
 
-## Kubernetes [⬆︎](#목차)
+## Kubernetes 
 
 ### 개요
 
@@ -1731,7 +1731,7 @@ var CommentForm = React.createClass({
 
     <img src="Images/k8s-pod.png">
 
-## Vagrant [⬆︎](#목차)
+## Vagrant 
 
 ### 개요
 
@@ -1753,9 +1753,9 @@ var CommentForm = React.createClass({
 - `vagrant provision`
   - vagrant에서 관리하는 가상머신의 설정을 변경하고 적용합니다.
 
-# Business Tools [⬆︎](#목차)
+# Business Tools 
 
-## Slack [⬆︎](#목차)
+## Slack 
 
 ### 사용팁
 
@@ -1780,7 +1780,7 @@ var CommentForm = React.createClass({
 - 구글드라이브의 파일 url 
 - 처음이더라도 url만 입력하시면 (슬랙의 통합서비스에 한하여) 연동할 것인지 물어보는 질문이 뜹니다.
 
-## Trello [⬆︎](#목차)
+## Trello 
 
 ### 기능
 
@@ -1801,7 +1801,7 @@ var CommentForm = React.createClass({
 - 곧, 카드가 할일의 기본적인 단위가 된다. 
 - Basecamp 등 다른 프로젝트 관리 소프트웨어 비해 단순한 디자인을 가지고 있다는 평가를 받고 있다.
 
-## Confluence [⬆︎](#목차)
+## Confluence 
 
 ### 개요
 
@@ -1850,7 +1850,7 @@ var CommentForm = React.createClass({
 
 #### 블로그 3: 신입사원을 위한 문서
 
-## JIRA [⬆︎](#목차)
+## JIRA 
 
 ### 개요
 
@@ -1905,7 +1905,7 @@ var CommentForm = React.createClass({
 
 - JQL 문법에 대한 자세한 내용은 JIRA 문서 Advanced Searching 에서 찾아보자.
 
-## MailChimp [⬆︎](#목차)
+## MailChimp 
 
 ### 개요
 
@@ -1926,7 +1926,7 @@ var CommentForm = React.createClass({
 - 모든 노력을 최적화하십시오
   - 모든 캠페인에서 조금 더 똑똑해질 수 있습니다.
 
-## Figma [⬆︎](#목차)
+## Figma 
 
 ### 기능
 
