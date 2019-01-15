@@ -12,6 +12,7 @@
   - [EBS (Elastic Block Store)](#EBS-(Elastic-Block-Store))
   - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service))
   - [AutoScaling](#AutoScaling)
+  - [Elastic IP](#Elastic-IP)
 
 - [이젤의 Techstack](#이젤의-Techstack)
 
