@@ -17,7 +17,6 @@
 - [이젤의 Techstack](#이젤의-Techstack)
 
   - [Application and Data](#Application-and-Data)
-
     - [React](#React)
     - [Ruby](#Ruby)
     - [C#](#C#)
