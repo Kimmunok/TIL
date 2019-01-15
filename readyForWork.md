@@ -4,53 +4,9 @@
 
 ##### 목차
 
-- [iOS 관련 지식](#iOS-관련-지식)
+* 목차
+{:toc}
 
-- [AWS 서버](#AWS-서버)
-
-  - [EC2 (Elastic Computed Cloud)](#EC2-(Elastic-Computed-Cloud))
-  - [EBS (Elastic Block Store)](#EBS-(Elastic-Block-Store))
-  - [S3 (Simple Storage Service)](#S3-(Simple-Storage-Service))
-  - [AutoScaling](#AutoScaling)
-  - [Elastic IP](#Elastic-IP)
-
-- [이젤의 Techstack](#이젤의-Techstack)
-
-  - [Application and Data](#Application-and-Data)
-    - [React](#React)
-    - [Ruby](#Ruby)
-    - [C#](#C#)
-    - [nginx](#nginx)
-    - [Ubuntu](#Ubuntu)
-    - [Sass](#Sass)
-    - [Rails](#Rails)
-    - [TypeScript](#TypeScript)
-    - [RxJS](#RxJS)
-    - [Docker for AWS](#Docker-for-AWS)
-    - [GraphQL Ruby](#GraphQL-Ruby)
-
-  - [Utilities](#Utilities)
-
-    - [SendGrid](#SendGrid)
-    - [Let’s Encrypt](#Let's-Encrypt)
-    - [OpenCV](#OpenCV)
-
-  - [DevOps](#DevOps)
-
-    - [BitBucket](#BitBucket)
-    - [Kubernetes](#Kubernetes)
-    - [Vagrant](#Vagrant)
-
-  - [Business Tools](#Business-Tools)
-
-    - [Slack](#Slack)
-    - [Trello](#Trello)
-    - [Confluence](#Confluence)
-    - [JIRA](#JIRA)
-    - [MailChimp](#MailChimp)
-    - [Figma](#Figma)
-
-  
 
 
 
