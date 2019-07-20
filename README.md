@@ -2,4 +2,4 @@
 
 Today I Learned.
 
-- Tistory 블로그 : http://shoveller.tistory.com/
+- Notion 링크 : https://www.notion.so/munok/Today-I-Learned-d0eb4892679e45f88b3f35364c0aba10
