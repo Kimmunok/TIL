@@ -1,5 +1,7 @@
 PODS:
+  - Alamofire (4.8.2)
   - Differentiator (4.0.1)
+  - Kingfisher (5.6.0)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -11,30 +13,40 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
   - SnapKit (5.0.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - Kingfisher
   - RxCocoa (~> 5)
   - RxDataSources
   - RxSwift (~> 5)
   - SnapKit
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - Differentiator
+    - Kingfisher
     - RxCocoa
     - RxDataSources
     - RxRelay
     - RxSwift
     - SnapKit
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
+  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: cc1f62271f20fd3d02c48bc9eedac3ae6528b69a
+PODFILE CHECKSUM: c3d4104c0bba11e2191dc881207192deca3f47ca
 
 COCOAPODS: 1.5.3

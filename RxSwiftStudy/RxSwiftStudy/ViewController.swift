@@ -185,11 +185,21 @@ class ViewController: UIViewController {
             SectionModel<String, String>(model: "First Section", items: tvData),
             SectionModel<String, String>(model: "Second Section", items: tvData)
         ]
+        
+//        let sectionOb = BehaviorSubject<[SectionModel]>(value: sections)
+        let sectionOb = BehaviorRelay<[SectionModel]>(value: sections)
 
         // 섹션으로 스트림 시작
-        Observable.just(sections)
+        sectionOb
             .bind(to: tv.rx.items(dataSource: myDataSource))
             .disposed(by: disposeBag)
+        
+        tv.rx.itemSelected
+            .subscribe(onNext: { indexPath in
+                var list = sectionOb.value
+                list[indexPath.section].items.remove(at: indexPath.row)
+                sectionOb.accept(list)
+            }).disposed(by: disposeBag)
     }
 
     // 이름이 너무 긴 것을 Typealias를 통해 줄여줌

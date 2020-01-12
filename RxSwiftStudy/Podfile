@@ -11,6 +11,9 @@ target 'RxSwiftStudy' do
 	pod 'RxCocoa', '~> 5'
 	pod 'RxDataSources'
 	pod 'SnapKit'
+	pod 'Kingfisher'
+	pod 'SwiftyJSON'
+	pod 'Alamofire'
 
   target 'RxSwiftStudyTests' do
     inherit! :search_paths

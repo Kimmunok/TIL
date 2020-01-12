@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1479A470D895511EDEDBF7A4 /* Pods_RxSwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C1186699A142B0A290146CC /* Pods_RxSwiftStudy.framework */; };
+		6B09BC6E22FAEA69001FEA34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09BC6D22FAEA69001FEA34 /* SearchViewController.swift */; };
+		6B09BC6F22FAEA69001FEA34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09BC6D22FAEA69001FEA34 /* SearchViewController.swift */; };
+		6B09BC7022FAEA69001FEA34 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09BC6D22FAEA69001FEA34 /* SearchViewController.swift */; };
+		6B09BC7222FAEF14001FEA34 /* DaumAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B09BC7122FAEF14001FEA34 /* DaumAPI.framework */; };
+		6B09BC7322FAEF14001FEA34 /* DaumAPI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B09BC7122FAEF14001FEA34 /* DaumAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6B09BC7822FAF239001FEA34 /* DaumAPI+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09BC7722FAF239001FEA34 /* DaumAPI+Rx.swift */; };
+		6B09BC7922FAF239001FEA34 /* DaumAPI+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09BC7722FAF239001FEA34 /* DaumAPI+Rx.swift */; };
+		6B09BC7A22FAF239001FEA34 /* DaumAPI+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09BC7722FAF239001FEA34 /* DaumAPI+Rx.swift */; };
+		6B5E93FD2316A57400B97AC7 /* DaumImageSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E93FC2316A57400B97AC7 /* DaumImageSearchResult.swift */; };
+		6B5E93FE2316A57400B97AC7 /* DaumImageSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E93FC2316A57400B97AC7 /* DaumImageSearchResult.swift */; };
+		6B5E93FF2316A57400B97AC7 /* DaumImageSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5E93FC2316A57400B97AC7 /* DaumImageSearchResult.swift */; };
 		6B95522F22DF38AE003FCC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95522E22DF38AE003FCC37 /* AppDelegate.swift */; };
 		6B95523122DF38AE003FCC37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95523022DF38AE003FCC37 /* ViewController.swift */; };
 		6B95523422DF38AE003FCC37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B95523222DF38AE003FCC37 /* Main.storyboard */; };
@@ -40,11 +51,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6B09BC7422FAEF14001FEA34 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6B09BC7322FAEF14001FEA34 /* DaumAPI.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		04EAF34DB951FF434F0B47F9 /* Pods_RxSwiftStudyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftStudyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E844FCB59C5422B472EFCF4 /* Pods-RxSwiftStudyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftStudyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftStudyUITests/Pods-RxSwiftStudyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		11E7C4935D54B58A524E0EBB /* Pods_RxSwiftStudyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftStudyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E303CBB4D09BB00D6EBE90 /* Pods-RxSwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftStudy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftStudy/Pods-RxSwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
+		6B09BC6D22FAEA69001FEA34 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6B09BC7122FAEF14001FEA34 /* DaumAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DaumAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B09BC7722FAF239001FEA34 /* DaumAPI+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DaumAPI+Rx.swift"; sourceTree = "<group>"; };
+		6B5E93FC2316A57400B97AC7 /* DaumImageSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaumImageSearchResult.swift; sourceTree = "<group>"; };
 		6B95522B22DF38AE003FCC37 /* RxSwiftStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B95522E22DF38AE003FCC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B95523022DF38AE003FCC37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B09BC7222FAEF14001FEA34 /* DaumAPI.framework in Frameworks */,
 				1479A470D895511EDEDBF7A4 /* Pods_RxSwiftStudy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +138,7 @@
 		6B95522222DF38AE003FCC37 = {
 			isa = PBXGroup;
 			children = (
+				6B09BC7122FAEF14001FEA34 /* DaumAPI.framework */,
 				6B95522D22DF38AE003FCC37 /* RxSwiftStudy */,
 				6B95524522DF38B0003FCC37 /* RxSwiftStudyTests */,
 				6B95525022DF38B1003FCC37 /* RxSwiftStudyUITests */,
@@ -132,12 +163,15 @@
 			children = (
 				6B95526322E36B2E003FCC37 /* ViewModel */,
 				6B95522E22DF38AE003FCC37 /* AppDelegate.swift */,
+				6B09BC7722FAF239001FEA34 /* DaumAPI+Rx.swift */,
 				6B95523022DF38AE003FCC37 /* ViewController.swift */,
 				6B95523222DF38AE003FCC37 /* Main.storyboard */,
 				6B95523822DF38B0003FCC37 /* Assets.xcassets */,
+				6B5E93FC2316A57400B97AC7 /* DaumImageSearchResult.swift */,
 				6B95523A22DF38B0003FCC37 /* LaunchScreen.storyboard */,
 				6B95523D22DF38B0003FCC37 /* Info.plist */,
 				6B95523522DF38AE003FCC37 /* RxSwiftStudy.xcdatamodeld */,
+				6B09BC6D22FAEA69001FEA34 /* SearchViewController.swift */,
 			);
 			path = RxSwiftStudy;
 			sourceTree = "<group>";
@@ -193,6 +227,7 @@
 				6B95522822DF38AE003FCC37 /* Frameworks */,
 				6B95522922DF38AE003FCC37 /* Resources */,
 				C7C20564DE63E0443A08988E /* [CP] Embed Pods Frameworks */,
+				6B09BC7422FAEF14001FEA34 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -387,23 +422,29 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-RxSwiftStudy/Pods-RxSwiftStudy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -417,7 +458,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B09BC6E22FAEA69001FEA34 /* SearchViewController.swift in Sources */,
+				6B09BC7822FAF239001FEA34 /* DaumAPI+Rx.swift in Sources */,
 				6B95523122DF38AE003FCC37 /* ViewController.swift in Sources */,
+				6B5E93FD2316A57400B97AC7 /* DaumImageSearchResult.swift in Sources */,
 				6B95523722DF38AE003FCC37 /* RxSwiftStudy.xcdatamodeld in Sources */,
 				6B95526022E36B24003FCC37 /* SigninVewModel.swift in Sources */,
 				6B95522F22DF38AE003FCC37 /* AppDelegate.swift in Sources */,
@@ -428,6 +472,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B09BC6F22FAEA69001FEA34 /* SearchViewController.swift in Sources */,
+				6B09BC7922FAF239001FEA34 /* DaumAPI+Rx.swift in Sources */,
+				6B5E93FE2316A57400B97AC7 /* DaumImageSearchResult.swift in Sources */,
 				6B95526122E36B24003FCC37 /* SigninVewModel.swift in Sources */,
 				6B95524722DF38B0003FCC37 /* RxSwiftStudyTests.swift in Sources */,
 			);
@@ -437,6 +484,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B09BC7022FAEA69001FEA34 /* SearchViewController.swift in Sources */,
+				6B09BC7A22FAF239001FEA34 /* DaumAPI+Rx.swift in Sources */,
+				6B5E93FF2316A57400B97AC7 /* DaumImageSearchResult.swift in Sources */,
 				6B95526222E36B24003FCC37 /* SigninVewModel.swift in Sources */,
 				6B95525222DF38B1003FCC37 /* RxSwiftStudyUITests.swift in Sources */,
 			);
