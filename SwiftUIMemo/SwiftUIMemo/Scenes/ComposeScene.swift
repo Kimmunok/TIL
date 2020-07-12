@@ -22,7 +22,7 @@ struct ComposeScene: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationBarTitle("새 메모", displayMode: .large)
             .navigationBarItems(leading: DismissButton(show: $showComposer),
-                                trailing: SaveButton(show: $showComposer))
+                                trailing: SaveButton(show: $showComposer, content: $content))
         }
     }
 }
@@ -42,8 +42,13 @@ fileprivate struct DismissButton: View {
 fileprivate struct SaveButton: View {
     @Binding var show: Bool
     
+    @EnvironmentObject var store: MemoStore
+    @Binding var content: String
+    
     var body: some View {
         Button(action: {
+            self.store.insert(memo: self.content)
+            
             self.show = false
         }, label: {
             Text("저장")
