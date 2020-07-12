@@ -10,6 +10,9 @@
 		6B1548F124BB4AB000A0A7B4 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1548F024BB4AB000A0A7B4 /* TextView.swift */; };
 		6B1548F224BB4AB000A0A7B4 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1548F024BB4AB000A0A7B4 /* TextView.swift */; };
 		6B1548F324BB4AB000A0A7B4 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1548F024BB4AB000A0A7B4 /* TextView.swift */; };
+		6B1548F624BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1548F524BB4E1600A0A7B4 /* KeyboardObserver.swift */; };
+		6B1548F724BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1548F524BB4E1600A0A7B4 /* KeyboardObserver.swift */; };
+		6B1548F824BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1548F524BB4E1600A0A7B4 /* KeyboardObserver.swift */; };
 		6B3840C624BABB8000BE684D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3840C524BABB8000BE684D /* AppDelegate.swift */; };
 		6B3840C824BABB8000BE684D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3840C724BABB8000BE684D /* SceneDelegate.swift */; };
 		6B3840CB24BABB8100BE684D /* SwiftUIMemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B3840C924BABB8100BE684D /* SwiftUIMemo.xcdatamodeld */; };
@@ -55,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		6B1548F024BB4AB000A0A7B4 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		6B1548F524BB4E1600A0A7B4 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		6B3840C224BABB8000BE684D /* SwiftUIMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3840C524BABB8000BE684D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B3840C724BABB8000BE684D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B1548F424BB4DF400A0A7B4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6B1548F524BB4E1600A0A7B4 /* KeyboardObserver.swift */,
+			);
+			name = Shared;
+			path = "노";
+			sourceTree = "<group>";
+		};
 		6B3840B924BABB8000BE684D = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 		6B3840C424BABB8000BE684D /* SwiftUIMemo */ = {
 			isa = PBXGroup;
 			children = (
+				6B1548F424BB4DF400A0A7B4 /* Shared */,
 				6B38410B24BB27A000BE684D /* Scenes */,
 				6B38410124BAFF0100BE684D /* Extensions */,
 				6B3840F824BACEE500BE684D /* Models */,
@@ -334,6 +348,7 @@
 			files = (
 				6B3840CB24BABB8100BE684D /* SwiftUIMemo.xcdatamodeld in Sources */,
 				6B3840FE24BAD47100BE684D /* MemoStore.swift in Sources */,
+				6B1548F624BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
 				6B3840C624BABB8000BE684D /* AppDelegate.swift in Sources */,
 				6B38410324BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
 				6B3840CD24BABB8100BE684D /* MemoListScene.swift in Sources */,
@@ -351,6 +366,7 @@
 			files = (
 				6B3840E024BABB8500BE684D /* SwiftUIMemoTests.swift in Sources */,
 				6B38410924BB26DF00BE684D /* MemoCell.swift in Sources */,
+				6B1548F724BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
 				6B3840FF24BAD47100BE684D /* MemoStore.swift in Sources */,
 				6B1548F224BB4AB000A0A7B4 /* TextView.swift in Sources */,
 				6B38410424BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
@@ -365,6 +381,7 @@
 			files = (
 				6B3840EB24BABB8500BE684D /* SwiftUIMemoUITests.swift in Sources */,
 				6B38410A24BB26DF00BE684D /* MemoCell.swift in Sources */,
+				6B1548F824BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
 				6B38410024BAD47100BE684D /* MemoStore.swift in Sources */,
 				6B1548F324BB4AB000A0A7B4 /* TextView.swift in Sources */,
 				6B38410524BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
