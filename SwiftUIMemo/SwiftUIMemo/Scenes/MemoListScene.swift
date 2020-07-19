@@ -16,13 +16,16 @@ struct MemoListScene: View {
     
     var body: some View {
         NavigationView {
-            List(store.list) { memo in
-                NavigationLink(
-                    destination: DetailScene(memo: memo),
-                    label: {
-                        MemoCell(memo: memo)
+            List {
+                ForEach(store.list) { memo in
+                    NavigationLink(
+                        destination: DetailScene(memo: memo),
+                        label: {
+                            MemoCell(memo: memo)
+                    }
+                    )
                 }
-                )
+                .onDelete(perform: store.delete)
             }
             .navigationBarTitle("내 메모")
             .navigationBarItems(trailing: ModalButton(show: $showComposer))

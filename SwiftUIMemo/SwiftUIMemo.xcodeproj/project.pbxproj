@@ -37,6 +37,9 @@
 		6B38410D24BB27ED00BE684D /* ComposeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B38410C24BB27ED00BE684D /* ComposeScene.swift */; };
 		6B38410E24BB27ED00BE684D /* ComposeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B38410C24BB27ED00BE684D /* ComposeScene.swift */; };
 		6B38410F24BB27ED00BE684D /* ComposeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B38410C24BB27ED00BE684D /* ComposeScene.swift */; };
+		6B69F05124C3FE1800C3A689 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05024C3FE1800C3A689 /* DetailScene.swift */; };
+		6B69F05224C3FE1800C3A689 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05024C3FE1800C3A689 /* DetailScene.swift */; };
+		6B69F05324C3FE1800C3A689 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05024C3FE1800C3A689 /* DetailScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,7 @@
 		6B38410224BAFF2100BE684D /* DateFormatter+Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Memo.swift"; sourceTree = "<group>"; };
 		6B38410724BB26DF00BE684D /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
 		6B38410C24BB27ED00BE684D /* ComposeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeScene.swift; sourceTree = "<group>"; };
+		6B69F05024C3FE1800C3A689 /* DetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,7 @@
 				6B38410624BB26C200BE684D /* Views */,
 				6B3840CC24BABB8100BE684D /* MemoListScene.swift */,
 				6B38410C24BB27ED00BE684D /* ComposeScene.swift */,
+				6B69F05024C3FE1800C3A689 /* DetailScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				6B1548F624BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
 				6B3840C624BABB8000BE684D /* AppDelegate.swift in Sources */,
 				6B38410324BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
+				6B69F05124C3FE1800C3A689 /* DetailScene.swift in Sources */,
 				6B3840CD24BABB8100BE684D /* MemoListScene.swift in Sources */,
 				6B3840C824BABB8000BE684D /* SceneDelegate.swift in Sources */,
 				6B3840FA24BACF0600BE684D /* Memo.swift in Sources */,
@@ -369,6 +375,7 @@
 				6B1548F724BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
 				6B3840FF24BAD47100BE684D /* MemoStore.swift in Sources */,
 				6B1548F224BB4AB000A0A7B4 /* TextView.swift in Sources */,
+				6B69F05224C3FE1800C3A689 /* DetailScene.swift in Sources */,
 				6B38410424BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
 				6B3840FB24BACF0600BE684D /* Memo.swift in Sources */,
 				6B38410E24BB27ED00BE684D /* ComposeScene.swift in Sources */,
@@ -384,6 +391,7 @@
 				6B1548F824BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
 				6B38410024BAD47100BE684D /* MemoStore.swift in Sources */,
 				6B1548F324BB4AB000A0A7B4 /* TextView.swift in Sources */,
+				6B69F05324C3FE1800C3A689 /* DetailScene.swift in Sources */,
 				6B38410524BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
 				6B3840FC24BACF0600BE684D /* Memo.swift in Sources */,
 				6B38410F24BB27ED00BE684D /* ComposeScene.swift in Sources */,

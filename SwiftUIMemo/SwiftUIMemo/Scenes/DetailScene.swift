@@ -14,7 +14,8 @@ struct DetailScene: View {
     @EnvironmentObject var store: MemoStore
     @EnvironmentObject var formatter: DateFormatter
     
-    @State private var isShowEditSheet = false
+    @State private var isPresentedEditScene = false
+    @State private var isPresentedDeleteAlert = false
     
     var body: some View {
         VStack {
@@ -33,26 +34,73 @@ struct DetailScene: View {
                         .foregroundColor(Color(.secondaryLabel))
                 }
             }
+            
+            HStack {
+                DeleteButton(isPresented: $isPresentedDeleteAlert,
+                             memo: self.memo)
+                
+                Spacer()
+                
+                EditButton(isPresented: $isPresentedEditScene,
+                           memo: self.memo)
+            }
+            .padding(.leading)
+            .padding(.trailing)
         }
         .navigationBarTitle("메모 보기")
-        .navigationBarItems(
-            trailing: Button(
-                action: {
-                    self.isShowEditSheet.toggle()
-            },
-                label: {
-                    Image(systemName: "square.and.pencil")
+    }
+}
+
+fileprivate struct DeleteButton: View {
+    @Binding var isPresented: Bool
+    var memo: Memo
+    @EnvironmentObject var store: MemoStore
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        Button(action: {
+            self.isPresented.toggle()
+        }, label: {
+            Image(systemName: "trash")
+                .foregroundColor(Color(.systemRed))
+        })
+            .padding()
+            .alert(
+                isPresented: $isPresented,
+                content: {
+                    Alert(
+                        title: Text("삭제 확인"),
+                        message: Text("정말로 메모를 삭제하시겠습니까?"),
+                        primaryButton: .destructive(Text("삭제"), action: {
+                            self.store.delete(memo: self.memo)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }),
+                        secondaryButton: .cancel()
+                    )
             }
-            )
-                .padding()
-                .sheet(
-                    isPresented: $isShowEditSheet,
-                    content: {
-                        ComposeScene(showComposer: self.$isShowEditSheet, memo: self.memo)
-                            .environmentObject(self.store)
-                            .environmentObject(KeyboardObserver())
-                }
-            )
+        )
+    }
+}
+
+fileprivate struct EditButton: View {
+    @Binding var isPresented: Bool
+    var memo: Memo
+    @EnvironmentObject var store: MemoStore
+    
+    var body: some View {
+        Button(action: {
+            self.isPresented.toggle()
+        }, label: {
+            Image(systemName: "square.and.pencil")
+        })
+            .padding()
+            .sheet(
+                isPresented: $isPresented,
+                content: {
+                    ComposeScene(showComposer: self.$isPresented, memo: self.memo)
+                        .environmentObject(self.store)
+                        .environmentObject(KeyboardObserver())
+            }
         )
     }
 }
