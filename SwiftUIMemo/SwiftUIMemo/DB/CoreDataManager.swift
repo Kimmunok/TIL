@@ -23,26 +23,17 @@ class CoreDataManager: ObservableObject {
         saveContext()
     }
     
-    @FetchRequest(
-        entity: MemoEntity.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(
-                keyPath: \MemoEntity.insertDate,
-                ascending: false)
-        ]
-    )
-    
-    var memoList: FetchedResults<MemoEntity>
-    
     func update(memo: MemoEntity?, content: String) {
         memo?.content = content
         saveContext()
     }
     
     func delete(memo: MemoEntity?) {
-        if let memo = memo {
-            Self.mainContext.delete(memo)
-            saveContext()
+        DispatchQueue.main.async {
+            if let memo = memo {
+                Self.mainContext.delete(memo)
+                self.saveContext()
+            }
         }
     }
     
