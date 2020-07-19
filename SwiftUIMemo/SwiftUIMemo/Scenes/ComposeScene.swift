@@ -15,6 +15,8 @@ struct ComposeScene: View {
     
     @Binding var showComposer: Bool
     
+    var memo: Memo? = nil
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -24,9 +26,18 @@ struct ComposeScene: View {
                     .animation(.easeInOut(duration: keyboard.context.animationDuration))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationBarTitle("새 메모", displayMode: .large)
-            .navigationBarItems(leading: DismissButton(show: $showComposer),
-                                trailing: SaveButton(show: $showComposer, content: $content))
+            .navigationBarTitle(memo == nil ? "새 메모" : "메모 편집", displayMode: .large)
+            .navigationBarItems(
+                leading: DismissButton(show: $showComposer),
+                trailing: SaveButton(
+                    show: $showComposer,
+                    content: $content,
+                    memo: memo
+                )
+            )
+        }
+        .onAppear {
+            self.content = self.memo?.content ?? ""
         }
     }
 }
@@ -49,9 +60,15 @@ fileprivate struct SaveButton: View {
     @EnvironmentObject var store: MemoStore
     @Binding var content: String
     
+    var memo: Memo? = nil
+    
     var body: some View {
         Button(action: {
-            self.store.insert(memo: self.content)
+            if let memo = self.memo {
+                self.store.update(memo: memo, content: self.content)
+            } else {
+                self.store.insert(memo: self.content)
+            }
             
             self.show = false
         }, label: {
