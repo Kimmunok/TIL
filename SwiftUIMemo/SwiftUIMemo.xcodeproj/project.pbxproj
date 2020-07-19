@@ -40,6 +40,12 @@
 		6B69F05124C3FE1800C3A689 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05024C3FE1800C3A689 /* DetailScene.swift */; };
 		6B69F05224C3FE1800C3A689 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05024C3FE1800C3A689 /* DetailScene.swift */; };
 		6B69F05324C3FE1800C3A689 /* DetailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05024C3FE1800C3A689 /* DetailScene.swift */; };
+		6B69F05624C4212D00C3A689 /* MemoEntity+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05524C4212D00C3A689 /* MemoEntity+Identifiable.swift */; };
+		6B69F05724C4212D00C3A689 /* MemoEntity+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05524C4212D00C3A689 /* MemoEntity+Identifiable.swift */; };
+		6B69F05824C4212D00C3A689 /* MemoEntity+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05524C4212D00C3A689 /* MemoEntity+Identifiable.swift */; };
+		6B69F05A24C4216700C3A689 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05924C4216700C3A689 /* CoreDataManager.swift */; };
+		6B69F05B24C4216700C3A689 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05924C4216700C3A689 /* CoreDataManager.swift */; };
+		6B69F05C24C4216700C3A689 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05924C4216700C3A689 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +89,8 @@
 		6B38410724BB26DF00BE684D /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
 		6B38410C24BB27ED00BE684D /* ComposeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeScene.swift; sourceTree = "<group>"; };
 		6B69F05024C3FE1800C3A689 /* DetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScene.swift; sourceTree = "<group>"; };
+		6B69F05524C4212D00C3A689 /* MemoEntity+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemoEntity+Identifiable.swift"; sourceTree = "<group>"; };
+		6B69F05924C4216700C3A689 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +150,7 @@
 		6B3840C424BABB8000BE684D /* SwiftUIMemo */ = {
 			isa = PBXGroup;
 			children = (
+				6B69F05424C4201100C3A689 /* DB */,
 				6B1548F424BB4DF400A0A7B4 /* Shared */,
 				6B38410B24BB27A000BE684D /* Scenes */,
 				6B38410124BAFF0100BE684D /* Extensions */,
@@ -151,7 +160,6 @@
 				6B3840CE24BABB8400BE684D /* Assets.xcassets */,
 				6B3840D324BABB8400BE684D /* LaunchScreen.storyboard */,
 				6B3840D624BABB8400BE684D /* Info.plist */,
-				6B3840C924BABB8100BE684D /* SwiftUIMemo.xcdatamodeld */,
 				6B3840D024BABB8400BE684D /* Preview Content */,
 			);
 			path = SwiftUIMemo;
@@ -218,6 +226,16 @@
 				6B69F05024C3FE1800C3A689 /* DetailScene.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		6B69F05424C4201100C3A689 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				6B3840C924BABB8100BE684D /* SwiftUIMemo.xcdatamodeld */,
+				6B69F05524C4212D00C3A689 /* MemoEntity+Identifiable.swift */,
+				6B69F05924C4216700C3A689 /* CoreDataManager.swift */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +381,8 @@
 				6B38410824BB26DF00BE684D /* MemoCell.swift in Sources */,
 				6B38410D24BB27ED00BE684D /* ComposeScene.swift in Sources */,
 				6B1548F124BB4AB000A0A7B4 /* TextView.swift in Sources */,
+				6B69F05A24C4216700C3A689 /* CoreDataManager.swift in Sources */,
+				6B69F05624C4212D00C3A689 /* MemoEntity+Identifiable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B69F05724C4212D00C3A689 /* MemoEntity+Identifiable.swift in Sources */,
 				6B3840E024BABB8500BE684D /* SwiftUIMemoTests.swift in Sources */,
 				6B38410924BB26DF00BE684D /* MemoCell.swift in Sources */,
 				6B1548F724BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
@@ -379,6 +400,7 @@
 				6B38410424BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
 				6B3840FB24BACF0600BE684D /* Memo.swift in Sources */,
 				6B38410E24BB27ED00BE684D /* ComposeScene.swift in Sources */,
+				6B69F05B24C4216700C3A689 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B69F05824C4212D00C3A689 /* MemoEntity+Identifiable.swift in Sources */,
 				6B3840EB24BABB8500BE684D /* SwiftUIMemoUITests.swift in Sources */,
 				6B38410A24BB26DF00BE684D /* MemoCell.swift in Sources */,
 				6B1548F824BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
@@ -395,6 +418,7 @@
 				6B38410524BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
 				6B3840FC24BACF0600BE684D /* Memo.swift in Sources */,
 				6B38410F24BB27ED00BE684D /* ComposeScene.swift in Sources */,
+				6B69F05C24C4216700C3A689 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
