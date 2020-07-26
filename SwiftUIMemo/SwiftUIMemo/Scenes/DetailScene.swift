@@ -71,10 +71,13 @@ fileprivate struct DeleteButton: View {
                     Alert(
                         title: Text("삭제 확인"),
                         message: Text("정말로 메모를 삭제하시겠습니까?"),
-                        primaryButton: .destructive(Text("삭제"), action: {
-                            self.store.delete(memo: self.memo)
-                            self.presentationMode.wrappedValue.dismiss()
-                        }),
+                        primaryButton: .destructive(
+                            Text("삭제"),
+                            action: {
+                                self.store.delete(memo: self.memo)
+                                self.presentationMode.wrappedValue.dismiss()
+                        }
+                        ),
                         secondaryButton: .cancel()
                     )
             }

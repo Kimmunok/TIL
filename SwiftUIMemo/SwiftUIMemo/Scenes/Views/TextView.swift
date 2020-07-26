@@ -6,7 +6,6 @@
 //  Copyright © 2020 MunokKim. All rights reserved.
 //
 
-import UIKit
 import SwiftUI
 
 struct TextView: UIViewRepresentable {

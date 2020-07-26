@@ -40,6 +40,9 @@
 		6B69F05A24C4216700C3A689 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05924C4216700C3A689 /* CoreDataManager.swift */; };
 		6B69F05B24C4216700C3A689 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05924C4216700C3A689 /* CoreDataManager.swift */; };
 		6B69F05C24C4216700C3A689 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69F05924C4216700C3A689 /* CoreDataManager.swift */; };
+		6B6F47B224CD815300C24BB5 /* ObservableListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */; };
+		6B6F47B324CD815300C24BB5 /* ObservableListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */; };
+		6B6F47B424CD815300C24BB5 /* ObservableListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,7 @@
 		6B69F05024C3FE1800C3A689 /* DetailScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScene.swift; sourceTree = "<group>"; };
 		6B69F05524C4212D00C3A689 /* MemoEntity+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemoEntity+Identifiable.swift"; sourceTree = "<group>"; };
 		6B69F05924C4216700C3A689 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableListScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,7 @@
 				6B3840CC24BABB8100BE684D /* MemoListScene.swift */,
 				6B38410C24BB27ED00BE684D /* ComposeScene.swift */,
 				6B69F05024C3FE1800C3A689 /* DetailScene.swift */,
+				6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				6B38410324BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
 				6B69F05124C3FE1800C3A689 /* DetailScene.swift in Sources */,
 				6B3840CD24BABB8100BE684D /* MemoListScene.swift in Sources */,
+				6B6F47B224CD815300C24BB5 /* ObservableListScene.swift in Sources */,
 				6B3840C824BABB8000BE684D /* SceneDelegate.swift in Sources */,
 				6B38410824BB26DF00BE684D /* MemoCell.swift in Sources */,
 				6B38410D24BB27ED00BE684D /* ComposeScene.swift in Sources */,
@@ -377,6 +383,7 @@
 				6B1548F224BB4AB000A0A7B4 /* TextView.swift in Sources */,
 				6B69F05224C3FE1800C3A689 /* DetailScene.swift in Sources */,
 				6B38410424BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
+				6B6F47B324CD815300C24BB5 /* ObservableListScene.swift in Sources */,
 				6B38410E24BB27ED00BE684D /* ComposeScene.swift in Sources */,
 				6B69F05B24C4216700C3A689 /* CoreDataManager.swift in Sources */,
 			);
@@ -393,6 +400,7 @@
 				6B1548F324BB4AB000A0A7B4 /* TextView.swift in Sources */,
 				6B69F05324C3FE1800C3A689 /* DetailScene.swift in Sources */,
 				6B38410524BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
+				6B6F47B424CD815300C24BB5 /* ObservableListScene.swift in Sources */,
 				6B38410F24BB27ED00BE684D /* ComposeScene.swift in Sources */,
 				6B69F05C24C4216700C3A689 /* CoreDataManager.swift in Sources */,
 			);
