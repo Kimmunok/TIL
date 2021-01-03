@@ -43,6 +43,8 @@
 		6B6F47B224CD815300C24BB5 /* ObservableListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */; };
 		6B6F47B324CD815300C24BB5 /* ObservableListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */; };
 		6B6F47B424CD815300C24BB5 /* ObservableListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */; };
+		6BCD09B924D6A94B0064EA58 /* TextView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD09B824D6A94B0064EA58 /* TextView2.swift */; };
+		6BCD09BA24D6A94B0064EA58 /* TextView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCD09B824D6A94B0064EA58 /* TextView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,7 @@
 		6B69F05524C4212D00C3A689 /* MemoEntity+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemoEntity+Identifiable.swift"; sourceTree = "<group>"; };
 		6B69F05924C4216700C3A689 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6B6F47B124CD815300C24BB5 /* ObservableListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableListScene.swift; sourceTree = "<group>"; };
+		6BCD09B824D6A94B0064EA58 /* TextView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +202,7 @@
 			children = (
 				6B38410724BB26DF00BE684D /* MemoCell.swift */,
 				6B1548F024BB4AB000A0A7B4 /* TextView.swift */,
+				6BCD09B824D6A94B0064EA58 /* TextView2.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +364,7 @@
 				6B1548F624BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
 				6B3840C624BABB8000BE684D /* AppDelegate.swift in Sources */,
 				6B38410324BAFF2200BE684D /* DateFormatter+Memo.swift in Sources */,
+				6BCD09B924D6A94B0064EA58 /* TextView2.swift in Sources */,
 				6B69F05124C3FE1800C3A689 /* DetailScene.swift in Sources */,
 				6B3840CD24BABB8100BE684D /* MemoListScene.swift in Sources */,
 				6B6F47B224CD815300C24BB5 /* ObservableListScene.swift in Sources */,
@@ -377,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B69F05724C4212D00C3A689 /* MemoEntity+Identifiable.swift in Sources */,
+				6BCD09BA24D6A94B0064EA58 /* TextView2.swift in Sources */,
 				6B3840E024BABB8500BE684D /* SwiftUIMemoTests.swift in Sources */,
 				6B38410924BB26DF00BE684D /* MemoCell.swift in Sources */,
 				6B1548F724BB4E1600A0A7B4 /* KeyboardObserver.swift in Sources */,
